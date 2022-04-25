@@ -98,12 +98,14 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 	bool ret = true;
 
 	SDL_Rect dstRect{ x * SCREEN_SIZE, y * SCREEN_SIZE, 0, 0 };
-
+	/* LA CAMARA SE MUEVE CON ESTE CODIGO
 	if (useCamera)
 	{
 		dstRect.x -= (camera.x * speed);
 		dstRect.y -= (camera.y * speed);
 	}
+
+	*/
 
 	if (section != nullptr)
 	{
