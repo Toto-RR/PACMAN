@@ -25,8 +25,8 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/background.png");
-	App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	bgTexture = App->textures->Load("Assets/Sprites/background_level_0.png");
+	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 1.0f);
 
 	//Bottomside collider
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
