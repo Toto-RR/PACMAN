@@ -15,19 +15,22 @@
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	idleAnim.PushBack({ 161, 61, 16, 16 });
+	idleAnim.PushBack({ 145, 62, 16, 16 });
+	idleAnim.loop = true;
+	idleAnim.speed = 0.05f;
 
 	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
-	upAnim.speed = 0.1f;
+	upAnim.PushBack({ 33, 61, 16, 16 });
+	upAnim.PushBack({ 17, 62, 16, 16 });
+	upAnim.loop = true;
+	upAnim.speed = 0.05f;
 
 	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
-	downAnim.speed = 0.1f;
+	downAnim.PushBack({ 161, 78, 16, 15 });
+	downAnim.PushBack({ 177, 78, 16, 16 });
+	downAnim.loop = true;
+	downAnim.speed = 0.05f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -41,7 +44,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Sprites/ship.png");
+	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
