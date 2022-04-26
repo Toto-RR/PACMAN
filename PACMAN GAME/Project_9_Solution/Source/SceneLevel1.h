@@ -34,6 +34,11 @@ public:
 	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* extraTexture = nullptr;
+
+	SDL_Rect world0 = { 63, 98, 46, 14 };
+	SDL_Rect p1 = { 0, 96, 8, 16 };
+	SDL_Rect p2 = { 0, 112, 8, 16 };
 };
 
 #endif
