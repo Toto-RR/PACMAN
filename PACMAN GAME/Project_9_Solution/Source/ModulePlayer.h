@@ -65,8 +65,12 @@ public:
 
 	// Font score index
 	uint score = 000;
+	uint highScore = 000;
 	int scoreFont = -1;
+	int player1Font = -1;
+	int player2Font = -1;
 	char scoreText[10] = { "\0" };
+	char highScoreText[10] = { "\0" };
 
 };
 

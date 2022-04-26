@@ -74,13 +74,13 @@ bool ModulePlayer::Start()
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 8, 8 }, Collider::Type::PLAYER, this);
 
-	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	//char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
-	//scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	char lookupTable[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=:&',.()x+-/@up*s·bt |#_>" };
+	scoreFont = App->fonts->Load("Assets/Fonts/font1.png", lookupTable, 1);
 
-	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
+	char lookupTable2[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=>&',.()x+-/@*|#_:up· " };
+	player1Font = App->fonts->Load("Assets/Fonts/font2.png", lookupTable2, 1);
+	player2Font = App->fonts->Load("Assets/Fonts/font3.png", lookupTable2, 1);
+
 
 	return ret;
 }
@@ -157,13 +157,15 @@ Update_Status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-	// Draw UI (score) --------------------------------------
+	// Draw UI --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
 
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(58, 248, scoreFont, scoreText);
-
-	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
+	App->fonts->BlitText(93, 22, scoreFont, scoreText);
+	App->fonts->BlitText(13, 22, scoreFont, scoreText);
+	App->fonts->BlitText(77, 14, scoreFont, "HIGH SCORE");
+	App->fonts->BlitText(30, 14, player1Font, "1up");
+	App->fonts->BlitText(173, 14, player2Font, "CREDIT");
+	App->fonts->BlitText(197, 22, player2Font, "0");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
