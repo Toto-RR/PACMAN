@@ -35,6 +35,16 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* extraTexture = nullptr;
+	
+	int positionx = 255;
+	int positiony = -50;
+	int speedx = 5;
+	int speedy = 5;
+
+	uint round = 0;
+
+	int scoreFont = -1;
+	char scoreText[10] = { "\0" };
 
 	SDL_Rect world0 = { 63, 98, 46, 14 };
 	SDL_Rect p1 = { 0, 96, 8, 16 };
