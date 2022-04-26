@@ -17,20 +17,37 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	// idle animation - just one sprite
 	idleAnim.PushBack({ 161, 61, 16, 16 });
 	idleAnim.PushBack({ 145, 62, 16, 16 });
+	idleAnim.PushBack({ 129, 63, 16, 14 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.05f;
 
 	// move upwards
 	upAnim.PushBack({ 33, 61, 16, 16 });
 	upAnim.PushBack({ 17, 62, 16, 16 });
+	upAnim.PushBack({ 1, 63, 16, 14 });
 	upAnim.loop = true;
 	upAnim.speed = 0.05f;
 
 	// Move down
 	downAnim.PushBack({ 161, 78, 16, 15 });
-	downAnim.PushBack({ 177, 78, 16, 16 });
+	downAnim.PushBack({ 177, 78, 16, 15 });
+	downAnim.PushBack({ 145, 78, 16, 15 });
 	downAnim.loop = true;
 	downAnim.speed = 0.05f;
+
+	//Move right
+	rightAnim.PushBack({ 81, 62, 16, 15 });
+	rightAnim.PushBack({ 98, 61, 15, 16 });
+	rightAnim.PushBack({ 65, 63, 16, 14 });
+	rightAnim.loop = true;
+	rightAnim.speed = 0.05f;
+
+	//Move left
+	leftAnim.PushBack({226,61,15,17});
+	leftAnim.PushBack({209,62,16,16});
+	leftAnim.PushBack({ 193,63,16,15 });
+	leftAnim.loop = true;
+	leftAnim.speed = 0.05f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -74,11 +91,21 @@ Update_Status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (currentAnimation != &leftAnim)
+		{
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
@@ -109,9 +136,11 @@ Update_Status ModulePlayer::Update()
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE)
-		currentAnimation = &idleAnim;
+	//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+	//	&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+	//	&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+	//	&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
+	//	currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y);
 
