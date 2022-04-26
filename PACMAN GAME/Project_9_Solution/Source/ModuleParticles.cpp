@@ -22,23 +22,19 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
+	explosion.anim.PushBack({1, 62, 15, 15});
+	explosion.anim.PushBack({49, 62, 15, 15});
+	explosion.anim.PushBack({81, 62, 15, 15});
+	explosion.anim.PushBack({113, 62, 15, 15});
+	explosion.anim.PushBack({142, 62, 15, 15});
+	explosion.anim.PushBack({177, 62, 15, 15});
+	explosion.anim.PushBack({209, 62, 15, 15});
+	explosion.anim.PushBack({241, 62, 15, 15});
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
-
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
 
 	return true;
 }

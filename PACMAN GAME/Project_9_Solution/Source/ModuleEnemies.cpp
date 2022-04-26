@@ -10,6 +10,8 @@
 #include "Enemy_RedBird.h"
 #include "Enemy_BrownShip.h"
 #include "Enemy_Mech.h"
+#include "GhostClyde.h"
+#include "GhostBlinky.h"
 
 #define SPAWN_MARGIN 50
 
@@ -27,9 +29,9 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/Sprites/enemies.png");
-	enemyDestroyedFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
-
+	texture = App->textures->Load("Assets/Sprites/Ghosts/Red_Ghost.png");
+	texture = App->textures->Load("Assets/Sprites/Ghosts/Blue_Ghost.png");
+	
 	return true;
 }
 
@@ -165,6 +167,12 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 					break;
 				case Enemy_Type::MECH:
 					enemies[i] = new Enemy_Mech(info.x, info.y);
+					break;
+				case Enemy_Type::BLINKY:
+					enemies[i] = new GhostBlinky(info.x, info.y);
+					break;
+				case Enemy_Type::CLYDE:
+					enemies[i] = new GhostClyde(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;
