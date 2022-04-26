@@ -31,12 +31,13 @@ bool SceneLevel1::Start()
 
 	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 1.0f);
 
-	//Bottomside collider
-	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
+	//Level 1 Colliders
+	App->collisions->AddCollider({ 17, 266, 201, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 17, 34, 200, 9 }, Collider::Type::WALL);
 
 	//First two columns colliders
-	App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 600, 80);
