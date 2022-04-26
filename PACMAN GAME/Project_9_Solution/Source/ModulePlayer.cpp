@@ -67,12 +67,12 @@ bool ModulePlayer::Start()
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 110;
+	position.y = 214;
 
 	destroyed = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 8, 8 }, Collider::Type::PLAYER, this);
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	//char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
@@ -128,12 +128,12 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	{
-		Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-		newParticle->collider->AddListener(this);
-		App->audio->PlayFx(laserFx);
-	}
+	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	//{
+	//	Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+	//	newParticle->collider->AddListener(this);
+	//	App->audio->PlayFx(laserFx);
+	//}
 
 	// If no up/down movement detected, set the current animation back to idle
 	//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
