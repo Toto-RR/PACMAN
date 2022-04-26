@@ -30,8 +30,7 @@ bool SceneLevel1::Start()
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 	round = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
-	App->audio->PlayFx(round);
-	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 25.0f);
+	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 1.0f);
 
 	//Level 1 Colliders
 	App->collisions->AddCollider({ 17, 266, 201, 16 }, Collider::Type::WALL);
@@ -46,7 +45,9 @@ bool SceneLevel1::Start()
 
 	char lookupTable[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ!'?-:/" };
 	scoreFont = App->fonts->Load("Assets/Fonts/Letters_Groups.png", lookupTable, 1);
-	
+
+	speedx = 5;
+	speedy = 5;
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 600, 80);
@@ -72,6 +73,8 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 
+	
+
 	return ret;
 }
 
@@ -94,7 +97,10 @@ Update_Status SceneLevel1::Update()
 		speedx = 5;
 		speedy = 0;
 	}
-
+	if (positiony == 50)
+	{
+		App->audio->PlayFx(round);
+	}
 
 	
 
@@ -110,6 +116,8 @@ Update_Status SceneLevel1::PostUpdate()
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 
+
+
 	App->fonts->BlitText(positionx, positiony, scoreFont, "R");
 	App->fonts->BlitText(positionx + 18, positiony, scoreFont, "O");
 	App->fonts->BlitText(positionx + 36, positiony, scoreFont, "U");
@@ -122,8 +130,16 @@ Update_Status SceneLevel1::PostUpdate()
 
 bool SceneLevel1::CleanUp()
 {
+
+	positionx = 255;
+	positiony = -50;
+	speedx = 0;
+	speedy = 0;
+	
 	App->player->Disable();
 	App->enemies->Disable();
+
+
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
