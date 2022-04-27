@@ -72,6 +72,8 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
+	speed = 1;
+
 	collider = App->collisions->AddCollider({ position.x, position.y, 14, 14 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=:&',.()x+-/@up*s·bt |#_>" };
@@ -174,7 +176,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && destroyed == false)
 	{
+
 		
+
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+
+		App->audio->PlayFx(explosionFx);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+
+		destroyed = true;
+		  
+
+		speed = 0;
+
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
