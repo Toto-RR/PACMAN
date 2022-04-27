@@ -100,7 +100,7 @@ Update_Status SceneLevel1::Update()
 
 	if (position_num_y < 120 && speed_num_x == 0 && speed_num_y == 1)
 	{
-		speed_num_x = -5;
+		speed_num_x = 5;
 		speed_num_y = 0;
 	}
 
