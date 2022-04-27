@@ -29,8 +29,8 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/Sprites/Ghosts/Red_Ghost.png");
-	texture = App->textures->Load("Assets/Sprites/Ghosts/Blue_Ghost.png");
+	texture = App->textures->Load("Assets/Sprites/Ghosts/enemies.png");
+	
 	
 	return true;
 }

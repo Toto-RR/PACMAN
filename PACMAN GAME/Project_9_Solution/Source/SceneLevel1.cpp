@@ -50,7 +50,8 @@ bool SceneLevel1::Start()
 	speedy = 5;
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 100, 90);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 110, 125);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 110, 125);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
