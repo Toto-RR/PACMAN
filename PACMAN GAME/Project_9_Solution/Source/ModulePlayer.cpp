@@ -161,7 +161,7 @@ Update_Status ModulePlayer::PostUpdate()
 
 	// Draw UI --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
-
+	
 	App->fonts->BlitText(93, 22, scoreFont, scoreText);
 	App->fonts->BlitText(13, 22, scoreFont, scoreText);
 	App->fonts->BlitText(77, 14, scoreFont, "HIGH SCORE");
@@ -174,18 +174,14 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false)
 	{
-
-		
-
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(explosionFx);
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
 
 		destroyed = true;
-		  
 
 		speed = 0;
 
@@ -193,7 +189,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
 	{
-		
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
+		currentAnimation = &idleAnim;
+
+		speed = 0;
 
 	}
 }
