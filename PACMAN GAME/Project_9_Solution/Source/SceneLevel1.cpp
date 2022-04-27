@@ -29,8 +29,12 @@ bool SceneLevel1::Start()
 	bgTexture = App->textures->Load("Assets/Sprites/background_level_0.png");
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
-	round = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
-	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 1.0f);
+
+
+	//Music
+	round = App->audio->LoadFx("Assets/Music/FX/opening-fanfare.wav");
+	App->audio->PlayFx(round);
+	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 30.0f);
 
 	//Level 1 Colliders
 	App->collisions->AddCollider({ 17, 266, 201, 16 }, Collider::Type::WALL);
@@ -82,16 +86,16 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 113, 186, 8, 24 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 49, 202, 48, 8 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 65, 210, 8, 16 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 127, 202, 48, 8 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 161, 210, 8, 16 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 25, 226, 24, 8 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 41, 234, 8, 16 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 65, 242, 32, 8 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 89, 226, 8, 16 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 113, 226, 8, 40 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 137, 226, 8, 24 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 145, 242, 24, 8 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 185, 226, 8, 24 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 127, 202, 48, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 161, 210, 8, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 25, 226, 24, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 41, 234, 8, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 65, 242, 32, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 89, 226, 8, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 113, 226, 8, 40 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 137, 226, 8, 24 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 145, 242, 24, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 185, 226, 8, 24 }, Collider::Type::WALL);
 	/*App->collisions->AddCollider({ 193, 226, 16, 8 }, Collider::Type::WALL);*/
 
 	//Letters animation
@@ -119,6 +123,7 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->fonts->Enable();
+	
 	
 
 	return ret;
@@ -159,10 +164,6 @@ Update_Status SceneLevel1::Update()
 		speed_num_y = 0;
 	}
 
-	if (positiony == 50)
-	{
-		App->audio->PlayFx(round);
-	}
 
 	
 
