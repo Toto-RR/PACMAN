@@ -22,6 +22,7 @@ GhostClyde::GhostClyde(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
+
 void GhostClyde::Update()
 {
 	path.Update();

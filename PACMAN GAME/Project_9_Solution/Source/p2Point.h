@@ -105,6 +105,13 @@ public:
 		return(*this);
 	}
 
+	p2Point& Wall(int positionx, int positiony)		//WALL
+	{
+		x = positionx;
+		y = positiony;
+		return (*this);
+	}
+
 	// Distances ---------------------------------------------
 	TYPE DistanceTo(const p2Point& v) const
 	{

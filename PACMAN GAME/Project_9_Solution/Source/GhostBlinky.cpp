@@ -19,7 +19,7 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 
 	path.PushBack({ 1.0f, 0.0f }, 150, &right);
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void GhostBlinky::Update()
