@@ -5,17 +5,19 @@
 
 GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 {
-	up.PushBack({ 0, 0, 18, 18 });
+	up.PushBack({ 159, 17, 15, 15 });
 	currentAnim = &up;
 
-	down.PushBack({ 0, 0, 18, 18 });
+	down.PushBack({ 64, 17, 15, 15 });
 	currentAnim = &down;
 
-	right.PushBack({ 0, 0, 18, 18 });
+	right.PushBack({ 111, 17, 15, 15 });
 	currentAnim = &right;
 
-	left.PushBack({ 0, 0, 18, 18 });
+	left.PushBack({ 15, 17, 15, 15 });
 	currentAnim = &left;
+
+	path.PushBack({ 1.0f, 0.0f }, 150, &right);
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
@@ -24,6 +26,7 @@ void GhostBlinky::Update()
 {
 	path.Update();
 	position = spawnPos + path.GetRelativePosition();
+	currentAnim = path.GetCurrentAnimation();
 
 	Enemy::Update();
 }

@@ -69,18 +69,25 @@ bool SceneLevel1::Start()
 	char lookupTable[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ!'?-:/" };
 	scoreFont = App->fonts->Load("Assets/Fonts/Letters_Groups.png", lookupTable, 1);
 
+	char lookupTable2[] = { "0123456789." };
+	scoreFont2 = App->fonts->Load("Assets/Fonts/Letters_Groups2.png", lookupTable2, 1);
+
 	speedx = 5;
 	speedy = 5;
 
+	speed_num_x = 3;
+	speed_num_y = 3;
+
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 100, 90);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 110, 125);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 110, 125);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
 	App->player->Enable();
 	App->enemies->Enable();
-
+	App->fonts->Enable();
 	
 
 	return ret;
@@ -93,6 +100,9 @@ Update_Status SceneLevel1::Update()
 	positionx -= speedx;
 	positiony += speedy;
 
+	position_num_x += speed_num_x;
+	position_num_y -= speed_num_y;
+
 
 	if (positiony > 130)
 	{
@@ -100,11 +110,24 @@ Update_Status SceneLevel1::Update()
 		speedy = -1;
 	}
 
+	if (position_num_y < 150)
+	{
+		speed_num_x = 0;
+		speed_num_y = 1;
+	}
+
 	if (positiony < 100 && speedx == 0 && speedy == -1)
 	{
 		speedx = 5;
 		speedy = 0;
 	}
+
+	if (position_num_y < 120 && speed_num_x == 0 && speed_num_y == 1)
+	{
+		speed_num_x = 5;
+		speed_num_y = 0;
+	}
+
 	if (positiony == 50)
 	{
 		App->audio->PlayFx(round);
@@ -131,7 +154,7 @@ Update_Status SceneLevel1::PostUpdate()
 	App->fonts->BlitText(positionx + 36, positiony, scoreFont, "U");
 	App->fonts->BlitText(positionx + 54, positiony, scoreFont, "N");
 	App->fonts->BlitText(positionx + 72, positiony, scoreFont, "D");
-	//App->fonts->BlitText(positionx + 50, positiony + 10, scoreFont, "1");
+	App->fonts->BlitText(position_num_x, position_num_y, scoreFont2, "1");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -143,10 +166,15 @@ bool SceneLevel1::CleanUp()
 	positiony = -50;
 	speedx = 0;
 	speedy = 0;
+
+	position_num_x = -20;
+	position_num_y = 275;
+	speed_num_x = 0;
+	speed_num_y = 0;
 	
 	App->player->Disable();
 	App->enemies->Disable();
-
+	App->fonts->Disable();
 
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
