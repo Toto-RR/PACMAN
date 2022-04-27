@@ -41,10 +41,18 @@ public:
 	int speedx = 5;
 	int speedy = 5;
 
+	int position_num_x = -20;
+	int position_num_y = 275;
+	int speed_num_x = 3;
+	int speed_num_y = 3;
+
 	uint round = 0;
 
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
+
+	int scoreFont2 = -1;
+	char scoreText2[10] = { "\0" };
 
 	SDL_Rect world0 = { 63, 98, 46, 14 };
 	SDL_Rect p1 = { 0, 96, 8, 16 };
