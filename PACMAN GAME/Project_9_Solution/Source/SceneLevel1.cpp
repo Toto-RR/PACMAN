@@ -35,10 +35,33 @@ bool SceneLevel1::Start()
 	//Level 1 Colliders
 	App->collisions->AddCollider({ 17, 266, 201, 16 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 17, 34, 200, 9 }, Collider::Type::WALL);
-
-	//First two columns colliders
-	//App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	//App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 113, 42, 8, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 65, 58, 32, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 17, 34, 8, 24 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 50, 24, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 50, 8, 56 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 138, 32, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 98, 32, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 25, 98, 8, 48 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 162, 32, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 25, 162, 8, 48 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 202, 32, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 202, 8, 56 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 250, 24, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 17, 250, 8, 24 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 209, 250, 8, 24 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 209, 250, 23, 8 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 225, 202, 7, 56 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 209, 202, 16, 8 }, Collider::Type::WALL);
+	//App->collisions->AddCollider({ 209, 250, 8, 24 }, Collider::Type::WALL);
+	/*App->collisions->AddCollider({ 201, 162, 8, 48 }, Collider::Type::WALL);*/
+	/*App->collisions->AddCollider({ 201, 162, 31, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 201, 138, 31, 8 }, Collider::Type::WALL);*/
+	App->collisions->AddCollider({ 201, 98, 8, 48 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 201, 98, 31, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 225, 50, 7, 56 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 209, 50, 23, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 209, 34, 8, 24 }, Collider::Type::WALL);
 
 	//Letters animation
 
