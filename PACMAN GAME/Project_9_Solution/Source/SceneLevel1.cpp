@@ -130,9 +130,28 @@ bool SceneLevel1::Start()
 	App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 236);
 	App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 236);
 	
+	//Pacdots ---
 
-	App->particles->AddPacdot(App->particles->PacdotAnim, 15, 60);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 32, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 50, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 68, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 86, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 102, 40);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 32, 56);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 70);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 82);
 	
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 70);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 82);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 94);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 106);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 130);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 142);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 154);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 166);
+
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);

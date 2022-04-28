@@ -65,7 +65,8 @@ public:
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;
-	uint wakka = 0;
+	uint Superpacdot = 0;
+	uint Pacdot = 0;
 
 	// Font score index
 	uint score = 000;

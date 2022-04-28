@@ -15,7 +15,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::WALL][Collider::Type::SUPERPACDOT] = false;
-	matrix[Collider::Type::WALL][Collider::Type::PACDOT] = true;
+	matrix[Collider::Type::WALL][Collider::Type::PACDOT] = false;
 	
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
