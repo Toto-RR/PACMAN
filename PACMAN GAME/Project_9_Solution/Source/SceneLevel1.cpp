@@ -9,6 +9,8 @@
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
 
+#include "SDL/include/SDL.h"
+
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
 
@@ -123,6 +125,7 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->fonts->Enable();
+	App->collisions->Enable();
 	
 	
 
@@ -207,9 +210,14 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
+	App->collisions->Disable();
 
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+
+
+	//SDL_DestroyTexture (extraTexture);
+	//delete App;
 
 	return true;
 }
