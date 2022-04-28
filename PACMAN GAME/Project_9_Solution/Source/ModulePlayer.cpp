@@ -244,6 +244,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//speed = 1;
 
 	}
+
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
+		score += 10;
+	}
 }
 
 void RemovePacman(Collider* collider) 

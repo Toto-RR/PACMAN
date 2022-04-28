@@ -34,11 +34,12 @@ bool SceneLevel1::Start()
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 
+	
 
 	//Music
 	round = App->audio->LoadFx("Assets/Music/FX/opening-fanfare.wav");
 	App->audio->PlayFx(round);
-	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 30.0f);
+	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 25.0f);
 
 	//Level 1 Colliders
 	App->collisions->AddCollider({ 17, 266, 201, 16 }, Collider::Type::WALL);
@@ -142,7 +143,6 @@ bool SceneLevel1::Start()
 	App->fonts->Enable();
 	App->collisions->Enable();
 	
-	
 
 	return ret;
 }
@@ -226,7 +226,7 @@ bool SceneLevel1::CleanUp()
 	App->enemies->Disable();
 	App->fonts->Disable();
 	App->collisions->Disable();
-
+	App->audio->PlayMusic(NULL, 1.0f);
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
