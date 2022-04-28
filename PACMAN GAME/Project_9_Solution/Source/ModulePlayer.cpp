@@ -176,9 +176,28 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(explosionFx);
+
+		death.PushBack({ 1, 62, 15, 15 });
+		death.PushBack({ 49, 62, 15, 15 });
+		death.PushBack({ 81, 62, 15, 15 });
+		death.PushBack({ 113, 62, 15, 15 });
+		death.PushBack({ 142, 62, 15, 15 });
+		death.PushBack({ 177, 62, 15, 15 });
+		death.PushBack({ 209, 62, 15, 15 });
+		death.PushBack({ 241, 62, 15, 15 });
+		death.PushBack({ 1, 78, 15, 15 });
+		death.PushBack({ 193, 78, 15, 15 });
+		death.PushBack({ 208, 78, 15, 15 });
+		death.PushBack({ 224, 78, 15, 15 });
+		death.PushBack({ 240, 78, 15, 15 });
+		death.loop = false;
+		death.speed = 0.3f;
+
+		
+
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
 
 		destroyed = true;
@@ -225,4 +244,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//speed = 1;
 
 	}
+}
+
+void RemovePacman(Collider* collider) 
+{
+	
 }

@@ -8,6 +8,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
+#include "ModuleParticles.h"
 
 #include "SDL/include/SDL.h"
 
@@ -116,6 +117,14 @@ bool SceneLevel1::Start()
 	speed_num_x = 3;
 	speed_num_y = 3;
 
+	//SuperPacdots ---
+
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 60);
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 60);
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 236);
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 236);
+	
+	
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 110, 125);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 110, 125);
@@ -222,3 +231,4 @@ bool SceneLevel1::CleanUp()
 
 	return true;
 }
+

@@ -22,40 +22,30 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
+	texture = App->textures->Load("Assets/Sprites/PowerItem.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({1, 62, 15, 15});
-	explosion.anim.PushBack({49, 62, 15, 15});
-	explosion.anim.PushBack({81, 62, 15, 15});
-	explosion.anim.PushBack({113, 62, 15, 15});
-	explosion.anim.PushBack({142, 62, 15, 15});
-	explosion.anim.PushBack({177, 62, 15, 15});
-	explosion.anim.PushBack({209, 62, 15, 15});
-	explosion.anim.PushBack({241, 62, 15, 15});
-	explosion.anim.PushBack({1, 78, 15, 15});
-	explosion.anim.PushBack({193, 78, 15, 15});
-	explosion.anim.PushBack({208, 78, 15, 15});
-	explosion.anim.PushBack({224, 78, 15, 15});
-	explosion.anim.PushBack({240, 78, 15, 15});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	SuperPacdotAnim.anim.PushBack({ 0, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 0, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 0, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 16, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 31, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 48, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 69, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 48, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 31, 0, 14, 13 });
+	SuperPacdotAnim.anim.PushBack({ 16, 0, 14, 13 });
+	
+	SuperPacdotAnim.anim.loop = true;
+	SuperPacdotAnim.anim.speed = 0.05f;
+
+	
 
 	return true;
 }
 
 Update_Status ModuleParticles::PreUpdate()
 {
-	// Remove all particles scheduled for deletion
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		if (particles[i] != nullptr && particles[i]->pendingToDelete)
-		{
-			delete particles[i];
-			particles[i] = nullptr;
-		}
-	}
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -83,8 +73,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
-			particles[i]->pendingToDelete = true;
-			particles[i]->collider->pendingToDelete = true;
+			delete particles[i];
+			particles[i] = nullptr;
 			break;
 		}
 	}
@@ -92,16 +82,17 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 Update_Status ModuleParticles::Update()
 {
-	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		Particle* particle = particles[i];
 
-		if(particle == nullptr)	continue;
+		if (particle == nullptr)	continue;
 
 		// Call particle Update. If it has reached its lifetime, destroy it
-		if(particle->Update() == false)
+		if (particle->Update() == false)
 		{
-			particles[i]->SetToDelete();
+			delete particle;
+			particles[i] = nullptr;
 		}
 	}
 
@@ -124,28 +115,25 @@ Update_Status ModuleParticles::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
-	Particle* newParticle = nullptr;
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
 		if (particles[i] == nullptr)
 		{
-			newParticle = new Particle(particle);
-			newParticle->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			newParticle->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-			newParticle->position.y = y;
+			Particle* p = new Particle(particle);
+
+			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
-				newParticle->collider = App->collisions->AddCollider(newParticle->anim.GetCurrentFrame(), colliderType, this);
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
 
-			particles[i] = newParticle;
+			particles[i] = p;
 			break;
 		}
 	}
-
-	return newParticle;
 }

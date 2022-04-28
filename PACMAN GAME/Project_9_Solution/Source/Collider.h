@@ -15,8 +15,9 @@ struct Collider
 		WALL,
 		PLAYER,
 		ENEMY,
-		PLAYER_SHOT,
+		SUPERPACDOT,
 		ENEMY_SHOT,
+		
 
 		MAX
 	};
