@@ -23,9 +23,6 @@ public:
 	// Returns false when the particle reaches its lifetime
 	bool Update();
 
-	// Sets flag for deletion and for the collider aswell
-	void SetToDelete();
-
 public:
 	// Defines the position in the screen
 	iPoint position;
@@ -50,8 +47,6 @@ public:
 	// The particle's collider
 	Collider* collider = nullptr;
 
-	// A flag for the particle removal. Important! We do not delete objects instantly
-	bool pendingToDelete = false;
 };
 
 #endif //__PARTICLE_H__

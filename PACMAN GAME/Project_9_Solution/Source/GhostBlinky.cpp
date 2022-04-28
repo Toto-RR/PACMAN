@@ -40,3 +40,4 @@ void GhostBlinky::OnCollision(Collider* collider)
 	
 }
 
+

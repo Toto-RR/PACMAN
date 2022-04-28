@@ -11,6 +11,7 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
+class InitialScreen;
 class SceneIntro;
 class SceneLevel1;
 class ModuleParticles;
@@ -19,6 +20,7 @@ class ModuleEnemies;
 class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
+
 
 class Application
 {
@@ -52,6 +54,7 @@ public:
 
 	ModulePlayer* player = nullptr;
 
+	InitialScreen* initialScreen = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneLevel1* sceneLevel_1 = nullptr;
 

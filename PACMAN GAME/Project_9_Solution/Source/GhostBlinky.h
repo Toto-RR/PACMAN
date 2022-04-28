@@ -32,7 +32,7 @@ private:
 	// We are keeping it an animation for consistency with other enemies
 	Animation up, down, left, right;
 
-	
+
 };
 
 
