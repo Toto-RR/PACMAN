@@ -64,6 +64,7 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 	currentAnimation = &idleAnim;
 
+	wakka = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Fx/explosion.wav");
 
@@ -251,6 +252,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
 		score += 10;
+		App->audio->PlayFx(wakka, 5);
 	}
 }
 
