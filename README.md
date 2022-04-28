@@ -1,6 +1,8 @@
 # PACMAN
  Pac-Man Arrangement - DENMA Studios
 
+Controls
+--------
 **Keyboard**
 - W, A, S, D to move
 - F1 to see colliders
