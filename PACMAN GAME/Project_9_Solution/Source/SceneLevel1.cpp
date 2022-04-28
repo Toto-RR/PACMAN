@@ -24,6 +24,7 @@ SceneLevel1::~SceneLevel1()
 // Load assets
 bool SceneLevel1::Start()
 {
+
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -88,7 +89,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 113, 186, 8, 24 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 49, 202, 48, 8 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 65, 210, 8, 16 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 127, 202, 48, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 137, 202, 48, 8 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 161, 210, 8, 16 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 25, 226, 24, 8 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 41, 234, 8, 16 }, Collider::Type::WALL);
