@@ -31,3 +31,4 @@ void Enemy_RedBird::Update()
 	// It will update the collider depending on the position
 	Enemy::Update();
 }
+

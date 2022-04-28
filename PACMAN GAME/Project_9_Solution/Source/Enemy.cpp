@@ -5,6 +5,8 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "GhostBlinky.h"
+#include "GhostClyde.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {

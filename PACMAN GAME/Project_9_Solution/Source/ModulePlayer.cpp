@@ -197,5 +197,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		speed = 0;
 
+		PostUpdate();
+
+		speed = 1;
+
 	}
 }
