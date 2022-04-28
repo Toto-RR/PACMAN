@@ -130,6 +130,9 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
+		godMode = !godMode;
+
 	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	//{
 	//	Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
@@ -174,7 +177,7 @@ Update_Status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true)
 	{
 		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 9);
 
@@ -207,7 +210,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL && godMode != true)
 	{
 		//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
 		//&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE

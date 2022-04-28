@@ -75,6 +75,8 @@ public:
 	char scoreText[10] = { "\0" };
 	char highScoreText[10] = { "\0" };
 
+private:
+	bool godMode = false;
 };
 
 #endif //!__MODULE_PLAYER_H__
