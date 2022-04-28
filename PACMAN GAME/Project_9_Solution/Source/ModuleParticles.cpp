@@ -37,7 +37,7 @@ bool ModuleParticles::Start()
 	SuperPacdotAnim.anim.PushBack({ 16, 0, 14, 13 });
 	
 	SuperPacdotAnim.anim.loop = true;
-	SuperPacdotAnim.anim.speed = 0.05f;
+	SuperPacdotAnim.anim.speed = 0.06f;
 
 	
 
