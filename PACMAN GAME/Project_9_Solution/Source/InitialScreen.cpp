@@ -24,7 +24,7 @@ bool InitialScreen::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/TitlescreenSpritesheet.png");
+	bgTexture = App->textures->Load("Assets/Sprites/Initial_Background.png");
 
 
 	App->render->camera.x = 0;
@@ -41,7 +41,7 @@ Update_Status InitialScreen::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
-	App->render->Blit(bgTexture, -800, -1600, NULL);
+	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
