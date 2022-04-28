@@ -137,6 +137,15 @@ Update_Status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
 		godMode = !godMode;
 
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 150);
+		App->particles->CleanUp();
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 150);
+		App->particles->CleanUp();
+	}
 	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	//{
 	//	Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
