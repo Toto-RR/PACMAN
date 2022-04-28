@@ -27,7 +27,7 @@ Application::Application()
 	modules[2] =	textures =		new ModuleTextures(true);
 	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] =	sceneIntro =	new SceneIntro(true);
+	modules[4] =	sceneIntro =	new SceneIntro(false);
 	modules[5] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
 	modules[6] =	player =		new ModulePlayer(false);	//Player starts disabled
 	modules[7] =	particles =		new ModuleParticles(true);
@@ -37,6 +37,8 @@ Application::Application()
 	modules[10] =	fade =			new ModuleFadeToBlack(true);
 	modules[11] =	fonts =			new ModuleFonts(true);
 	modules[12] =	render =		new ModuleRender(true);
+
+	modules[13] = initialScreen =   new InitialScreen(true);
 }
 
 Application::~Application()
