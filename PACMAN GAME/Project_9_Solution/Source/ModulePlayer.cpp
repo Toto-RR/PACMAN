@@ -64,7 +64,7 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 	currentAnimation = &idleAnim;
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 
 	wakka = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -72,13 +72,13 @@ bool ModulePlayer::Start()
 
 
 
-=======
+//=======
 	Pacdot = App->audio->LoadFx("Assets/Music/Fx/wakka-3.wav");
 	Superpacdot = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 	position.x = 110;
 	position.y = 214;
 
@@ -285,14 +285,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 
-		App->audio->PlayFx(wakka);
+		//App->audio->PlayFx(wakka);
 		App->audio->LoadFx("Assets/Music/FX/Pacdot.wav");
-=======
+//=======
 		App->audio->PlayFx(Pacdot);
 
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 	}
 }
 
