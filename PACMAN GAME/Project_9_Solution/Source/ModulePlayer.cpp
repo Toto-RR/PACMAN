@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleEnemies.h"
 
 #include <stdio.h>
 
@@ -222,15 +223,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		
 		death.loop = false;
-
-		death.speed = 0.3f;
-
 		death.speed = 0.09f;
 
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 150);
+		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 90);
+		App->fade->FadeToBlack((Module*)App->sceneGameOver, (Module*)App->sceneIntro, 10);
 
-		
-
+		App->enemies->CleanUp();
 		App->particles->CleanUp();
 
 		

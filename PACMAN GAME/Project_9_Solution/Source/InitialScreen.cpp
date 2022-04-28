@@ -26,7 +26,6 @@ bool InitialScreen::Start()
 
 	bgTexture = App->textures->Load("Assets/Sprites/Initial_Background.png");
 
-
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 

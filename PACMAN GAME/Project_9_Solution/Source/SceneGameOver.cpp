@@ -36,10 +36,13 @@ bool SceneGameOver::Start()
 
 Update_Status SceneGameOver::Update()
 {
+	App->render->camera.x += 0;
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
+	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
