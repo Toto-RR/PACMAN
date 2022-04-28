@@ -16,7 +16,7 @@ struct Collider
 		PLAYER,
 		ENEMY,
 		SUPERPACDOT,
-		ENEMY_SHOT,
+		PACDOT,
 		
 
 		MAX

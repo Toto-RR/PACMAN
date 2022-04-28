@@ -14,17 +14,17 @@ GhostClyde::GhostClyde(int x, int y) : Enemy(x, y)
 	left.PushBack({ 16, 0, 15, 15 });
 	currentAnim = &left;
 
-	path.PushBack({ 1.0f, 0.0f }, 65, &right);
-	path.PushBack({ 0.0f, 1.0f }, 105, &down);
-	path.PushBack({ -1.0f, 0.0f }, 16, &left);
-	path.PushBack({ 0.0f, 1.0f }, 16, &down);
-	path.PushBack({ -1.0f, 0.0f }, 23, &left);
-	path.PushBack({ 0.0f, -1.0f }, 16, &up);
-	path.PushBack({ -1.0f, 0.0f }, 47, &left);
-	path.PushBack({ 0.0f, -1.0f }, 24, &up);
-	path.PushBack({ -1.0f, 0.0f }, 24, &left);
-	path.PushBack({ 0.0f, -1.0f }, 80, &up);
-	path.PushBack({ 1.0f, 0.0f }, 47, &right);
+	path.PushBack({ 0.5f, 0.0f }, 130, &right);
+	path.PushBack({ 0.0f, 0.5f }, 208, &down);
+	path.PushBack({ -0.5f, 0.0f }, 32, &left);
+	path.PushBack({ 0.0f, 0.5f }, 32, &down);
+	path.PushBack({ -0.5f, 0.0f }, 48, &left);
+	path.PushBack({ 0.0f, -0.5f }, 32, &up);
+	path.PushBack({ -0.5f, 0.0f }, 94, &left);
+	path.PushBack({ 0.0f, -0.5f }, 48, &up);
+	path.PushBack({ -0.5f, 0.0f }, 48, &left);
+	path.PushBack({ 0.0f, -0.5f }, 159, &up);
+	path.PushBack({ 0.5f, 0.0f }, 94, &right);
 	
 	path.loop = true;
 

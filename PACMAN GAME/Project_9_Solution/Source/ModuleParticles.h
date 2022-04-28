@@ -51,6 +51,7 @@ public:
 	// Param x, y		- Position x,y in the screen (upper left axis)
 	// Param delay		- Delay time from the moment the function is called until the particle is displayed in screen
 	void AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::SUPERPACDOT, uint delay = 0);
+	void AddPacdot(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::PACDOT, uint delay = 0);
 
 public:
 	//Template particle for an explosion
@@ -60,6 +61,7 @@ public:
 	Particle laser;
 
 	Particle SuperPacdotAnim;
+	Particle PacdotAnim;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

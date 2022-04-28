@@ -22,23 +22,32 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/PowerItem.png");
+	texture = App->textures->Load("Assets/Sprites/Items.png");
 
 	// Explosion particle
-	SuperPacdotAnim.anim.PushBack({ 0, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 0, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 0, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 16, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 31, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 48, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 69, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 48, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 31, 0, 14, 13 });
-	SuperPacdotAnim.anim.PushBack({ 16, 0, 14, 13 });
-	
+	SuperPacdotAnim.anim.PushBack({ 0, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 0, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 0, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 16, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 33, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 49, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 64, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 49, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 33, 0, 8, 8 });
+	SuperPacdotAnim.anim.PushBack({ 16, 0, 8, 8 });
 	SuperPacdotAnim.anim.loop = true;
 	SuperPacdotAnim.anim.speed = 0.06f;
 
+	PacdotAnim.anim.PushBack({ 0, 11, 5, 15});
+	PacdotAnim.anim.PushBack({ 7, 11, 5, 15 });
+	PacdotAnim.anim.PushBack({ 15, 11, 5, 15 });
+	PacdotAnim.anim.PushBack({ 22, 11, 5, 15 });
+	PacdotAnim.anim.PushBack({ 29, 11, 5, 15 });
+	PacdotAnim.anim.PushBack({ 37, 11, 5, 15 });
+	PacdotAnim.anim.PushBack({ 44, 11, 5, 15 });
+	PacdotAnim.anim.PushBack({ 51, 11, 5, 15 });
+	PacdotAnim.anim.loop = true;
+	PacdotAnim.anim.speed = 0.06f;
 	
 
 	return true;
@@ -116,6 +125,28 @@ Update_Status ModuleParticles::PostUpdate()
 }
 
 void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		//Finding an empty slot for a new particle
+		if (particles[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
+
+			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
+
+			//Adding the particle's collider
+			if (colliderType != Collider::Type::NONE)
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
+
+			particles[i] = p;
+			break;
+		}
+	}
+}
+void ModuleParticles::AddPacdot(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

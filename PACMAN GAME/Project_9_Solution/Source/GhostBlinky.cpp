@@ -17,25 +17,25 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 	left.PushBack({ 15, 17, 15, 15 });
 	currentAnim = &left;
 
-	path.PushBack({ -1.0f, 0.0f }, 71, &left);
-	path.PushBack({ 0.0f, 1.1f }, 86, &down);
-	path.PushBack({ 1.0f, 0.0f }, 16, &right);
-	path.PushBack({ 0.0f, 1.0f }, 16, &down);
-	path.PushBack({ 1.0f, 0.0f }, 24, &right);
-	path.PushBack({ 0.0f, -1.0f }, 16, &up);
-	path.PushBack({ 1.0f, 0.0f }, 72, &right);
-	path.PushBack({ 0.0f, 1.0f }, 16, &down);
-	path.PushBack({ 1.0f, 0.0f }, 16, &right);
-	path.PushBack({ 0.0f, 1.0f }, 24, &down);
-	path.PushBack({ 1.0f, 0.0f }, 24, &right);
-	path.PushBack({ 0.0f, -1.0f }, 16, &up);
-	path.PushBack({ 1.0f, 0.0f }, 16, &right);
-	path.PushBack({ 0.0f, -1.0f }, 24, &up);
-	path.PushBack({ -1.0f, 0.0f }, 24, &left);
-	path.PushBack({ 0.0f, -1.0f }, 24, &up);
-	path.PushBack({ -1.0f, 0.0f }, 40, &left);
-	path.PushBack({ 0.0f, -1.0f }, 80, &up);
-	path.PushBack({ -1.0f, 0.0f }, 46, &left);
+	path.PushBack({ -0.5f, 0.0f }, 142, &left);
+	path.PushBack({ 0.0f, 0.5f }, 205, &down);
+	path.PushBack({ 0.5f, 0.0f }, 32, &right);
+	path.PushBack({ 0.0f, 0.5f }, 32, &down);
+	path.PushBack({ 0.5f, 0.0f }, 48, &right);
+	path.PushBack({ 0.0f, -0.5f }, 32, &up);
+	path.PushBack({ 0.5f, 0.0f }, 144, &right);
+	path.PushBack({ 0.0f, 0.5f }, 32, &down);
+	path.PushBack({ 0.5f, 0.0f }, 42, &right);
+	path.PushBack({ 0.0f, 0.5f }, 48, &down);
+	path.PushBack({ 0.5f, 0.0f }, 48, &right);
+	path.PushBack({ 0.0f, -0.5f }, 32, &up);
+	path.PushBack({ 0.5f, 0.0f }, 32, &right);
+	path.PushBack({ 0.0f, -0.5f }, 48, &up);
+	path.PushBack({ -0.5f, 0.0f }, 48, &left);
+	path.PushBack({ 0.0f, -0.5f }, 48, &up);
+	path.PushBack({ -0.5f, 0.0f }, 80, &left);
+	path.PushBack({ 0.0f, -0.5f }, 156, &up);
+	path.PushBack({ -0.5f, 0.0f }, 78, &left);
 
 	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }

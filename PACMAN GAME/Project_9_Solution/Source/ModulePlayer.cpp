@@ -64,10 +64,13 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 	currentAnimation = &idleAnim;
 
+<<<<<<< Updated upstream
 	wakka = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
 
+=======
+>>>>>>> Stashed changes
 	position.x = 110;
 	position.y = 214;
 
@@ -159,6 +162,7 @@ Update_Status ModulePlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
+		
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
@@ -180,31 +184,38 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true)
 	{
-		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);
 
-		App->audio->PlayFx(explosionFx);
-
-		death.PushBack({ 1, 62, 15, 15 });
-		death.PushBack({ 49, 62, 15, 15 });
-		death.PushBack({ 81, 62, 15, 15 });
-		death.PushBack({ 113, 62, 15, 15 });
-		death.PushBack({ 142, 62, 15, 15 });
-		death.PushBack({ 177, 62, 15, 15 });
-		death.PushBack({ 209, 62, 15, 15 });
-		death.PushBack({ 241, 62, 15, 15 });
-		death.PushBack({ 1, 78, 15, 15 });
-		death.PushBack({ 193, 78, 15, 15 });
-		death.PushBack({ 208, 78, 15, 15 });
-		death.PushBack({ 224, 78, 15, 15 });
-		death.PushBack({ 240, 78, 15, 15 });
+		if (currentAnimation != &death) {
+			death.PushBack({ 1, 62, 15, 15 });
+			death.PushBack({ 49, 62, 15, 15 });
+			death.PushBack({ 81, 62, 15, 15 });
+			death.PushBack({ 113, 62, 15, 15 });
+			death.PushBack({ 145, 62, 15, 15 });
+			death.PushBack({ 177, 62, 15, 15 });
+			death.PushBack({ 209, 62, 15, 15 });
+			death.PushBack({ 241, 62, 15, 15 });
+			death.PushBack({ 1, 78, 15, 15 });
+			death.PushBack({ 193, 78, 15, 15 });
+			death.PushBack({ 208, 78, 15, 15 });
+			death.PushBack({ 224, 78, 15, 15 });
+			death.PushBack({ 240, 78, 15, 15 });
+			currentAnimation = &death;
+		}
+		
 		death.loop = false;
+<<<<<<< Updated upstream
 		death.speed = 0.3f;
+=======
+		death.speed = 0.09f;
+
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 150);
+>>>>>>> Stashed changes
 		
 
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
 		App->particles->CleanUp();
 
-		destroyed = true;
+		
 
 		speed = 0;
 
@@ -251,11 +262,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
 		score += 10;
+<<<<<<< Updated upstream
 		App->audio->PlayFx(wakka);
+=======
+		App->audio->LoadFx("Assets/Music/FX/Pacdot.wav");
+>>>>>>> Stashed changes
 	}
 }
 
-void RemovePacman(Collider* collider) 
+void ModulePlayer::RemovePacman(Collider* collider) 
 {
-	
+	if (this->collider->PLAYER && collider->ENEMY)
+	{
+		destroyed = true;
+	}
 }

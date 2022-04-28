@@ -130,6 +130,8 @@ bool SceneLevel1::Start()
 	App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 236);
 	App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 236);
 	
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 15, 60);
 	
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
