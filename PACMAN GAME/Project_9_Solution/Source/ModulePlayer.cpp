@@ -66,7 +66,7 @@ bool ModulePlayer::Start()
 
 //<<<<<<< Updated upstream
 
-	wakka = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
+	
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
 
