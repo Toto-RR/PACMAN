@@ -199,6 +199,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 60);
+		App->particles->CleanUp();
 
 		destroyed = true;
 

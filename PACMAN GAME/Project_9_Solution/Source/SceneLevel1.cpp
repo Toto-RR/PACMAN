@@ -132,8 +132,8 @@ bool SceneLevel1::Start()
 	
 	
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 110, 125);
-	App->enemies->AddEnemy(Enemy_Type::BLINKY, 110, 125);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
