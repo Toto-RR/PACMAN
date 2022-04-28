@@ -195,7 +195,30 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
 		//currentAnimation = &idleAnim;
 
-		speed = -speed;
+		if (App->input->keys[SDL_SCANCODE_S]) {
+			do {
+				position.y -= speed;
+			}while(c1->type == Collider::Type::WALL);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_W]) {
+			do {
+				position.y += speed;
+			} while (c1->type == Collider::Type::WALL);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_A]) {
+			do {
+				position.x += speed;
+			} while (c1->type == Collider::Type::WALL);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_D]) {
+			do {
+				position.x -= speed;
+			} while (c1->type == Collider::Type::WALL);
+		}
+		/*speed = -speed;*/
 
 		//PostUpdate();
 
