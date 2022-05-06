@@ -87,6 +87,8 @@ bool ModulePlayer::Start()
 
 	speed = 1;
 
+	score = 0;
+
 	collider = App->collisions->AddCollider({ position.x, position.y, 14, 14 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=:&',.()x+-/@up*s·bt |#_>" };
@@ -147,12 +149,12 @@ Update_Status ModulePlayer::Update()
 		godMode = !godMode;
 
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 150);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 90);
 		App->particles->CleanUp();
 	}
 
 	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 150);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
 		App->particles->CleanUp();
 	}
 	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
@@ -225,8 +227,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		death.loop = false;
 		death.speed = 0.09f;
 
-		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 90);
-		App->fade->FadeToBlack((Module*)App->sceneGameOver, (Module*)App->sceneIntro, 10);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
 
 		App->enemies->CleanUp();
 		App->particles->CleanUp();
@@ -278,11 +279,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
 		score += 50;
+		if (highScore <= score)
+			highScore = score;
 		App->audio->PlayFx(Superpacdot);
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;
+		if (highScore <= score)
+			highScore = score;
 //<<<<<<< Updated upstream
 
 		//App->audio->PlayFx(wakka);
