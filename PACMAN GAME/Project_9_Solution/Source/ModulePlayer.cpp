@@ -189,9 +189,11 @@ Update_Status ModulePlayer::PostUpdate()
 
 	// Draw UI --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
-	
-	App->fonts->BlitText(93, 22, scoreFont, scoreText);
 	App->fonts->BlitText(13, 22, scoreFont, scoreText);
+
+	sprintf_s(scoreText, 10, "%7d", highScore);
+	App->fonts->BlitText(93, 22, scoreFont, scoreText);
+
 	App->fonts->BlitText(77, 14, scoreFont, "HIGH SCORE");
 	App->fonts->BlitText(30, 14, player1Font, "1up");
 	App->fonts->BlitText(173, 14, player2Font, "CREDIT");
