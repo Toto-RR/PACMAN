@@ -55,20 +55,25 @@ Update_Status ModuleRender::PreUpdate()
 Update_Status ModuleRender::Update()
 {
 	//Handle positive vertical movement
-	if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT)
-		camera.y -= cameraSpeed;
+	//if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT)
+	//	camera.y -= cameraSpeed;
 
-	//Handle negative vertical movement
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
-		camera.y += cameraSpeed;
+	////Handle negative vertical movement
+	//if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
+	//	camera.y += cameraSpeed;
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
-		camera.x -= cameraSpeed;
-	if (camera.x < 0) camera.x = 0;
+	//if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
+	//	camera.x -= cameraSpeed;
+	//if (camera.x < 0) camera.x = 2;
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
-		camera.x += cameraSpeed;
+	//if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
+	//	camera.x += cameraSpeed;
 
+	//Escape botton
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN)	return Update_Status::UPDATE_STOP;
+
+	//Fullscreen logical sizes
+	SDL_RenderSetLogicalSize(this->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -98,6 +103,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 	bool ret = true;
 
 	SDL_Rect dstRect{ x * SCREEN_SIZE, y * SCREEN_SIZE, 0, 0 };
+
 	/* LA CAMARA SE MUEVE CON ESTE CODIGO
 	if (useCamera)
 	{
