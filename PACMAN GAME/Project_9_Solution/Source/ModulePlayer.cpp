@@ -242,11 +242,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL && godMode != true)
 	{
-		//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-		//&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-		//&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-		//&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
-		//currentAnimation = &idleAnim;
 
 		if (App->input->keys[SDL_SCANCODE_S]) {
 			do {
@@ -271,11 +266,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				position.x -= speed;
 			} while (c1->type == Collider::Type::WALL);
 		}
-		/*speed = -speed;*/
-
-		//PostUpdate();
-
-		//speed = 1;
 
 	}
 
