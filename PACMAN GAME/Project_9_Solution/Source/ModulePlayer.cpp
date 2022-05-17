@@ -12,6 +12,7 @@
 #include "ModuleEnemies.h"
 
 #include <stdio.h>
+#include "SDL/include/SDL.h"
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
@@ -49,6 +50,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	leftAnim.PushBack({ 193,63,16,15 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.05f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -65,7 +67,7 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 	currentAnimation = &idleAnim;
 
-//<<<<<<< Updated upstream
+//FX
 
 	
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -73,7 +75,7 @@ bool ModulePlayer::Start()
 
 
 
-//=======
+//Music
 	Pacdot = App->audio->LoadFx("Assets/Music/Fx/wakka-3.wav");
 	Superpacdot = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
@@ -97,6 +99,34 @@ bool ModulePlayer::Start()
 	char lookupTable2[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=>&',.()x+-/@*|#_:up· " };
 	player1Font = App->fonts->Load("Assets/Fonts/font2.png", lookupTable2, 1);
 	player2Font = App->fonts->Load("Assets/Fonts/font3.png", lookupTable2, 1);
+
+
+	//Animation start
+	death.PushBack({ 240, 78, 15, 15 });
+	death.PushBack({ 240, 78, 15, 15 });
+	death.PushBack({ 240, 78, 15, 15 });
+	death.PushBack({ 240, 78, 15, 15 });
+	death.PushBack({ 240, 78, 15, 15 });
+	death.PushBack({ 224, 78, 15, 15 });
+	death.PushBack({ 208, 78, 15, 15 });
+	death.PushBack({ 193, 78, 15, 15 });
+	death.PushBack({ 1, 78, 15, 15 });
+	death.PushBack({ 241, 62, 15, 15 });
+	death.PushBack({ 209, 62, 15, 15 });
+	death.PushBack({ 177, 62, 15, 15 });
+	death.PushBack({ 145, 62, 15, 15 });
+	death.PushBack({ 113, 62, 15, 15 });
+	death.PushBack({ 81, 62, 15, 15 });
+	death.PushBack({ 49, 62, 15, 15 });
+	death.PushBack({ 1, 62, 15, 15 });
+
+
+
+
+	currentAnimation = &death;
+
+	death.loop = false;
+	death.speed = 0.2f;
 
 
 	return ret;
@@ -175,11 +205,14 @@ Update_Status ModulePlayer::Update()
 
 	currentAnimation->Update();
 
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status ModulePlayer::PostUpdate()
 {
+
 	if (!destroyed)
 	{
 		
@@ -198,6 +231,7 @@ Update_Status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(30, 14, player1Font, "1up");
 	App->fonts->BlitText(173, 14, player2Font, "CREDIT");
 	App->fonts->BlitText(197, 22, player2Font, "0");
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
