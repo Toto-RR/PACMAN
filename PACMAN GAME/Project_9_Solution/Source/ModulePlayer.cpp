@@ -102,31 +102,31 @@ bool ModulePlayer::Start()
 
 
 	//Animation start
-	death.PushBack({ 240, 78, 15, 15 });
-	death.PushBack({ 240, 78, 15, 15 });
-	death.PushBack({ 240, 78, 15, 15 });
-	death.PushBack({ 240, 78, 15, 15 });
-	death.PushBack({ 240, 78, 15, 15 });
-	death.PushBack({ 224, 78, 15, 15 });
-	death.PushBack({ 208, 78, 15, 15 });
-	death.PushBack({ 193, 78, 15, 15 });
-	death.PushBack({ 1, 78, 15, 15 });
-	death.PushBack({ 241, 62, 15, 15 });
-	death.PushBack({ 209, 62, 15, 15 });
-	death.PushBack({ 177, 62, 15, 15 });
-	death.PushBack({ 145, 62, 15, 15 });
-	death.PushBack({ 113, 62, 15, 15 });
-	death.PushBack({ 81, 62, 15, 15 });
-	death.PushBack({ 49, 62, 15, 15 });
-	death.PushBack({ 1, 62, 15, 15 });
+	spawn.PushBack({ 240, 78, 15, 15 });
+	spawn.PushBack({ 240, 78, 15, 15 });
+	spawn.PushBack({ 240, 78, 15, 15 });
+	spawn.PushBack({ 240, 78, 15, 15 });
+	spawn.PushBack({ 240, 78, 15, 15 });
+	spawn.PushBack({ 224, 78, 15, 15 });
+	spawn.PushBack({ 208, 78, 15, 15 });
+	spawn.PushBack({ 193, 78, 15, 15 });
+	spawn.PushBack({ 1, 78, 15, 15 });
+	spawn.PushBack({ 241, 62, 15, 15 });
+	spawn.PushBack({ 209, 62, 15, 15 });
+	spawn.PushBack({ 177, 62, 15, 15 });
+	spawn.PushBack({ 145, 62, 15, 15 });
+	spawn.PushBack({ 113, 62, 15, 15 });
+	spawn.PushBack({ 81, 62, 15, 15 });
+	spawn.PushBack({ 49, 62, 15, 15 });
+	spawn.PushBack({ 1, 62, 15, 15 });
 
 
 
 
-	currentAnimation = &death;
+	currentAnimation = &spawn;
 
-	death.loop = false;
-	death.speed = 0.2f;
+	spawn.loop = false;
+	spawn.speed = 0.2f;
 
 
 	return ret;
