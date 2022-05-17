@@ -214,7 +214,7 @@ Update_Status SceneLevel4::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(extraTexture, 63, 290, &world0);
+	App->render->Blit(extraTexture, 63, 290, &world4);
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 
