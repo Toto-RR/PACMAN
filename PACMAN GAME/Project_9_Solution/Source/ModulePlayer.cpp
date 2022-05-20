@@ -87,8 +87,8 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	speed = 1;
 
+	state = speed_none;
 	score = 0;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 14, 14 }, Collider::Type::PLAYER, this);
@@ -128,36 +128,41 @@ bool ModulePlayer::Start()
 	spawn.loop = false;
 	spawn.speed = 0.2f;
 
-
 	return ret;
 }
 
 Update_Status ModulePlayer::Update()
 {
-
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
 	{
-		position.x -= speed;
+		state = speed_left;
 		if (currentAnimation != &leftAnim)
 		{
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
+		leftAnim.Reset();
+		currentAnimation = &leftAnim;
 		}
 	}
-
-	if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
 	{
-		position.x += speed;
+		state = speed_right;
 		if (currentAnimation != &rightAnim)
 		{
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
 	}
-
-	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
 	{
-		position.y += speed;
+		state = speed_up;
+		if (currentAnimation != &upAnim)
+		{
+			upAnim.Reset();
+			currentAnimation = &upAnim;
+		}
+	}
+	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+	{
+		state = speed_down;
 		if (currentAnimation != &downAnim)
 		{
 			downAnim.Reset();
@@ -165,15 +170,54 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	switch (state)
 	{
-		position.y -= speed;
-		if (currentAnimation != &upAnim)
-		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
-		}
+		case speed_right:	position.x++;	break;
+		case speed_left:	position.x--;	break;
+		case speed_up:		position.y--;	break;
+		case speed_down:	position.y++;	break;
 	}
+
+
+	//if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+	//{
+	//	position.x -= speed;
+	//	if (currentAnimation != &leftAnim)
+	//	{
+	//		leftAnim.Reset();
+	//		currentAnimation = &leftAnim;
+	//	}
+	//}
+
+	//if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	//{
+	//	position.x += speed;
+	//	if (currentAnimation != &rightAnim)
+	//	{
+	//		rightAnim.Reset();
+	//		currentAnimation = &rightAnim;
+	//	}
+	//}
+
+	//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+	//{
+	//	position.y += speed;
+	//	if (currentAnimation != &downAnim)
+	//	{
+	//		downAnim.Reset();
+	//		currentAnimation = &downAnim;
+	//	}
+	//}
+
+	//if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+	//{
+	//	position.y -= speed;
+	//	if (currentAnimation != &upAnim)
+	//	{
+	//		upAnim.Reset();
+	//		currentAnimation = &upAnim;
+	//	}
+	//}
 
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
 		godMode = !godMode;
@@ -268,39 +312,35 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->enemies->CleanUp();
 		App->particles->CleanUp();
 
-		
-
-		speed = 0;
 
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL && godMode != true)
 	{
 
-		if (App->input->keys[SDL_SCANCODE_S]) {
-			do {
-				position.y -= speed;
-			}while(c1->type == Collider::Type::WALL);
+		if (state == 1)
+		{
+			position.x--;
 		}
 
-		if (App->input->keys[SDL_SCANCODE_W]) {
-			do {
-				position.y += speed;
-			} while (c1->type == Collider::Type::WALL);
+		if (state == 2)
+		{
+			
+			position.x++;
+			
 		}
-
-		if (App->input->keys[SDL_SCANCODE_A]) {
-			do {
-				position.x += speed;
-			} while (c1->type == Collider::Type::WALL);
+		if (state == 3)
+		{
+			
+			position.y++;
+			
 		}
-
-		if (App->input->keys[SDL_SCANCODE_D]) {
-			do {
-				position.x -= speed;
-			} while (c1->type == Collider::Type::WALL);
+		if (state == 4)
+		{
+			
+			position.y--;
+			
 		}
-
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {

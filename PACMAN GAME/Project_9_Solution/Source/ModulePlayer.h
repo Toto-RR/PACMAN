@@ -39,7 +39,11 @@ public:
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+
+	enum {
+		speed_none, speed_right, speed_left, speed_up, speed_down
+	};
+	int state;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -77,6 +81,8 @@ public:
 	int player2Font = -1;
 	char scoreText[10] = { "\0" };
 	char highScoreText[10] = { "\0" };
+
+
 
 private:
 	bool godMode = false;
