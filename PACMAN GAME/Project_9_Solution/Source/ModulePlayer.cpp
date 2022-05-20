@@ -178,47 +178,6 @@ Update_Status ModulePlayer::Update()
 		case speed_down:	position.y++;	break;
 	}
 
-
-	//if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
-	//{
-	//	position.x -= speed;
-	//	if (currentAnimation != &leftAnim)
-	//	{
-	//		leftAnim.Reset();
-	//		currentAnimation = &leftAnim;
-	//	}
-	//}
-
-	//if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
-	//{
-	//	position.x += speed;
-	//	if (currentAnimation != &rightAnim)
-	//	{
-	//		rightAnim.Reset();
-	//		currentAnimation = &rightAnim;
-	//	}
-	//}
-
-	//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
-	//{
-	//	position.y += speed;
-	//	if (currentAnimation != &downAnim)
-	//	{
-	//		downAnim.Reset();
-	//		currentAnimation = &downAnim;
-	//	}
-	//}
-
-	//if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
-	//{
-	//	position.y -= speed;
-	//	if (currentAnimation != &upAnim)
-	//	{
-	//		upAnim.Reset();
-	//		currentAnimation = &upAnim;
-	//	}
-	//}
-
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
 		godMode = !godMode;
 
@@ -231,12 +190,7 @@ Update_Status ModulePlayer::Update()
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
 		App->particles->CleanUp();
 	}
-	//if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
-	//{
-	//	Particle* newParticle = App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-	//	newParticle->collider->AddListener(this);
-	//	App->audio->PlayFx(laserFx);
-	//}
+
 
 	// If no up/down movement detected, set the current animation back to idle
 	//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
