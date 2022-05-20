@@ -57,6 +57,7 @@ public:
 	SDL_Rect world4 = { 63, 98, 46, 14 };
 	SDL_Rect p1 = { 0, 96, 8, 16 };
 	SDL_Rect p2 = { 0, 112, 8, 16 };
+
 };
 
 #endif

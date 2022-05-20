@@ -9,6 +9,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
 #include "ModuleParticles.h"
+#include "ModuleFadeToBlack.h"
 
 #include "SDL/include/SDL.h"
 
@@ -163,7 +164,6 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->fonts->Enable();
 	App->collisions->Enable();
-	
 
 	return ret;
 }
@@ -202,8 +202,15 @@ Update_Status SceneLevel1::Update()
 		speed_num_x = 5;
 		speed_num_y = 0;
 	}
+	
+	if (App->player->score >= 100)
+	{
+		//CleanUp();
 
-
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
+		App->enemies->CleanUp();
+		App->particles->CleanUp();
+	}
 	
 
 	return Update_Status::UPDATE_CONTINUE;

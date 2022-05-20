@@ -133,13 +133,16 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+
+	//PLAYER MOVEMENT
+
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
 	{
 		state = speed_left;
 		if (currentAnimation != &leftAnim)
 		{
-		leftAnim.Reset();
-		currentAnimation = &leftAnim;
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
 		}
 	}
 	else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
@@ -177,6 +180,8 @@ Update_Status ModulePlayer::Update()
 		case speed_up:		position.y--;	break;
 		case speed_down:	position.y++;	break;
 	}
+	
+	//DEBUG FUNTIONS
 
 	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
 		godMode = !godMode;
@@ -240,6 +245,31 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);
 
+
+		if (state == 1)
+		{
+			position.x--;
+		}
+
+		else if (state == 2)
+		{
+
+			position.x++;
+
+		}
+		else if (state == 3)
+		{
+
+			position.y++;
+
+		}
+		else if (state == 4)
+		{
+
+			position.y--;
+
+		}
+
 		if (currentAnimation != &death) {
 			death.PushBack({ 1, 62, 15, 15 });
 			death.PushBack({ 49, 62, 15, 15 });
@@ -262,6 +292,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		death.speed = 0.09f;
 
 		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
 
 		App->enemies->CleanUp();
 		App->particles->CleanUp();

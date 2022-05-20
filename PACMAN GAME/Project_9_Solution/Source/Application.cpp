@@ -9,6 +9,7 @@
 #include "InitialScreen.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
+#include "SceneLevel4.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -41,6 +42,7 @@ Application::Application()
 	modules[13] =	render =		new ModuleRender(true);
 
 	modules[14] = initialScreen =   new InitialScreen(true);
+	modules[15] = sceneLevel_4  =	new SceneLevel4(false);
 }
 
 Application::~Application()
