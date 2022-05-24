@@ -47,6 +47,7 @@ public:
 	int speed_num_y = 3;
 
 	uint round = 0;
+	bool level_up = false;
 
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };

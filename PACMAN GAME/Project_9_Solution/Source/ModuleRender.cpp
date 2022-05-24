@@ -73,7 +73,8 @@ Update_Status ModuleRender::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN)	return Update_Status::UPDATE_STOP;
 
 	//Fullscreen logical sizes
-	SDL_RenderSetLogicalSize(this->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	//SDL_RenderSetLogicalSize(this->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return Update_Status::UPDATE_CONTINUE;
 }

@@ -32,7 +32,7 @@ bool SceneLevel4::Start()
 
 	bgTexture = App->textures->Load("Assets/Sprites/background_level_4.png");
 
-	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
+	/*extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 
 
 
@@ -102,7 +102,7 @@ bool SceneLevel4::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->fonts->Enable();
-	App->collisions->Enable();
+	App->collisions->Enable();*/
 
 
 	return ret;
@@ -110,7 +110,7 @@ bool SceneLevel4::Start()
 
 Update_Status SceneLevel4::Update()
 {
-	App->render->camera.x += 0;
+	/*App->render->camera.x += 0;
 
 	positionx -= speedx;
 	positiony += speedy;
@@ -145,7 +145,7 @@ Update_Status SceneLevel4::Update()
 
 
 
-
+	*/
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -154,7 +154,12 @@ Update_Status SceneLevel4::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(extraTexture, 63, 290, &world4);
+
+	SDL_Rect rc = { 50, 50, 100, 100 };	//x, y, w, h
+	SDL_SetRenderDrawColor(App->render->renderer, 128, 192, 0, 128);
+	SDL_RenderFillRect(App->render->renderer, &rc);
+
+	/*App->render->Blit(extraTexture, 63, 290, &world4);
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 
@@ -165,14 +170,14 @@ Update_Status SceneLevel4::PostUpdate()
 	App->fonts->BlitText(positionx + 36, positiony, scoreFont, "U");
 	App->fonts->BlitText(positionx + 54, positiony, scoreFont, "N");
 	App->fonts->BlitText(positionx + 72, positiony, scoreFont, "D");
-	App->fonts->BlitText(position_num_x, position_num_y, scoreFont2, "1");
+	App->fonts->BlitText(position_num_x, position_num_y, scoreFont2, "1");*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 bool SceneLevel4::CleanUp()
 {
-
+	/*
 	positionx = 255;
 	positiony = -50;
 	speedx = 0;
@@ -194,6 +199,6 @@ bool SceneLevel4::CleanUp()
 
 	//SDL_DestroyTexture (extraTexture);
 	//delete App;
-
+	*/
 	return true;
 }

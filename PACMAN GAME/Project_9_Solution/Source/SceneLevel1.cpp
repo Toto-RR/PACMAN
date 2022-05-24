@@ -164,54 +164,59 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->fonts->Enable();
 	App->collisions->Enable();
-
 	return ret;
 }
 
 Update_Status SceneLevel1::Update()
 {
-	App->render->camera.x += 0;
-
-	positionx -= speedx;
-	positiony += speedy;
-
-	position_num_x += speed_num_x;
-	position_num_y -= speed_num_y;
-
-
-	if (positiony > 130)
+	if (!level_up)
 	{
-		speedx = 0;
-		speedy = -1;
-	}
+		App->render->camera.x += 0;
 
-	if (position_num_y < 150)
-	{
-		speed_num_x = 0;
-		speed_num_y = 1;
-	}
+		positionx -= speedx;
+		positiony += speedy;
 
-	if (positiony < 100 && speedx == 0 && speedy == -1)
-	{
-		speedx = 5;
-		speedy = 0;
-	}
+		position_num_x += speed_num_x;
+		position_num_y -= speed_num_y;
 
-	if (position_num_y < 120 && speed_num_x == 0 && speed_num_y == 1)
-	{
-		speed_num_x = 5;
-		speed_num_y = 0;
-	}
+
+		if (positiony > 130)
+		{
+			speedx = 0;
+			speedy = -1;
+		}
+
+		if (position_num_y < 150)
+		{
+			speed_num_x = 0;
+			speed_num_y = 1;
+		}
+
+		if (positiony < 100 && speedx == 0 && speedy == -1)
+		{
+			speedx = 5;
+			speedy = 0;
+		}
+
+		if (position_num_y < 120 && speed_num_x == 0 && speed_num_y == 1)
+		{
+			speed_num_x = 5;
+			speed_num_y = 0;
+		}
 	
-	if (App->player->score >= 100)
-	{
-		//CleanUp();
-
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
-		App->enemies->CleanUp();
-		App->particles->CleanUp();
+		if (App->player->score >= 100)
+		{
+			level_up = true;
+			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
+			App->enemies->CleanUp();
+			App->particles->CleanUp();
+			//App->sceneLevel_1->CleanUp();
+		}
 	}
-	
+	else
+	{
+		//waiting to fade to next level
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -255,9 +260,9 @@ bool SceneLevel1::CleanUp()
 	App->fonts->Disable();
 	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
+	
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
-
 
 	//SDL_DestroyTexture (extraTexture);
 	//delete App;
