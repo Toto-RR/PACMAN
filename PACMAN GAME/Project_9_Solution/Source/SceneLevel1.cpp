@@ -179,6 +179,10 @@ Update_Status SceneLevel1::Update()
 		position_num_x += speed_num_x;
 		position_num_y -= speed_num_y;
 
+		//position_clear_x++;
+		//position_clear_x2--;
+		//position_clear_y -= 2;
+	
 
 		if (positiony > 130)
 		{
@@ -230,14 +234,26 @@ Update_Status SceneLevel1::PostUpdate()
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 
-
-
 	App->fonts->BlitText(positionx, positiony, scoreFont, "R");
 	App->fonts->BlitText(positionx + 18, positiony, scoreFont, "O");
 	App->fonts->BlitText(positionx + 36, positiony, scoreFont, "U");
 	App->fonts->BlitText(positionx + 54, positiony, scoreFont, "N");
 	App->fonts->BlitText(positionx + 72, positiony, scoreFont, "D");
 	App->fonts->BlitText(position_num_x, position_num_y, scoreFont2, "1");
+
+
+	App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
+	App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
+	App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
+	App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
+	App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
+
+	App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
+	App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
+	App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
+	App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
+	App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
+	App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -254,6 +270,7 @@ bool SceneLevel1::CleanUp()
 	position_num_y = 275;
 	speed_num_x = 0;
 	speed_num_y = 0;
+	position_clear_x = 50;
 	
 	App->player->Disable();
 	App->enemies->Disable();
@@ -264,7 +281,8 @@ bool SceneLevel1::CleanUp()
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
-	//SDL_DestroyTexture (extraTexture);
+	SDL_DestroyTexture(bgTexture);
+	SDL_DestroyTexture (extraTexture);
 	//delete App;
 
 	return true;

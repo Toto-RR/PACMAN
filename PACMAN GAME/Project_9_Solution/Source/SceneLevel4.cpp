@@ -160,7 +160,7 @@ Update_Status SceneLevel4::PostUpdate()
 	SDL_SetRenderDrawColor(App->render->renderer, 128, 192, 0, 128);
 	SDL_RenderFillRect(App->render->renderer, &rc);*/
 	
-	App->render->Blit(extraTexture, 63, 290, &world4);
+	App->render->Blit(extraTexture, 63, 290, &world1);
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 
@@ -197,8 +197,8 @@ bool SceneLevel4::CleanUp()
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
-
-	//SDL_DestroyTexture (extraTexture);
+	SDL_DestroyTexture(bgTexture);
+	SDL_DestroyTexture (extraTexture);
 	//delete App;
 	
 	return true;

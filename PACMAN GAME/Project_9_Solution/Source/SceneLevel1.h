@@ -45,6 +45,10 @@ public:
 	int position_num_y = 275;
 	int speed_num_x = 3;
 	int speed_num_y = 3;
+	int position_clear_x = -50;
+	int position_clear_x2 = 100;
+	int position_clear_y = 350;
+
 
 	uint round = 0;
 	bool level_up = false;

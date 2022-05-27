@@ -7,6 +7,8 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
+#include "SDL/include/SDL.h"
+
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
 	bgGhosts.PushBack({ 932, 0, 232, 305 });
