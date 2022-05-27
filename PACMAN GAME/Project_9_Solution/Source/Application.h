@@ -14,6 +14,7 @@ class ModulePlayer;
 class InitialScreen;
 class SceneIntro;
 class SceneLevel1;
+class SceneLevel4;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleEnemies;
@@ -21,7 +22,7 @@ class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
 class SceneGameOver;
-class SceneLevel4;
+
 
 
 class Application

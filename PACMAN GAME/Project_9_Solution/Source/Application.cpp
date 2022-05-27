@@ -29,20 +29,19 @@ Application::Application()
 	modules[2] =	textures =		new ModuleTextures(true);
 	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] =	sceneIntro =	new SceneIntro(false);
-	modules[5] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
-	modules[6] =	sceneGameOver = new SceneGameOver(false);
-	modules[7] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[8] =	particles =		new ModuleParticles(true);
-	modules[9] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
+	modules[4] = initialScreen = new InitialScreen(true);
+	modules[5] =	sceneIntro =	new SceneIntro(false);
+	modules[6] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
+	modules[7] =	sceneLevel_4 =	new SceneLevel4(false);
+	modules[8] =	sceneGameOver = new SceneGameOver(false);
+	modules[9] =	player =		new ModulePlayer(false);	//Player starts disabled
+	modules[10] =	particles =		new ModuleParticles(true);
+	modules[11] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[10] =	collisions =	new ModuleCollisions(true);
-	modules[11] =	fade =			new ModuleFadeToBlack(true);
-	modules[12] =	fonts =			new ModuleFonts(true);
-	modules[13] =	render =		new ModuleRender(true);
-
-	modules[14] = initialScreen =   new InitialScreen(true);
-	modules[15] = sceneLevel_4  =	new SceneLevel4(false);
+	modules[12] =	collisions =	new ModuleCollisions(true);
+	modules[13] =	fade =			new ModuleFadeToBlack(true);
+	modules[14] =	fonts =			new ModuleFonts(true);
+	modules[15] =	render =		new ModuleRender(true);	
 }
 
 Application::~Application()
