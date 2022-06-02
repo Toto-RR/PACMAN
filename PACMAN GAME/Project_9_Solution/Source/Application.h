@@ -73,7 +73,7 @@ public:
 	ModuleRender* render = nullptr;
 };
 
-// Global var made extern for Application ---
-extern Application* App;
+// Global var made extern for Application 
+extern Application *App;
 
 #endif // __APPLICATION_H__
