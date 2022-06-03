@@ -62,6 +62,7 @@ public:
 
 	Particle SuperPacdotAnim;
 	Particle PacdotAnim;
+	Particle PineappleAnim;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

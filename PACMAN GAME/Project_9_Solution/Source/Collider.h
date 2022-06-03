@@ -17,7 +17,7 @@ struct Collider
 		ENEMY,
 		SUPERPACDOT,
 		PACDOT,
-		
+		PINEAPPLE,
 
 		MAX
 	};

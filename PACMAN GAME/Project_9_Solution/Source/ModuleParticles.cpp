@@ -24,7 +24,7 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Sprites/Items.png");
 
-	// Explosion particle
+	// Particles
 	SuperPacdotAnim.anim.PushBack({ 0, 0, 8, 8 });
 	SuperPacdotAnim.anim.PushBack({ 0, 0, 8, 8 });
 	SuperPacdotAnim.anim.PushBack({ 0, 0, 8, 8 });
@@ -48,6 +48,8 @@ bool ModuleParticles::Start()
 	PacdotAnim.anim.PushBack({ 51, 11, 5, 15 });
 	PacdotAnim.anim.loop = true;
 	PacdotAnim.anim.speed = 0.06f;
+
+	PineappleAnim.anim.PushBack({ 0, 28, 17, 17 });
 	
 
 	return true;

@@ -16,6 +16,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::WALL][Collider::Type::SUPERPACDOT] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PACDOT] = false;
+	matrix[Collider::Type::WALL][Collider::Type::PINEAPPLE] = false;
 	
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
@@ -23,6 +24,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::SUPERPACDOT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PACDOT] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::PINEAPPLE] = true;
 	
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
@@ -30,6 +32,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::SUPERPACDOT] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PACDOT] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::PINEAPPLE] = false;
 
 
 	matrix[Collider::Type::SUPERPACDOT][Collider::Type::WALL] = false;
@@ -37,12 +40,23 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::SUPERPACDOT][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::SUPERPACDOT][Collider::Type::SUPERPACDOT] = false;
 	matrix[Collider::Type::SUPERPACDOT][Collider::Type::PACDOT] = false;
+	matrix[Collider::Type::SUPERPACDOT][Collider::Type::PINEAPPLE] = false;
+
 
 	matrix[Collider::Type::PACDOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PACDOT][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PACDOT][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::PACDOT][Collider::Type::SUPERPACDOT] = false;
 	matrix[Collider::Type::PACDOT][Collider::Type::PACDOT] = false;
+	matrix[Collider::Type::PACDOT][Collider::Type::PINEAPPLE] = false;
+
+
+	matrix[Collider::Type::PINEAPPLE][Collider::Type::WALL] = false;
+	matrix[Collider::Type::PINEAPPLE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::PINEAPPLE][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::PINEAPPLE][Collider::Type::SUPERPACDOT] = false;
+	matrix[Collider::Type::PINEAPPLE][Collider::Type::PACDOT] = false;
+	matrix[Collider::Type::PINEAPPLE][Collider::Type::PINEAPPLE] = false;
 }
 
 // Destructor
@@ -140,6 +154,9 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::PACDOT: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
+			case Collider::Type::PINEAPPLE: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		}
 	}

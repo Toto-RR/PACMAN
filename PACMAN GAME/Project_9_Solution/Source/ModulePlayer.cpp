@@ -10,7 +10,6 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
-#include "SceneLevel1.h"
 
 #include <stdio.h>
 #include "SDL/include/SDL.h"
@@ -291,16 +290,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 		death.loop = false;
 		death.speed = 0.09f;
-		if (App->sceneLevel_1->IsEnabled())
-		{
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
-		}
-		else 
-		{
-			App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
-		}
-		
-		
+
+		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
+		App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
 
 		App->enemies->CleanUp();
 		App->particles->CleanUp();
@@ -334,6 +326,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			position.y--;
 			
 		}
+	}
+
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PINEAPPLE) {
+		score += 100;
+		if (highScore <= score)
+			highScore = score;
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
