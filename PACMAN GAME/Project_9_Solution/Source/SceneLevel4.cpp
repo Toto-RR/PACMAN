@@ -37,9 +37,9 @@ bool SceneLevel4::Start()
 
 
 	//Music
-	round = App->audio->LoadFx("Assets/Music/FX/opening-fanfare.wav");
+	round = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
 	App->audio->PlayFx(round);
-	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 25.0f);
+	App->audio->PlayMusic("Assets/Music/Music/Original Pac-Man Maze (World 1).ogg", 25.0f);
 
 	//Level 4 Colliders
 	App->collisions->AddCollider({ 64, 55, 29, 20 }, Collider::Type::WALL);//Top left square
@@ -91,6 +91,22 @@ bool SceneLevel4::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 142);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 154);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 166);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 28, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 41, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 53, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 65, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 77, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 89, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 101, 260);
+	//App->particles->AddPacdot(App->particles->PacdotAnim, 113, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 125, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 137, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 149, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 161, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 173, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 185, 260);
+
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
