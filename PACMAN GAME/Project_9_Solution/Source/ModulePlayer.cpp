@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
+#include "SceneLevel1.h"
 
 #include <stdio.h>
 #include "SDL/include/SDL.h"
@@ -21,35 +22,35 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	idleAnim.PushBack({ 145, 62, 16, 16 });
 	idleAnim.PushBack({ 129, 63, 16, 14 });
 	idleAnim.loop = true;
-	idleAnim.speed = 0.05f;
+	idleAnim.speed = 0.2f;
 
 	// move upwards
 	upAnim.PushBack({ 33, 61, 16, 16 });
 	upAnim.PushBack({ 17, 62, 16, 16 });
 	upAnim.PushBack({ 1, 63, 16, 14 });
 	upAnim.loop = true;
-	upAnim.speed = 0.05f;
+	upAnim.speed = 0.2f;
 
 	// Move down
 	downAnim.PushBack({ 161, 78, 16, 15 });
 	downAnim.PushBack({ 177, 78, 16, 15 });
 	downAnim.PushBack({ 145, 78, 16, 15 });
 	downAnim.loop = true;
-	downAnim.speed = 0.05f;
+	downAnim.speed = 0.2f;
 
 	//Move right
 	rightAnim.PushBack({ 81, 62, 16, 15 });
 	rightAnim.PushBack({ 98, 61, 15, 16 });
 	rightAnim.PushBack({ 65, 63, 16, 14 });
 	rightAnim.loop = true;
-	rightAnim.speed = 0.05f;
+	rightAnim.speed = 0.2f;
 
 	//Move left
 	leftAnim.PushBack({226,61,15,17});
 	leftAnim.PushBack({209,62,16,16});
 	leftAnim.PushBack({ 193,63,16,15 });
 	leftAnim.loop = true;
-	leftAnim.speed = 0.05f;
+	leftAnim.speed = 0.2f;
 
 }
 
@@ -127,7 +128,6 @@ bool ModulePlayer::Start()
 
 	spawn.loop = false;
 	spawn.speed = 0.2f;
-
 	return ret;
 }
 
@@ -284,15 +284,25 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			death.PushBack({ 208, 78, 15, 15 });
 			death.PushBack({ 224, 78, 15, 15 });
 			death.PushBack({ 240, 78, 15, 15 });
+			death.PushBack({ 240, 94, 15, 15 });
+
 			currentAnimation = &death;
 			App->audio->PlayFx(explosionFx);
 		}
 		
 		death.loop = false;
-		death.speed = 0.09f;
+		death.speed = 0.2f;	
 
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
-		App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
+		if (App->sceneLevel_1->IsEnabled())
+		{
+			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
+		}
+		else
+		{
+			App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
+		}
+		
+		
 
 		App->enemies->CleanUp();
 		App->particles->CleanUp();
