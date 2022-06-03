@@ -13,6 +13,8 @@ enum class Enemy_Type
 	MECH,
 	BLINKY,
 	CLYDE,
+	INKY,
+	PINKY,
 };
 
 struct EnemySpawnpoint

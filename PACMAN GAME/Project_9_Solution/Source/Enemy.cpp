@@ -7,6 +7,8 @@
 #include "ModuleRender.h"
 #include "GhostBlinky.h"
 #include "GhostClyde.h"
+#include "GhostInky.h"
+#include "GhostPinky.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
@@ -42,7 +44,9 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* collider)
 {
-	
+	if (this->collider->ENEMY && collider->WALL) {
+		SetToDelete();
+	}
 }
 
 void Enemy::SetToDelete()

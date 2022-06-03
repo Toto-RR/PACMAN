@@ -18,7 +18,7 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 	currentAnim = &left;
 
 	path.PushBack({ -0.5f, 0.0f }, 142, &left);
-	path.PushBack({ 0.0f, 0.5f }, 205, &down);
+	/*path.PushBack({ 0.0f, 0.5f }, 205, &down);
 	path.PushBack({ 0.5f, 0.0f }, 32, &right);
 	path.PushBack({ 0.0f, 0.5f }, 32, &down);
 	path.PushBack({ 0.5f, 0.0f }, 48, &right);
@@ -35,7 +35,7 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.0f, -0.5f }, 48, &up);
 	path.PushBack({ -0.5f, 0.0f }, 80, &left);
 	path.PushBack({ 0.0f, -0.5f }, 156, &up);
-	path.PushBack({ -0.5f, 0.0f }, 78, &left);
+	path.PushBack({ -0.5f, 0.0f }, 78, &left);*/
 
 	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
@@ -51,14 +51,11 @@ void GhostBlinky::Update()
 	Enemy::Update();
 }
 
-void GhostBlinky::OnCollision(Collider* collider) 
+void GhostBlinky::OnCollision(Collider* c1, Collider* c2) 
 {
-	if (this->collider->ENEMY && collider->WALL)
+	if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::WALL)
 	{
-		path.PushBack({ -0.1f, 0.0f }, 150, &left);
-		
-		GhostBlinky::Update();
-		Enemy::Update();
+		path.PushBack({ 0.1f, 0.0f }, 150, &right);
 	}
 	
 }

@@ -143,19 +143,36 @@ bool SceneLevel1::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 70);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 82);
 	
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 70);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 82);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 94);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 106);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 118);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 130);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 142);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 154);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 166);
+	//COLUMNA IZQUIERDA
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 94);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 106);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 130);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 142);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 154);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 166);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 178);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 190);
+
+	//COLUMNA DERECHA
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 82);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 94);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 106);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 130);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 142);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 154);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 166);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 178);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 190);
+
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
+	App->enemies->AddEnemy(Enemy_Type::INKY, 103, 107);
+	App->enemies->AddEnemy(Enemy_Type::PINKY, 109, 107);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

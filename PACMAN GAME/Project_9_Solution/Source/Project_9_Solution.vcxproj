@@ -80,9 +80,8 @@
     <ClInclude Include="GhostClyde.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy_BrownShip.h" />
-    <ClInclude Include="Enemy_Mech.h" />
-    <ClInclude Include="Enemy_RedBird.h" />
+    <ClInclude Include="GhostInky.h" />
+    <ClInclude Include="GhostPinky.h" />
     <ClInclude Include="InitialScreen.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
@@ -111,11 +110,10 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy_BrownShip.cpp" />
-    <ClCompile Include="Enemy_Mech.cpp" />
-    <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="GhostBlinky.cpp" />
     <ClCompile Include="GhostClyde.cpp" />
+    <ClCompile Include="GhostInky.cpp" />
+    <ClCompile Include="GhostPinky.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InitialScreen.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />

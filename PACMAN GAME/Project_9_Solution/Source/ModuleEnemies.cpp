@@ -7,11 +7,10 @@
 #include "ModuleAudio.h"
 
 #include "Enemy.h"
-#include "Enemy_RedBird.h"
-#include "Enemy_BrownShip.h"
-#include "Enemy_Mech.h"
 #include "GhostClyde.h"
 #include "GhostBlinky.h"
+#include "GhostInky.h"
+#include "GhostPinky.h"
 
 #define SPAWN_MARGIN 50
 
@@ -159,20 +158,17 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-				case Enemy_Type::REDBIRD:
-					enemies[i] = new Enemy_RedBird(info.x, info.y);
-					break;
-				case Enemy_Type::BROWNSHIP:
-					enemies[i] = new Enemy_BrownShip(info.x, info.y);
-					break;
-				case Enemy_Type::MECH:
-					enemies[i] = new Enemy_Mech(info.x, info.y);
-					break;
 				case Enemy_Type::BLINKY:
 					enemies[i] = new GhostBlinky(info.x, info.y);
 					break;
 				case Enemy_Type::CLYDE:
 					enemies[i] = new GhostClyde(info.x, info.y);
+					break;
+				case Enemy_Type::PINKY:
+					enemies[i] = new GhostPinky(info.x, info.y);
+					break;
+				case Enemy_Type::INKY:
+					enemies[i] = new GhostInky(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;
@@ -184,5 +180,5 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-
+	
 }
