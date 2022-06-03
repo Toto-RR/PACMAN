@@ -126,20 +126,25 @@ bool SceneLevel1::Start()
 
 	//SuperPacdots ---
 
-	App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 60);
-	App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 60);
-	App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 236);
-	App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 236);
+	//IZQUIERDA
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 13, 60);
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 13, 236);
+
+	//DERECHA
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 212, 60);
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 212, 236);
 	
 	//Pacdots ---
-
-	App->particles->AddPacdot(App->particles->PacdotAnim, 32, 40);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 50, 40);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 68, 40);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 86, 40);
+	//IZQUIERDA
+	App->particles->AddPacdot(App->particles->PacdotAnim, 30, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 42, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 54, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 66, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 90, 40);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 102, 40);
 
-	App->particles->AddPacdot(App->particles->PacdotAnim, 32, 56);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 30, 56);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 70);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 82);
 	
@@ -159,16 +164,9 @@ bool SceneLevel1::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 190);
 
 	//COLUMNA DERECHA
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 82);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 94);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 106);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 118);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 130);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 142);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 154);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 166);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 178);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 189, 190);
+	
+	
+	
 
 
 	// Enemies ---
