@@ -183,6 +183,15 @@ Update_Status SceneLevel1::Update()
 		//position_clear_x2--;
 		//position_clear_y -= 2;
 	
+		if (App->player->position.x > 235)
+		{
+			App->player->position.x = -5;
+		}
+
+		if (App->player->position.x < -5)
+		{
+			App->player->position.x = 235;
+		}
 
 		if (positiony > 130)
 		{
