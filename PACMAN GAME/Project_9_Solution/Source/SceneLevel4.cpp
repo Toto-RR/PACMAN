@@ -47,6 +47,14 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 64, 239, 29, 20 }, Collider::Type::WALL);//Bottom left square
 	App->collisions->AddCollider({ 136, 239, 29, 20 }, Collider::Type::WALL);//Bottom right square
 
+	App->collisions->AddCollider({ 14, 25, 203, 13 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 14, 280, 203, 17 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1, 46, 6, 111 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 223, 46, 6, 111 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 23, 191, 23, 37 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 183, 191, 23, 3 }, Collider::Type::WALL);
+
 
 	//Letters animation
 
