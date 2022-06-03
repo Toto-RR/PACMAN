@@ -143,6 +143,9 @@ bool SceneLevel1::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 70);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 13, 82);
 	
+	//Pineapple ---
+	App->particles->AddParticle(App->particles->PineappleAnim, 110, 160);
+
 	//COLUMNA IZQUIERDA
 	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 94);
