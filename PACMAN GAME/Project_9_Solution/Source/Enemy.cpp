@@ -44,9 +44,7 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* collider)
 {
-	if (this->collider->ENEMY && collider->WALL) {
-		SetToDelete();
-	}
+	
 }
 
 void Enemy::SetToDelete()

@@ -121,6 +121,9 @@
     <ClInclude Include="GhostPinky.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleGhosts.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -208,6 +211,9 @@
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="GhostPinky.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleGhosts.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

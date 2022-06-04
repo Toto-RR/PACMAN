@@ -6,13 +6,28 @@
 GhostPinky::GhostPinky(int x, int y) : Enemy(x, y)
 {
 	up.PushBack({ 160, 53, 15, 15 });
+	up.PushBack({ 160, 54, 15, 15 });
 	currentAnim = &up;
+	up.loop = true;
+	up.speed = 0.05f;
+
 	down.PushBack({ 65, 53, 15, 15 });
+	down.PushBack({ 65, 54, 15, 15 });
 	currentAnim = &down;
+	down.loop = true;
+	down.speed = 0.05f;
+
 	right.PushBack({ 111, 53, 15, 15 });
+	right.PushBack({ 111, 54, 15, 15 });
 	currentAnim = &right;
+	right.loop = true;
+	right.speed = 0.05f;
+
 	left.PushBack({ 16, 53, 15, 15 });
+	left.PushBack({ 16, 54, 15, 15 });
 	currentAnim = &left;
+	left.loop = true;
+	left.speed = 0.05f;
 
 	path.PushBack({ 0.5f, 0.0f }, 130, &right);
 	path.PushBack({ 0.0f, 0.5f }, 208, &down);
@@ -30,7 +45,6 @@ GhostPinky::GhostPinky(int x, int y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
-
 
 void GhostPinky::Update()
 {

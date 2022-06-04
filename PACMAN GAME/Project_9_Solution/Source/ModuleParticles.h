@@ -64,6 +64,8 @@ public:
 	Particle PacdotAnim;
 	Particle PineappleAnim;
 
+	int COUNTDOWN = 0;
+
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;
@@ -74,3 +76,4 @@ private:
 };
 
 #endif // !__MODULEPARTICLES_H__
+

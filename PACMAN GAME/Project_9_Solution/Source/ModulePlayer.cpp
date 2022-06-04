@@ -46,8 +46,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightAnim.speed = 0.2f;
 
 	//Move left
-	leftAnim.PushBack({226,61,15,17});
-	leftAnim.PushBack({209,62,16,16});
+	leftAnim.PushBack({ 226,61,15,17 });
+	leftAnim.PushBack({ 209,62,16,16 });
 	leftAnim.PushBack({ 193,63,16,15 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.2f;
@@ -68,42 +68,37 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Sprites/Pac-Man/Pac-Man ripped.png");
 	currentAnimation = &idleAnim;
 
-//FX
-
-	
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
+	//Music
+	//Pacdot = App->audio->LoadFx("Assets/Music/Fx/wakka-3.wav");
+	//Superpacdot = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
 
-
-
-//Music
-	Pacdot = App->audio->LoadFx("Assets/Music/Fx/wakka-3.wav");
-	Superpacdot = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
-	laserFx = App->audio->LoadFx("Assets/Fx/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
-
-//>>>>>>> Stashed changes
+	//>>>>>>> Stashed changes
 	position.x = 110;
 	position.y = 214;
 
 	destroyed = false;
 
 
-	state = speed_none;
-	score = 0;
+	//state = speed_none;
+	//score = 0;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 14, 14 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ (int)position.x + 1, (int)position.y + 1, 16, 16 }, Collider::Type::PLAYER, this);
 
 	char lookupTable[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=:&',.()x+-/@up*s·bt |#_>" };
-	scoreFont = App->fonts->Load("Assets/Fonts/font1.png", lookupTable, 1);
+	//scoreFont = App->fonts->Load("Assets/Fonts/font1.png", lookupTable, 1);
 
 	char lookupTable2[] = { "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!<?=>&',.()x+-/@*|#_:up· " };
-	player1Font = App->fonts->Load("Assets/Fonts/font2.png", lookupTable2, 1);
-	player2Font = App->fonts->Load("Assets/Fonts/font3.png", lookupTable2, 1);
+	//player1Font = App->fonts->Load("Assets/Fonts/font2.png", lookupTable2, 1);
+	//player2Font = App->fonts->Load("Assets/Fonts/font3.png", lookupTable2, 1);
 
+	tile.y = 26;
+	tile.x = 14;
+	position.x = tile.x * 8;
+	position.y = tile.y * 8;
 
 	//Animation start
-	spawn.PushBack({ 240, 78, 15, 15 });
+	/*spawn.PushBack({ 240, 78, 15, 15 });
 	spawn.PushBack({ 240, 78, 15, 15 });
 	spawn.PushBack({ 240, 78, 15, 15 });
 	spawn.PushBack({ 240, 78, 15, 15 });
@@ -119,96 +114,264 @@ bool ModulePlayer::Start()
 	spawn.PushBack({ 113, 62, 15, 15 });
 	spawn.PushBack({ 81, 62, 15, 15 });
 	spawn.PushBack({ 49, 62, 15, 15 });
-	spawn.PushBack({ 1, 62, 15, 15 });
+	spawn.PushBack({ 1, 62, 15, 15 });*/
 
 
 
 
-	currentAnimation = &spawn;
+	//currentAnimation = &spawn;
 
-	spawn.loop = false;
-	spawn.speed = 0.2f;
+	//spawn.loop = false;
+	//spawn.speed = 0.2f;
 	return ret;
 }
 
 Update_Status ModulePlayer::Update()
 {
 
-	//PLAYER MOVEMENT
+	////PLAYER MOVEMENT
 
-	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
+	//if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN)
+	//{
+	//	state = speed_left;
+	//	if (currentAnimation != &leftAnim)
+	//	{
+	//		leftAnim.Reset();
+	//		currentAnimation = &leftAnim;
+	//	}
+	//}
+	//else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+	//{
+	//	state = speed_right;
+	//	if (currentAnimation != &rightAnim)
+	//	{
+	//		rightAnim.Reset();
+	//		currentAnimation = &rightAnim;
+	//	}
+	//}
+	//else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+	//{
+	//	state = speed_up;
+	//	if (currentAnimation != &upAnim)
+	//	{
+	//		upAnim.Reset();
+	//		currentAnimation = &upAnim;
+	//	}
+	//}
+	//else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+	//{
+	//	state = speed_down;
+	//	if (currentAnimation != &downAnim)
+	//	{
+	//		downAnim.Reset();
+	//		currentAnimation = &downAnim;
+	//	}
+	//}
+
+	//switch (state)
+	//{
+	//case speed_right:	position.x++;	break;
+	//case speed_left:	position.x--;	break;
+	//case speed_up:		position.y--;	break;
+	//case speed_down:	position.y++;	break;
+	//}
+
+	////DEBUG FUNTIONS
+
+	//if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
+	//	godMode = !godMode;
+
+	//if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+	//	App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 90);
+	//	App->particles->CleanUp();
+	//}
+
+	//if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
+	//	App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
+	//	App->particles->CleanUp();
+	//}
+
+
+	//// If no up/down movement detected, set the current animation back to idle
+	////if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
+	////	&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
+	////	&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
+	////	&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
+	////	currentAnimation = &idleAnim;
+
+	//collider->SetPos(position.x, position.y);
+
+	//currentAnimation->Update();
+
+
+	//Update Tile Position
+	//TODO HACER ESTO MAS COMPLEJO DETECTANDO PROXIMIDAD
+
+	if ((int)position.x % 8 == 0)
 	{
-		state = speed_left;
-		if (currentAnimation != &leftAnim)
+		tile.y = (position.x / 8);
+
+		//LOG("Las tiles son %d,%d y sus posibilidades de arriba son: %d,abajo son: %d izquierda son: %d y derecha son: %d",tile.x,tile.y, App->sceneLevel_1->TileSet[tileUp.x][tileUp.y], App->sceneLevel_1->TileSet[tileDown.x][tileDown.y], App->sceneLevel_1->TileSet[tileLeft.x][tileLeft.y], App->sceneLevel_1->TileSet[tileRight.x][tileRight.y])
+	}
+	if ((int)position.y % 8 == 0)
+	{
+		tile.x = (position.y / 8);
+	}
+
+	//Movement posibilities
+	//LAS X SON LA ALTURA DENTRO DEL TILESET MIENTAS QUE LAS Ys SON LA LONGUITUD
+	tileUp.x = tile.x - 1;
+	tileUp.y = tile.y;
+
+	tileDown.x = tile.x + 2;
+	tileDown.y = tile.y;
+
+	tileLeft.x = tile.x;
+	tileLeft.y = tile.y - 1;
+
+	tileRight.x = tile.x;
+	tileRight.y = tile.y + 2;
+
+
+
+
+
+	//MOVIMIENTO IZQUIERDA
+	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || MovingLeft == true)
+	{
+
+
+		//IT CAN MOVE INTO TP AN PAST IT
+		if ((App->sceneLevel_1->TileSet[0][tileLeft.x][tileLeft.y] >= App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_1->EMPTY) ||
+			(App->sceneLevel_1->TileSet[0][tile.x][tile.y] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_1->TP) ||
+			(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_1->TP) ||
+			(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 2] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 2] == App->sceneLevel_1->TP))
 		{
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
+			MovingUp = false;
+			MovingDown = false;
+			MovingLeft = true;
+			MovingRight = false;
+			position.x -= speed;
+
+			if (currentAnimation != &leftAnim)
+			{
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
+			}
+
 		}
+
 	}
-	else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+
+	//MOVIMIENTO DERECHA
+	if ((App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT) || MovingRight == true)
 	{
-		state = speed_right;
-		if (currentAnimation != &rightAnim)
+
+
+		//IT CAN MOVE INTO TP AN PAST IT
+		if ((App->sceneLevel_1->TileSet[0][tileRight.x][tileRight.y] >= App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileRight.x + 1][tileRight.y] >= App->sceneLevel_1->EMPTY) ||
+			(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_1->TP) ||
+			(App->sceneLevel_1->TileSet[0][tile.x][tile.y] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_1->TP) ||
+			(App->sceneLevel_1->TileSet[0][tile.x][tile.y - 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y - 1] == App->sceneLevel_1->TP))
 		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
+			MovingUp = false;
+			MovingDown = false;
+			MovingLeft = false;
+			MovingRight = true;
+			position.x += speed;
+
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+
 		}
+
 	}
-	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+
+	//MOVIMIENTO ABAJO
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || MovingDown == true)
 	{
-		state = speed_up;
-		if (currentAnimation != &upAnim)
+
+
+		if (App->sceneLevel_1->TileSet[0][tileDown.x][tileDown.y] == App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileDown.x][tileDown.y + 1] >= App->sceneLevel_1->EMPTY)
 		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
+			MovingUp = false;
+			MovingDown = true;
+			MovingLeft = false;
+			MovingRight = false;
+			position.y += speed;
+
+			if (currentAnimation != &downAnim)
+			{
+				downAnim.Reset();
+				currentAnimation = &downAnim;
+			}
+
 		}
+
 	}
-	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+
+	//MOVIMIENTO ARRIBA
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || MovingUp == true)
 	{
-		state = speed_down;
-		if (currentAnimation != &downAnim)
+
+
+		if (App->sceneLevel_1->TileSet[0][tileUp.x][tileUp.y] == App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileUp.x][tileUp.y + 1] >= App->sceneLevel_1->EMPTY)
 		{
-			downAnim.Reset();
-			currentAnimation = &downAnim;
+			MovingUp = true;
+			MovingDown = false;
+			MovingLeft = false;
+			MovingRight = false;
+			position.y -= speed;
+
+			if (currentAnimation != &upAnim)
+			{
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
 		}
+
 	}
 
-	switch (state)
+	//Go to other side of map after using TP
+
+	if (position.x <= -8)
 	{
-		case speed_right:	position.x++;	break;
-		case speed_left:	position.x--;	break;
-		case speed_up:		position.y--;	break;
-		case speed_down:	position.y++;	break;
+		position.x = 232;
 	}
-	
-	//DEBUG FUNTIONS
-
-	if (App->input->keys[SDL_SCANCODE_F2] == Key_State::KEY_DOWN)
-		godMode = !godMode;
-
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneIntro, 90);
-		App->particles->CleanUp();
-	}
-
-	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
-		App->particles->CleanUp();
+	if (position.x >= 236)
+	{
+		position.x = -4;
 	}
 
 
-	// If no up/down movement detected, set the current animation back to idle
-	//if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_IDLE
-	//	&& App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_IDLE
-	//	&& App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_IDLE
-	//	&& App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_IDLE)
-	//	currentAnimation = &idleAnim;
 
-	collider->SetPos(position.x, position.y);
+
+	//God mode: Inmunity agaist ghosts
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) //ERIC:GOD MODE
+	{
+		if (godMode == false)
+			godMode = true;
+		else
+		{
+			godMode = false;
+		}
+
+	};
+
+	if (App->input->keys[SDL_SCANCODE_F4] == KEY_DOWN) //ERIC: boton de muerte
+	{
+		godMode = false;
+		collider = App->collisions->AddCollider({ (int)position.x, (int)position.y, 14, 14 }, Collider::Type::ENEMY, this);
+
+	};
+
+	collider->SetPos((int)position.x, (int)position.y);
+	//POSICIONTILE->SetPos(tile.y * 8, tile.x * 8); //ERIC: Actualizacion posicion Tile
 
 	currentAnimation->Update();
-
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -218,7 +381,6 @@ Update_Status ModulePlayer::PostUpdate()
 
 	if (!destroyed)
 	{
-		
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
@@ -244,32 +406,22 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true)
 	{
 		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);
-
-
-		if (state == 1)
+		if (MovingRight == true)
 		{
 			position.x--;
 		}
-
-		else if (state == 2)
+		else if (MovingLeft == true)
 		{
-
 			position.x++;
-
 		}
-		else if (state == 3)
+		else if (MovingUp == true)
 		{
-
 			position.y++;
-
 		}
-		else if (state == 4)
+		else if (MovingDown == true)
 		{
-
 			position.y--;
-
 		}
-
 		if (currentAnimation != &death) {
 			death.PushBack({ 1, 62, 15, 15 });
 			death.PushBack({ 49, 62, 15, 15 });
@@ -285,13 +437,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			death.PushBack({ 224, 78, 15, 15 });
 			death.PushBack({ 240, 78, 15, 15 });
 			death.PushBack({ 240, 94, 15, 15 });
-
 			currentAnimation = &death;
 			App->audio->PlayFx(explosionFx);
 		}
-		
 		death.loop = false;
-		death.speed = 0.2f;	
+		death.speed = 0.2f;
 
 		if (App->sceneLevel_1->IsEnabled())
 		{
@@ -301,41 +451,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
 		}
-		
-		
-
 		App->enemies->CleanUp();
 		App->particles->CleanUp();
-
-
-	}
-
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::WALL && godMode != true)
-	{
-
-		if (state == 1)
-		{
-			position.x--;
-		}
-
-		if (state == 2)
-		{
-			
-			position.x++;
-			
-		}
-		if (state == 3)
-		{
-			
-			position.y++;
-			
-		}
-		if (state == 4)
-		{
-			
-			position.y--;
-			
-		}
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PINEAPPLE) {
@@ -343,30 +460,24 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (highScore <= score)
 			highScore = score;
 	}
-
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
 		score += 50;
 		if (highScore <= score)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
 	}
-
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;
 		if (highScore <= score)
 			highScore = score;
-//<<<<<<< Updated upstream
-
-		//App->audio->PlayFx(wakka);
+		
 		App->audio->LoadFx("Assets/Music/FX/Pacdot.wav");
-//=======
 		App->audio->PlayFx(Pacdot);
-
-//>>>>>>> Stashed changes
 	}
+	App->CleanUp();
 }
 
-void ModulePlayer::RemovePacman(Collider* collider) 
+void ModulePlayer::RemovePacman(Collider* collider)
 {
 	if (this->collider->PLAYER && collider->ENEMY)
 	{

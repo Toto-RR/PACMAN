@@ -7,6 +7,7 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "ModuleEnemies.h"
 
 class GhostBlinky : public Enemy {
 public:
@@ -19,7 +20,13 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
-	bool eated = false; //If pacman eated a ghost 
+	enum MODES {
+		EATABLE,
+		NORMAL,
+		EATED,
+	};
+
+	bool Eatable = true;
 
 	virtual void OnCollision(Collider* c1, Collider* c2);
 

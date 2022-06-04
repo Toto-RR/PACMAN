@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModuleEnemies.h"
 
 GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 {
@@ -66,11 +67,5 @@ void GhostBlinky::Update()
 
 void GhostBlinky::OnCollision(Collider* c1, Collider* c2) 
 {
-	if (c1->type == Collider::Type::ENEMY && c2->type == Collider::Type::WALL)
-	{
-		path.PushBack({ 0.1f, 0.0f }, 150, &right);
-	}
 	
 }
-
-

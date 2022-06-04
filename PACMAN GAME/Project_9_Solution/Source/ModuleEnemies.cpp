@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
 #include "Enemy.h"
 #include "GhostClyde.h"
@@ -29,7 +30,6 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("Assets/Sprites/Ghosts/enemies.png");
-	
 	
 	return true;
 }
