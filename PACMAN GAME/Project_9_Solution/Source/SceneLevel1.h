@@ -34,6 +34,31 @@ public:
 
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* extraTexture = nullptr;
+
+	int positionx = 255;
+	int positiony = -50;
+	int speedx = 5;
+	int speedy = 5;
+
+	int position_num_x = -20;
+	int position_num_y = 275;
+	int speed_num_x = 3;
+	int speed_num_y = 3;
+	int position_clear_x = -50;
+	int position_clear_x2 = 100;
+	int position_clear_y = 350;	
+
+	int scoreFont = -1;
+	char scoreText[10] = { "\0" };
+
+	int scoreFont2 = -1;
+	char scoreText2[10] = { "\0" };
+
+	SDL_Rect world0 = { 63, 98, 46, 14 };
+	SDL_Rect p1 = { 0, 96, 8, 16 };
+	SDL_Rect p2 = { 0, 112, 8, 16 };
+
 
 	enum TypesOfTiles //Alba (para el array)
 	{
