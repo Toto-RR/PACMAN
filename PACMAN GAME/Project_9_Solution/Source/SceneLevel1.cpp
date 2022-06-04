@@ -61,7 +61,9 @@ bool SceneLevel1::Start()
 			LOG("En %d,%d hay un %d", i, j, TileSet[i][j])
 		}
 	}
+
 	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
+	App->particles->AddParticle(App->particles->SuperPacdotAnim, 37, 96);
 
 	// Enemies ---
 	/*App->enemies->AddEnemy(Enemy_Type::BLINKY, 112, 136); 
