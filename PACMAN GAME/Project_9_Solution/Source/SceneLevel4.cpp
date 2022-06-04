@@ -38,7 +38,7 @@ bool SceneLevel4::Start()
 
 	//Music
 	round = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
-	App->audio->PlayFx(round);
+	//App->audio->PlayFx(round);
 	App->audio->PlayMusic("Assets/Music/Music/Original Pac-Man Maze (World 1).ogg", 25.0f);
 
 	//Level 4 Colliders

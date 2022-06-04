@@ -72,6 +72,7 @@ bool ModulePlayer::Start()
 	//Pacdot = App->audio->LoadFx("Assets/Music/Fx/wakka-3.wav");
 	//Superpacdot = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
+	Pacdot = App->audio->LoadFx("Assets/Music/FX/Pacdot.wav");
 
 	//>>>>>>> Stashed changes
 	position.x = 110;
@@ -471,10 +472,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (highScore <= score)
 			highScore = score;
 		
-		App->audio->LoadFx("Assets/Music/FX/Pacdot.wav");
 		App->audio->PlayFx(Pacdot);
 	}
-	App->CleanUp();
 }
 
 void ModulePlayer::RemovePacman(Collider* collider)
