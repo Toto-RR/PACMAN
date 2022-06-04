@@ -64,7 +64,7 @@ public:
 	Particle PacdotAnim;
 	Particle PineappleAnim;
 
-	int COUNTDOWN = 0;
+	int COUNTDOWN = 1;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

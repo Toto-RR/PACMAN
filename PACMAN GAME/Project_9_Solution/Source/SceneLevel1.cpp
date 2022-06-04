@@ -12,7 +12,7 @@
 #include "ModuleParticles.h"
 #include "ModuleFonts.h"
 
-#include "SDL/include/SDL.h"
+
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -62,15 +62,15 @@ bool SceneLevel1::Start()
 		}
 	}
 
-	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
+	/*App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
 	App->particles->AddParticle(App->particles->SuperPacdotAnim, 37, 96);
-	App->particles->AddParticle(App->particles->PacdotAnim, 37, 108);
+	App->particles->AddParticle(App->particles->PacdotAnim, 37, 108);*/
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::BLINKY, 112, 136); 
-	App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 115 , 133); 
+	/*App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 104, 128);
-	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
+	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);*/
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -86,42 +86,7 @@ bool SceneLevel1::Start()
 
 Update_Status SceneLevel1::Update()
 {
-	positionx -= speedx;
-	positiony += speedy;
-
-	position_num_x += speed_num_x;
-	position_num_y -= speed_num_y;
-
-	if (App->player->position.x > 235)
-	{
-		App->player->position.x = -5;
-	}
-	if (App->player->position.x < -5)
-	{
-		App->player->position.x = 235;
-	}
-	if (positiony > 130)
-	{
-		speedx = 0;
-		speedy = -1;
-	}
-	if (position_num_y < 150)
-	{
-		speed_num_x = 0;
-		speed_num_y = 1;
-	}
-	if (positiony < 100 && speedx == 0 && speedy == -1)
-	{
-		speedx = 5;
-		speedy = 0;
-	}
-	if (position_num_y < 120 && speed_num_x == 0 && speed_num_y == 1)
-	{
-		speed_num_x = 5;
-		speed_num_y = 0;
-	}
-
-
+	
 	/*App->render->camera.x += 15;*/
 
 	if (App->particles->COUNTDOWN <= 0)
@@ -174,13 +139,12 @@ bool SceneLevel1::CleanUp()
 	App->particles->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
 
-	SDL_DestroyTexture(bgTexture);
-	SDL_DestroyTexture(extraTexture);
 
 	/*ERIC: ELIMINAR COSAS AL REEMPEZAR*/
-	/*App->player->CleanUp();
-	App->enemies->CleanUp();
-	App->collisions->CleanUp();
-	App->audio->CleanUp();*/
+	//App->player->CleanUp();
+	//App->enemies->CleanUp();
+	//App->particles->CleanUp();
+	//App->collisions->CleanUp();
+	//App->audio->CleanUp();
 	return true;
 }

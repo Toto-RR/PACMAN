@@ -47,9 +47,3 @@ void Enemy::OnCollision(Collider* collider)
 	
 }
 
-void Enemy::SetToDelete()
-{
-	pendingToDelete = true;
-	if (collider != nullptr)
-		collider->pendingToDelete = true;
-}

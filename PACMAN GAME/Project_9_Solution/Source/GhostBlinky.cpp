@@ -9,30 +9,37 @@
 
 GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 {
-	up.PushBack({ 159, 17, 15, 15 });
-	up.PushBack({ 159, 18, 15, 15 });
-	currentAnim = &up;
-	up.speed = 0.05f;
-	up.loop = true;
+	if (App->sceneLevel_1->IsEnabled()) { LOG("PRESENTE") };
 
-	down.PushBack({ 64, 17, 15, 15 });
-	down.PushBack({ 64, 18, 15, 15 });
-	currentAnim = &down;
-	down.speed = 0.05f;
-	down.loop = true;
+	up.PushBack({ 144, 0, 16, 15 });
+	up.PushBack({ 160, 0, 16, 15 });
+	up.PushBack({ 176, 0, 16, 15 });
+	up.speed = 0.1f;
+	up.loop = false;
+	up.pingpong = true;
+
+	down.PushBack({ 64, 0, 16, 15 });
+	down.PushBack({ 80, 0, 16, 15 });
+	down.PushBack({ 96, 0, 16, 15 });
+	down.speed = 0.1f;
+	down.loop = false;
+	down.pingpong = true;
 
 
-	rigth.PushBack({ 111, 17, 15, 15 });
-	rigth.PushBack({ 111, 18, 15, 15 });
-	currentAnim = &rigth;
-	rigth.speed = 0.05f;
-	rigth.loop = true;
+	rigth.PushBack({ 96, 0, 16, 15 });
+	rigth.PushBack({ 112, 0, 16, 15 });
+	rigth.PushBack({ 128, 0, 16, 15 });
+	rigth.speed = 0.1f;
+	rigth.loop = false;
+	rigth.pingpong = true;
 
-	left.PushBack({ 15, 17, 15, 15 });
-	left.PushBack({ 15, 18, 15, 15 });
-	currentAnim = &left;
-	left.speed = 0.05f;
-	left.loop = true;
+
+	left.PushBack({ 0, 0, 16, 15 });
+	left.PushBack({ 16, 0, 16, 15 });
+	left.PushBack({ 32, 0, 16, 15 });
+	left.speed = 0.1f;
+	left.loop = false;
+	left.pingpong = true; 
 
 	currentAnim = &up;
 	currentDirection = UP;
@@ -45,10 +52,9 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 
 void GhostBlinky::Update()
 {
-	/*path.Update();
-	position = spawnPos + path.GetRelativePosition();
-	currentAnim = path.GetCurrentAnimation();*/
-
+	//path.Update();
+	//position = spawnPos + path.GetRelativePosition();
+	//currentAnim = path.GetCurrentAnimation(); //hacer paths de 0 speed para cambiar la anim
 
 	++timer;
 	if (timer < 1)
@@ -505,9 +511,11 @@ void GhostBlinky::Update()
 	default:
 		break;
 	}
+
+	SDL_Rect rect = currentAnim->GetCurrentFrame();
+	App->render->Blit(texture, (int)position.x, (int)position.y, &rect);
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
-
 	Enemy::Update();
 }
 

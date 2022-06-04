@@ -39,10 +39,6 @@ public:
 	// Loads the necessary textures for the enemies
 	bool Start() override;
 
-	// Called at the beginning of the application loop
-	// Removes all enemies pending to delete
-	Update_Status PreUpdate() override;
-
 	// Called at the middle of the application loop
 	// Handles all enemies logic and spawning/despawning
 	Update_Status Update() override;

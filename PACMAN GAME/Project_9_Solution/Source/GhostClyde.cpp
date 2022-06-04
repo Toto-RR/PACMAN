@@ -29,7 +29,7 @@ GhostClyde::GhostClyde(int x, int y) : Enemy(x, y)
 	left.loop = true;
 	left.speed = 0.05f;
 
-	path.PushBack({ 0.5f, 0.0f }, 130, &right);
+	/*path.PushBack({ 0.5f, 0.0f }, 130, &right);
 	path.PushBack({ 0.0f, 0.5f }, 208, &down);
 	path.PushBack({ -0.5f, 0.0f }, 32, &left);
 	path.PushBack({ 0.0f, 0.5f }, 32, &down);
@@ -39,7 +39,7 @@ GhostClyde::GhostClyde(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.0f, -0.5f }, 48, &up);
 	path.PushBack({ -0.5f, 0.0f }, 48, &left);
 	path.PushBack({ 0.0f, -0.5f }, 159, &up);
-	path.PushBack({ 0.5f, 0.0f }, 94, &right);
+	path.PushBack({ 0.5f, 0.0f }, 94, &right);*/
 	
 	path.loop = true;
 
