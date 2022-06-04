@@ -64,12 +64,13 @@ bool SceneLevel1::Start()
 
 	App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
 	App->particles->AddParticle(App->particles->SuperPacdotAnim, 37, 96);
+	App->particles->AddParticle(App->particles->PacdotAnim, 37, 108);
 
 	// Enemies ---
-	/*App->enemies->AddEnemy(Enemy_Type::BLINKY, 112, 136); 
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 112, 136); 
 	App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 104, 128);
-	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);*/
+	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -95,30 +96,25 @@ Update_Status SceneLevel1::Update()
 	{
 		App->player->position.x = -5;
 	}
-
 	if (App->player->position.x < -5)
 	{
 		App->player->position.x = 235;
 	}
-
 	if (positiony > 130)
 	{
 		speedx = 0;
 		speedy = -1;
 	}
-
 	if (position_num_y < 150)
 	{
 		speed_num_x = 0;
 		speed_num_y = 1;
 	}
-
 	if (positiony < 100 && speedx == 0 && speedy == -1)
 	{
 		speedx = 5;
 		speedy = 0;
 	}
-
 	if (position_num_y < 120 && speed_num_x == 0 && speed_num_y == 1)
 	{
 		speed_num_x = 5;
@@ -128,11 +124,12 @@ Update_Status SceneLevel1::Update()
 
 	/*App->render->camera.x += 15;*/
 
-	/*if (App->particles->COUNTDOWN <= 0)
+	if (App->particles->COUNTDOWN <= 0)
 	{
 		LOG("VICTORY");
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 30);
 		App->audio->PlayMusic("Assets/Music/Result.ogg");
+		
 	}
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) 
 	{
@@ -143,7 +140,7 @@ Update_Status SceneLevel1::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 30);
 		App->audio->PlayMusic("Assets/Music/Ending.ogg");
-	}*/
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -153,8 +150,6 @@ Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-
-
 
 	App->render->Blit(extraTexture, 63, 290, &world0);
 	App->render->Blit(extraTexture, 56, 288, &p1);
@@ -176,16 +171,16 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
+	App->particles->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
 
 	SDL_DestroyTexture(bgTexture);
 	SDL_DestroyTexture(extraTexture);
 
-	// ERIC: ELIMINAR COSAS AL REEMPEZAR
-	//App->player->CleanUp();
-	//App->enemies->CleanUp();
-	//App->particles->CleanUp();
-	//App->collisions->CleanUp();
-	//App->audio->CleanUp();
+	/*ERIC: ELIMINAR COSAS AL REEMPEZAR*/
+	/*App->player->CleanUp();
+	App->enemies->CleanUp();
+	App->collisions->CleanUp();
+	App->audio->CleanUp();*/
 	return true;
 }

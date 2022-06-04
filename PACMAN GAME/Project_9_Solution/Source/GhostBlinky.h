@@ -20,15 +20,32 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
-	enum MODES {
-		EATABLE,
-		NORMAL,
-		EATED,
+	int currentDirection;
+	int newDir;
+
+	int changeTimer = 10;
+	bool changeLimit;
+
+	enum DIRECTIONS
+	{
+		UP,
+		LEFT,
+		DOWN,
+		RIGTH,
 	};
 
-	bool Eatable = true;
+	enum MODES {
+		CHASE,
+		SCATTER,
+		FEAR,
+		EATEN,
+	};
 
-	virtual void OnCollision(Collider* c1, Collider* c2);
+	bool Eatable = false;
+
+	int currentMode;
+
+	float movSpeed = 0.8f;
 
 private:
 	// A set of steps that define the position in the screen
@@ -37,8 +54,13 @@ private:
 
 	// This enemy has one sprite and one frame
 	// We are keeping it an animation for consistency with other enemies
-	Animation up, down, left, right;
+	Animation up, down, left, rigth;
 
+	iPoint tile, tileUp, tileDown, tileLeft, tileRight;
+
+	fPoint objectives;
+
+	int timer = 0;
 
 };
 
