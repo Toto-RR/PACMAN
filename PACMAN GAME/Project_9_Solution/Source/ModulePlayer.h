@@ -98,6 +98,8 @@ public:
 	// God mode
 	bool godMode = false;
 
+	bool devourer = false;
+
 	//Fonts
 	uint score = 000;
 	uint highScore = 000;

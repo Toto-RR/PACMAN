@@ -19,6 +19,7 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+
 	//Scene
 	int scene;
 
@@ -50,7 +51,7 @@ public:
 	int currentMode;
 
 	//Movement speed
-	float movSpeed = 0.8f;
+	float Movementspeed = 0.8f;
 
 private:
 	// The path that will define the position in the world
@@ -62,10 +63,6 @@ private:
 	Animation rigth;
 	Animation left;
 
-	bool izquierda = false;
-	bool derecha = false;
-	bool arriba = false;
-	bool abajo = false;
 
 	//Tile Movement
 	iPoint tile;
@@ -77,6 +74,7 @@ private:
 	//Where the ghost tries to go
 	fPoint objectives;
 
+	int level;
 	int timer = 0;
 };
 

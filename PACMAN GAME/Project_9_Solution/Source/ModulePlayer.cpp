@@ -11,6 +11,7 @@
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 #include "SceneLevel1.h"
+#include "GhostInky.h"
 
 #include <stdio.h>
 #include "SDL/include/SDL.h"
@@ -326,6 +327,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		else
 		{
 			App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
+			App->sceneLevel_1->Disable();
 		}
 		App->enemies->CleanUp();
 		App->particles->CleanUp();
@@ -341,12 +343,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (highScore <= score)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
+		.
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;
 		if (highScore <= score)
 			highScore = score;
 		App->audio->PlayFx(Pacdot);
+		devourer = true;
 	}
 }
 

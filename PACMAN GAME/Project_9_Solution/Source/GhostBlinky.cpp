@@ -11,32 +11,32 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 {
 	if (App->sceneLevel_1->IsEnabled()) { LOG("PRESENTE") };
 
-	up.PushBack({ 144, 0, 16, 15 });
-	up.PushBack({ 160, 0, 16, 15 });
-	up.PushBack({ 176, 0, 16, 15 });
+	up.PushBack({ 144, 36, 15, 15 });
+	up.PushBack({ 160, 36, 15, 15 });
+	up.PushBack({ 176, 36, 15, 15 });
 	up.speed = 0.1f;
 	up.loop = false;
 	up.pingpong = true;
 
-	down.PushBack({ 64, 0, 16, 15 });
-	down.PushBack({ 80, 0, 16, 15 });
-	down.PushBack({ 96, 0, 16, 15 });
+	down.PushBack({ 48, 36, 15, 15 });
+	down.PushBack({ 64, 36, 15, 15 });
+	down.PushBack({ 80, 36, 15, 15 });
 	down.speed = 0.1f;
 	down.loop = false;
 	down.pingpong = true;
 
 
-	rigth.PushBack({ 96, 0, 16, 15 });
-	rigth.PushBack({ 112, 0, 16, 15 });
-	rigth.PushBack({ 128, 0, 16, 15 });
+	rigth.PushBack({ 95, 36, 15, 15 });
+	rigth.PushBack({ 111, 36, 15, 15 });
+	rigth.PushBack({ 127, 36, 15, 15 });
 	rigth.speed = 0.1f;
 	rigth.loop = false;
 	rigth.pingpong = true;
 
 
-	left.PushBack({ 0, 0, 16, 15 });
-	left.PushBack({ 16, 0, 16, 15 });
-	left.PushBack({ 32, 0, 16, 15 });
+	left.PushBack({ 0, 36, 15, 15 });
+	left.PushBack({ 15, 36, 15, 15 });
+	left.PushBack({ 31, 36, 15, 15 });
 	left.speed = 0.1f;
 	left.loop = false;
 	left.pingpong = true; 
@@ -108,13 +108,11 @@ void GhostBlinky::Update()
 
 		case GhostBlinky::UP:
 		{
-
 			//SEGUIR ADELANTE SI NO HAY PARED
 			if (App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_1->GHOST && App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y + 1] >= App->sceneLevel_1->GHOST)
 			{
 				position.y -= Movementspeed;
 				currentAnim = &up;
-
 			}
 
 			//CAMBIAR DIRECCION EN UN CRUCE
@@ -123,7 +121,6 @@ void GhostBlinky::Update()
 			{
 				changeLimit = true;
 				changeTimer = 0;
-
 
 				newDir = rand() % 2;
 				switch (newDir)
@@ -145,7 +142,6 @@ void GhostBlinky::Update()
 				changeLimit = true;
 				changeTimer = 0;
 
-
 				newDir = rand() % 2;
 				switch (newDir)
 				{
@@ -163,7 +159,6 @@ void GhostBlinky::Update()
 			//CHOQUE CON PARED
 			if ((App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_1->WALL) && (int)position.y % 8 == 0)
 			{
-
 
 				newDir = rand() % 2;
 				switch (newDir)
@@ -257,8 +252,6 @@ void GhostBlinky::Update()
 			//CHOQUE CON PARED
 			if ((App->sceneLevel_1->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_1->WALL) && (int)position.x % 8 == 0)
 			{
-
-
 
 				newDir = rand() % 2;
 				switch (newDir)
@@ -481,8 +474,6 @@ void GhostBlinky::Update()
 		default:
 			break;
 		}
-
-
 
 		break;
 	case GhostBlinky::EATEN:

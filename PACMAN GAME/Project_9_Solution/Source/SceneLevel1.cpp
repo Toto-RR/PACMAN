@@ -62,15 +62,15 @@ bool SceneLevel1::Start()
 		}
 	}
 
-	/*App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
-	App->particles->AddParticle(App->particles->SuperPacdotAnim, 37, 96);
-	App->particles->AddParticle(App->particles->PacdotAnim, 37, 108);*/
+	//App->particles->AddPacdot(App->particles->PacdotAnim, 37, 82);
+	//App->particles->AddParticle(App->particles->SuperPacdotAnim, 37, 96);
+	//App->particles->AddParticle(App->particles->PacdotAnim, 37, 108);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 115 , 133); 
 	App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 145, 133);
-	//App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
+	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -100,7 +100,28 @@ Update_Status SceneLevel1::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 30);
 		App->audio->PlayMusic("Assets/Music/Result.ogg");
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
 	}
+<<<<<<< Updated upstream
+=======
+	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN) 
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 30);
+		App->audio->PlayMusic("Assets/Music/Ending.ogg");
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+	}
+
+>>>>>>> Stashed changes
 	return Update_Status::UPDATE_CONTINUE;
 }
 

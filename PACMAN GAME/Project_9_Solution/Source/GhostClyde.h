@@ -49,7 +49,7 @@ public:
 	int currentMode;
 
 	//Movement speed
-	float movSpeed = 0.8f;
+	float Movementspeed = 0.8f;
 
 private:
 	// The path that will define the position in the world
@@ -72,6 +72,7 @@ private:
 	//Where the ghost tries to go
 	fPoint objectives;
 
+	int level;
 	int timer = 0;
 };
 
