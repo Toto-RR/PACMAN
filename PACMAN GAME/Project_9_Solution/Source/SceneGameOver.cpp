@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleCollisions.h"
 
 SceneGameOver::SceneGameOver(bool startEnabled) : Module(startEnabled)
 {
@@ -27,6 +28,7 @@ bool SceneGameOver::Start()
 
 	bgTexture = App->textures->Load("Assets/Sprites/game over.png");
 	App->player->Disable();
+	App->collisions->CleanUp();
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

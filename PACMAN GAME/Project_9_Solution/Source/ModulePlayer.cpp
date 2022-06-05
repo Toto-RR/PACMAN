@@ -243,7 +243,7 @@ Update_Status ModulePlayer::Update()
 	{
 		godMode = false;
 		collider = App->collisions->AddCollider({ (int)position.x, (int)position.y, 14, 14 }, Collider::Type::ENEMY, this);
-
+		App->audio->PlayMusic("Assets/Music/Ending.ogg");
 	};
 
 	collider->SetPos((int)position.x, (int)position.y);
