@@ -19,14 +19,61 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+	//Scene
+	int scene;
+
+
+	enum DIRECTIONS
+	{
+		UP,
+		LEFT,
+		DOWN,
+		RIGTH,
+	};
+
+	int currentDirection;
+	int newDir;
+	//Ghost cannot change direction in an intersection if it didn't underwent the opposite direction
+	int changeTimer = 10;
+	bool changeLimit;
+
+
+	//GHOST MODES
+	enum MODES
+	{
+		CHASE,
+		SCATTER,
+		FEAR,
+		EATEN,
+	};
+
+	int currentMode;
+
+	//Movement speed
+	float movSpeed = 0.8f;
+
 private:
-	// A set of steps that define the position in the screen
-	// And an animation for each step
+	// The path that will define the position in the world
 	Path path;
 
-	// This enemy has one sprite and one frame
-	// We are keeping it an animation for consistency with other enemies
-	Animation up, down, left, right;
+	// Enemy animations
+	Animation up; //TODO
+	Animation down;
+	Animation rigth;
+	Animation left;
+
+
+	//Tile Movement
+	iPoint tile;
+	iPoint tileUp;
+	iPoint tileDown;
+	iPoint tileLeft;
+	iPoint tileRight;
+
+	//Where the ghost tries to go
+	fPoint objectives;
+
+	int timer = 0;
 };
 
 #endif

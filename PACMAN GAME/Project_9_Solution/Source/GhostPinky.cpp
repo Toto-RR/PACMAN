@@ -17,11 +17,11 @@ GhostPinky::GhostPinky(int x, int y) : Enemy(x, y)
 	down.loop = true;
 	down.speed = 0.05f;
 
-	right.PushBack({ 111, 53, 15, 15 });
-	right.PushBack({ 111, 54, 15, 15 });
-	currentAnim = &right;
-	right.loop = true;
-	right.speed = 0.05f;
+	rigth.PushBack({ 111, 53, 15, 15 });
+	rigth.PushBack({ 111, 54, 15, 15 });
+	currentAnim = &rigth;
+	rigth.loop = true;
+	rigth.speed = 0.05f;
 
 	left.PushBack({ 16, 53, 15, 15 });
 	left.PushBack({ 16, 54, 15, 15 });
