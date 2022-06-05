@@ -130,7 +130,7 @@ Update_Status ModuleParticles::PostUpdate()
 
 void ModuleParticles::AddPacdot(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
-	COUNTDOWN++;
+	++COUNTDOWN;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
@@ -153,7 +153,7 @@ void ModuleParticles::AddPacdot(const Particle& particle, int x, int y, Collider
 }
 void ModuleParticles::AddSuperpacdot(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
-	COUNTDOWN++;
+	++COUNTDOWN;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
