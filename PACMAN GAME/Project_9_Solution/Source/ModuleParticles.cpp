@@ -80,12 +80,12 @@ bool ModuleParticles::CleanUp()
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
+	--COUNTDOWN;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		// Always destroy particles that collide
 		if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
-			--COUNTDOWN;
 			delete particles[i];
 			particles[i] = nullptr;
 			break;

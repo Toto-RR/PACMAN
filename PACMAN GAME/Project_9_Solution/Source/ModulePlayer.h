@@ -97,7 +97,7 @@ public:
 
 	// God mode
 	bool godMode = false;
-
+	bool dead = false;
 	bool devourer = false;
 
 	//Fonts

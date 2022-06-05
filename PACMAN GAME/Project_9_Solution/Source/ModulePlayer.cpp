@@ -217,8 +217,7 @@ Update_Status ModulePlayer::Update()
 
 	}
 
-	//Go to other side of map after using TP
-
+	//TP
 	if (position.x <= -8)
 	{
 		position.x = 232;
@@ -229,7 +228,7 @@ Update_Status ModulePlayer::Update()
 	}
 
 	//God mode: Inmunity agaist ghosts
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) //ERIC:GOD MODE
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN) 
 	{
 		if (godMode == false)
 			godMode = true;
@@ -240,7 +239,7 @@ Update_Status ModulePlayer::Update()
 
 	};
 
-	if (App->input->keys[SDL_SCANCODE_F4] == KEY_DOWN) //ERIC: boton de muerte
+	if (App->input->keys[SDL_SCANCODE_F4] == KEY_DOWN)
 	{
 		godMode = false;
 		collider = App->collisions->AddCollider({ (int)position.x, (int)position.y, 14, 14 }, Collider::Type::ENEMY, this);
@@ -274,7 +273,6 @@ Update_Status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(173, 14, player2Font, "CREDIT");
 	App->fonts->BlitText(197, 22, player2Font, "0");
 
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -283,22 +281,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true)
 	{
 		/*App->particles->AddSuperpacdot(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);*/
-		if (MovingRight == true)
-		{
-			position.x--;
-		}
-		else if (MovingLeft == true)
-		{
-			position.x++;
-		}
-		else if (MovingUp == true)
-		{
-			position.y++;
-		}
-		else if (MovingDown == true)
-		{
-			position.y--;
-		}
+		MovingDown = false;
+		MovingLeft = false;
+		MovingRight = false;
+		MovingUp = false;
+		
 		if (currentAnimation != &death) {
 			death.PushBack({ 1, 62, 15, 15 });
 			death.PushBack({ 49, 62, 15, 15 });
@@ -316,9 +303,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			death.PushBack({ 240, 94, 15, 15 });
 			currentAnimation = &death;
 			App->audio->PlayFx(explosionFx);
+			death.loop = false;
+			death.pingpong = false;
+			death.speed = 0.16f;
 		}
-		death.loop = false;
-		death.speed = 0.2f;
+		
 
 		if (App->sceneLevel_1->IsEnabled())
 		{
@@ -329,8 +318,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
 			App->sceneLevel_1->Disable();
 		}
-		App->enemies->CleanUp();
-		App->particles->CleanUp();
+		
 	}
 
 	//if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 
@@ -350,13 +338,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (highScore <= score)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
+		devourer = true;
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;
 		if (highScore <= score)
 			highScore = score;
 		App->audio->PlayFx(Pacdot);
-		devourer = true;
 	}
 }
 
@@ -365,5 +353,7 @@ void ModulePlayer::RemovePacman(Collider* collider)
 	if (this->collider->PLAYER && collider->ENEMY)
 	{
 		destroyed = true;
+		App->enemies->CleanUp();
+		App->particles->CleanUp();
 	}
 }

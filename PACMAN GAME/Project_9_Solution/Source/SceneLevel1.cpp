@@ -228,10 +228,10 @@ bool SceneLevel1::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::BLINKY, 115 , 133); 
-	App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 145, 133);
-	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
+	//App->enemies->AddEnemy(Enemy_Type::BLINKY, 115 , 133); 
+	//App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
+	//App->enemies->AddEnemy(Enemy_Type::CLYDE, 145, 133);
+	//App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -255,6 +255,19 @@ Update_Status SceneLevel1::Update()
 		LOG("VICTORY");
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 		App->audio->PlayMusic("Assets/Music/Result.ogg");
+		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
+		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
+		App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
+		App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
+		App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
+
+		App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
+		App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
+		App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
+		App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
+		App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
+		App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
+
 		App->player->Disable();
 		App->enemies->Disable();
 		App->fonts->Disable();
@@ -296,7 +309,6 @@ Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-
 	App->render->Blit(extraTexture, 63, 290, &world0);
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
