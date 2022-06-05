@@ -282,7 +282,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true)
 	{
-		App->particles->AddParticle(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);
+		/*App->particles->AddSuperpacdot(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);*/
 		if (MovingRight == true)
 		{
 			position.x--;
@@ -333,6 +333,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->CleanUp();
 	}
 
+	//if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 
+	//{
+	//	score += 200;
+	//	App->enemies->CleanUp()
+	//}
+
+
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PINEAPPLE) {
 		score += 100;
 		if (highScore <= score)
@@ -343,7 +350,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (highScore <= score)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
-		.
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;

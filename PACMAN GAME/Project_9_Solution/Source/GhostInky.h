@@ -49,7 +49,7 @@ public:
 	};
 
 	int currentMode;
-
+	bool devoreur = false;
 	//Movement speed
 	float Movementspeed = 0.8f;
 

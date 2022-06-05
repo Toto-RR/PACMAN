@@ -50,7 +50,8 @@ bool ModuleParticles::Start()
 	PacdotAnim.anim.speed = 0.06f;
 
 	PineappleAnim.anim.PushBack({ 0, 28, 17, 17 });
-	
+	PineappleAnim.anim.PushBack({ 0, 29, 17, 17 });
+	PineappleAnim.anim.pingpong = true;
 
 	return true;
 }
@@ -127,29 +128,6 @@ Update_Status ModuleParticles::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
-{
-	COUNTDOWN++;
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		//Finding an empty slot for a new particle
-		if (particles[i] == nullptr)
-		{
-			Particle* p = new Particle(particle);
-
-			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-			p->position.y = y;
-
-			//Adding the particle's collider
-			if (colliderType != Collider::Type::NONE)
-				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
-
-			particles[i] = p;
-			break;
-		}
-	}
-}
 void ModuleParticles::AddPacdot(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
 	COUNTDOWN++;
@@ -173,3 +151,27 @@ void ModuleParticles::AddPacdot(const Particle& particle, int x, int y, Collider
 		}
 	}
 }
+void ModuleParticles::AddSuperpacdot(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+{
+	COUNTDOWN++;
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		//Finding an empty slot for a new particle
+		if (particles[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
+
+			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
+
+			//Adding the particle's collider
+			if (colliderType != Collider::Type::NONE)
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
+
+			particles[i] = p;
+			break;
+		}
+	}
+}
+

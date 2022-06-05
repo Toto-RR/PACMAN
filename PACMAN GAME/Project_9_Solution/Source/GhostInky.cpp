@@ -53,36 +53,7 @@ void GhostInky::Update()
 	//path.Update();
 	//position = spawnPos + path.GetRelativePosition();
 	//currentAnim = path.GetCurrentAnimation(); //hacer paths de 0 speed para cambiar la anim
-	if (App->player->devourer == false)
-	{
-		up.PushBack({ 144, 69, 15, 15 });
-		up.PushBack({ 160, 69, 15, 15 });
-		up.PushBack({ 176, 69, 15, 15 });
-		currentAnim = &up;
-		up.loop = true;
-		up.speed = 0.05f;
-
-		down.PushBack({ 48, 69, 15, 15 });
-		down.PushBack({ 64, 69, 15, 15 });
-		down.PushBack({ 80, 69, 15, 15 });
-		currentAnim = &down;
-		down.loop = true;
-		down.speed = 0.05f;
-
-		rigth.PushBack({ 95, 69, 15, 15 });
-		rigth.PushBack({ 111, 69, 15, 15 });
-		rigth.PushBack({ 127, 69, 15, 15 });
-		currentAnim = &rigth;
-		rigth.loop = true;
-		rigth.speed = 0.05f;
-
-		left.PushBack({ 0, 69, 15, 15 });
-		left.PushBack({ 15, 69, 15, 15 });
-		left.PushBack({ 31, 69, 15, 15 });
-		currentAnim = &left;
-		left.loop = true;
-		left.speed = 0.05f;
-	}
+	
 
 	timer++;
 	if (timer > 40)
@@ -120,9 +91,40 @@ void GhostInky::Update()
 		changeTimer = 0;
 	}
 
+
+
 	switch (currentMode)
 	{
 	case GhostInky::CHASE:
+		
+			up.PushBack({ 144, 69, 15, 15 });
+			up.PushBack({ 160, 69, 15, 15 });
+			up.PushBack({ 176, 69, 15, 15 });
+			currentAnim = &up;
+			up.loop = true;
+			up.speed = 0.05f;
+
+			down.PushBack({ 48, 69, 15, 15 });
+			down.PushBack({ 64, 69, 15, 15 });
+			down.PushBack({ 80, 69, 15, 15 });
+			currentAnim = &down;
+			down.loop = true;
+			down.speed = 0.05f;
+
+			rigth.PushBack({ 95, 69, 15, 15 });
+			rigth.PushBack({ 111, 69, 15, 15 });
+			rigth.PushBack({ 127, 69, 15, 15 });
+			currentAnim = &rigth;
+			rigth.loop = true;
+			rigth.speed = 0.05f;
+
+			left.PushBack({ 0, 69, 15, 15 });
+			left.PushBack({ 15, 69, 15, 15 });
+			left.PushBack({ 31, 69, 15, 15 });
+			currentAnim = &left;
+			left.loop = true;
+			left.speed = 0.05f;
+		
 		break;
 	case GhostInky::SCATTER:
 		break;

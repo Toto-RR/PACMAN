@@ -78,10 +78,10 @@ bool SceneLevel4::Start()
 
 	//SuperPacdots ---
 
-	//App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 60);
-	//App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 60);
-	//App->particles->AddParticle(App->particles->SuperPacdotAnim, 11, 236);
-	//App->particles->AddParticle(App->particles->SuperPacdotAnim, 210, 236);
+	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 11, 60);
+	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 210, 60);
+	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 11, 236);
+	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 210, 236);
 
 	////Pacdots ---
 

@@ -45,6 +45,7 @@ GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 	currentDirection = UP;
 	currentMode = FEAR;
 
+
 	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
@@ -101,8 +102,6 @@ void GhostBlinky::Update()
 		break;
 	case GhostBlinky::FEAR:
 		//ERIC: Cada iteracion pasa por aqui, hay que limitar que si hay un cambio complato de direccion sea una sola vez
-
-
 		switch (currentDirection)
 		{
 
@@ -481,6 +480,10 @@ void GhostBlinky::Update()
 	default:
 		break;
 	}
+
+
+	
+
 
 	SDL_Rect rect = currentAnim->GetCurrentFrame();
 	App->render->Blit(texture, (int)position.x, (int)position.y, &rect);

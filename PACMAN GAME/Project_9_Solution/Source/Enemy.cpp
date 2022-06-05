@@ -17,7 +17,7 @@ Enemy::Enemy(int x, int y) : position(x, y)
 
 Enemy::~Enemy()
 {
-	if (collider != nullptr)
+	if (collider != nullptr || collider == nullptr)
 		collider->pendingToDelete = false;
 }
 

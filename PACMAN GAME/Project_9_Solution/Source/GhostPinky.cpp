@@ -13,28 +13,32 @@ GhostPinky::GhostPinky(int x, int y) : Enemy(x, y)
 	up.PushBack({ 160, 53, 15, 15 });
 	up.PushBack({ 176, 53, 15, 15 });
 	currentAnim = &up;
-	up.loop = true;
+	up.loop = false;
+	up.pingpong = true;
 	up.speed = 0.05f;
 
 	down.PushBack({ 48, 53, 15, 15 });
 	down.PushBack({ 64, 53, 15, 15 });
 	down.PushBack({ 80, 53, 15, 15 });
 	currentAnim = &down;
-	down.loop = true;
+	down.loop = false;
+	down.pingpong = true;
 	down.speed = 0.05f;
 
 	rigth.PushBack({ 95, 53, 15, 15 });
 	rigth.PushBack({ 111, 53, 15, 15 });
 	rigth.PushBack({ 127, 53, 15, 15 });
 	currentAnim = &rigth;
-	rigth.loop = true;
+	rigth.loop = false;
+	rigth.pingpong = true;
 	rigth.speed = 0.05f;
 
 	left.PushBack({ 0, 53, 15, 15 });
 	left.PushBack({ 15, 53, 15, 15 });
 	left.PushBack({ 31, 53, 15, 15 });
 	currentAnim = &left;
-	left.loop = true;
+	left.loop = false;
+	left.pingpong = true;
 	left.speed = 0.05f;
 
 	currentAnim = &left;
