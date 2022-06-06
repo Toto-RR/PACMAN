@@ -151,7 +151,32 @@ void ModuleParticles::AddPacdot(const Particle& particle, int x, int y, Collider
 		}
 	}
 }
+
 void ModuleParticles::AddSuperpacdot(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+{
+	++COUNTDOWN;
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		//Finding an empty slot for a new particle
+		if (particles[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
+
+			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
+
+			//Adding the particle's collider
+			if (colliderType != Collider::Type::NONE)
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
+
+			particles[i] = p;
+			break;
+		}
+	}
+}
+
+void ModuleParticles::AddPineapple(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
 	++COUNTDOWN;
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

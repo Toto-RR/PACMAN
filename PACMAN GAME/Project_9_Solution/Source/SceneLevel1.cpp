@@ -226,7 +226,9 @@ bool SceneLevel1::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 126, 223);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 126, 236);
 
-	
+
+	// Pineapple ---
+	App->particles->AddPineapple(App->particles->PineappleAnim, 110, 160);
 
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 115, 133);
