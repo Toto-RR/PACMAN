@@ -239,10 +239,10 @@ bool SceneLevel1::Start()
 	App->particles->AddPineapple(App->particles->PineappleAnim, 110, 160);
 
 	// Enemies ---
-	//App->enemies->AddEnemy(Enemy_Type::BLINKY, 115, 133);
-	//App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 115, 133);
-	//App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 125, 120);
+	App->enemies->AddEnemy(Enemy_Type::INKY, 125, 120);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 125, 120);
+	App->enemies->AddEnemy(Enemy_Type::PINKY, 125, 120);
 	
 	
 
@@ -269,21 +269,6 @@ Update_Status SceneLevel1::Update()
 		
 		LOG("VICTORY");
 		victory = true;
-		//App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
-		//App->audio->PlayMusic("Assets/Music/Result.ogg");
-		//App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
-		//App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
-		//App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
-		//App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
-		//App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
-
-		//App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
-		//App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
-		//App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
-		//App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
-		//App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
-		//App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
-
 
 		App->player->Disable();
 		App->enemies->Disable();
@@ -291,13 +276,6 @@ Update_Status SceneLevel1::Update()
 		App->particles->Disable();
 		App->audio->PlayMusic(NULL, 1.0f);
 		App->collisions->CleanUp();
-		//App->player->Disable();
-		//App->enemies->Disable();
-		//App->fonts->Disable();
-		//App->particles->Disable();
-		//App->sceneLevel_1->Disable();
-		//App->audio->PlayMusic(NULL, 1.0f);
-		//App->collisions->CleanUp();
 		
 	}
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) 
@@ -329,14 +307,10 @@ Update_Status SceneLevel1::Update()
 		LOG("VICTORY");
 		
 		victory = true;
-	
-		//App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
-		//App->audio->PlayMusic("Assets/Music/Result.ogg");
 
 		App->player->Disable();
 		App->enemies->Disable();
 		App->fonts->Disable();
-		App->sceneLevel_1->Disable();
 		App->particles->Disable();
 		App->audio->PlayMusic(NULL, 1.0f);
 		App->collisions->CleanUp();
@@ -349,6 +323,39 @@ Update_Status SceneLevel1::Update()
 		{
 			App->audio->PlayFx(clear);
 		}
+		if (position_clear_y > 100)
+		{
+			position_clear_x += 2;
+			position_clear_y -= 6;
+		}
+		if (position_clear_y < 105)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 60);
+		}
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F7] == Key_State::KEY_DOWN)
+	{
+		LOG("VICTORY");
+
+		victory1 = true;
+
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+
+	}
+
+	if (victory1)
+	{
+		if (position_clear_y == 272)
+		{
+			App->audio->PlayFx(clear);
+		}
 		if (position_clear_y>100)
 		{
 			position_clear_x+=2;
@@ -356,7 +363,7 @@ Update_Status SceneLevel1::Update()
 		}
 		if (position_clear_y < 105)
 		{
-			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 60);
+			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_F, 60);
 		}
 		
 	}

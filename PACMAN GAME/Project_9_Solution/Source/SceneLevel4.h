@@ -45,8 +45,14 @@ public:
 	int position_num_y = 275;
 	int speed_num_x = 3;
 	int speed_num_y = 3;
+	int position_clear_x = -75;
+	int position_clear_x2 = 100;
+	int position_clear_y = 350;
+
+	bool victory = false;
 
 	uint round = 0;
+	uint clear = 0;
 
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };

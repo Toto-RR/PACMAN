@@ -1,5 +1,7 @@
 #include "SceneLevel4.h"
 
+
+#include "ModuleInput.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -7,8 +9,9 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
-#include "ModuleFonts.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
+#include "ModuleFonts.h"
 
 #include "SDL/include/SDL.h"
 
@@ -39,6 +42,7 @@ bool SceneLevel4::Start()
 
 	//Music
 	round1 = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
+	clear = App->audio->LoadFx("Assets/Music/FX/round-clear.wav");
 	App->audio->PlayFx(round1);
 	App->audio->PlayMusic("Assets/Music/Music/Original Pac-Man Maze (World 1).ogg", 25.0f);
 
@@ -230,9 +234,9 @@ bool SceneLevel4::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 105, 122);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
-	App->enemies->AddEnemy(Enemy_Type::INKY, 105, 107);
+	App->enemies->AddEnemy(Enemy_Type::INKY, 105, 122);
 	App->enemies->AddEnemy(Enemy_Type::PINKY, 105, 107);
 
 
@@ -292,7 +296,42 @@ Update_Status SceneLevel4::Update()
 		speed_num_y = 0;
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F7] == Key_State::KEY_DOWN)
+	{
+		LOG("VICTORY");
 
+		victory = true;
+
+		//App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
+		//App->audio->PlayMusic("Assets/Music/Result.ogg");
+
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		//App->sceneLevel_1->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+
+	}
+
+	if (victory)
+	{
+		if (position_clear_y == 272)
+		{
+			App->audio->PlayFx(clear);
+		}
+		if (position_clear_y > 100)
+		{
+			position_clear_x += 2;
+			position_clear_y -= 6;
+		}
+		if (position_clear_y < 105)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_F, 60);
+		}
+
+	}
 
 	
 	
