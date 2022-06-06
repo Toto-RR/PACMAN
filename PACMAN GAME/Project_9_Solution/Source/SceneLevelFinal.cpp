@@ -41,7 +41,7 @@ bool SceneLevelFinal::Start()
 	round1 = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
 	clear = App->audio->LoadFx("Assets/Music/FX/round-clear.wav");
 	App->audio->PlayFx(round1);
-	App->audio->PlayMusic("Assets/Music/Music/Original Pac-Man Maze (World 1).ogg", 25.0f);
+	App->audio->PlayMusic("Assets/Music/Music/Last Boss (Phase 1).ogg", 25.0f);
 
 	//Letters animation
 	char lookupTable[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ!'?-:/" };
