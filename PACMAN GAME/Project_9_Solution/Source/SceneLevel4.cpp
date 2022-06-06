@@ -344,6 +344,7 @@ bool SceneLevel4::CleanUp()
 	App->sceneLevel_4->Disable();
 	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
+	App->particles->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
