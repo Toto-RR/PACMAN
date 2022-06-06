@@ -497,7 +497,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (App->sceneLevel_1->IsEnabled())
 		{
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
-			App->sceneLevel_1->Disable();
+			//App->sceneLevel_1->Disable();
 		}
 		else
 		{
