@@ -11,6 +11,7 @@
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 #include "SceneLevel1.h"
+#include "SceneLevel4.h"
 #include "GhostInky.h"
 
 #include <stdio.h>
@@ -128,24 +129,49 @@ Update_Status ModulePlayer::Update()
 	//MOVIMIENTO IZQUIERDA
 	if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || MovingLeft == true)
 	{
-		//IT CAN MOVE INTO TP AN PAST IT
-		if ((App->sceneLevel_1->TileSet[0][tileLeft.x][tileLeft.y] >= App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_1->EMPTY) ||
-			(App->sceneLevel_1->TileSet[0][tile.x][tile.y] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_1->TP) ||
-			(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_1->TP) ||
-			(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 2] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 2] == App->sceneLevel_1->TP))
+		if (App->sceneLevel_1->IsEnabled())
 		{
-			MovingUp = false;
-			MovingDown = false;
-			MovingLeft = true;
-			MovingRight = false;
-			position.x -= speed;
-
-			if (currentAnimation != &leftAnim)
+			if ((App->sceneLevel_1->TileSet[0][tileLeft.x][tileLeft.y] >= App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_1->EMPTY) ||
+				(App->sceneLevel_1->TileSet[0][tile.x][tile.y] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_1->TP) ||
+				(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_1->TP) ||
+				(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 2] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 2] == App->sceneLevel_1->TP))
 			{
-				leftAnim.Reset();
-				currentAnimation = &leftAnim;
-			}
+				MovingUp = false;
+				MovingDown = false;
+				MovingLeft = true;
+				MovingRight = false;
+				position.x -= speed;
 
+				if (currentAnimation != &leftAnim)
+				{
+					leftAnim.Reset();
+					currentAnimation = &leftAnim;
+				}
+
+			}
+		}
+		//IT CAN MOVE INTO TP AN PAST IT
+
+		else if (App->sceneLevel_4->IsEnabled())
+		{
+			if ((App->sceneLevel_4->TileSet[0][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[0][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->EMPTY) ||
+				(App->sceneLevel_4->TileSet[0][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[0][tile.x][tile.y + 2] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y + 2] == App->sceneLevel_4->TP))
+			{
+				MovingUp = false;
+				MovingDown = false;
+				MovingLeft = true;
+				MovingRight = false;
+				position.x -= speed;
+
+				if (currentAnimation != &leftAnim)
+				{
+					leftAnim.Reset();
+					currentAnimation = &leftAnim;
+				}
+
+			}
 		}
 
 	}
@@ -153,24 +179,49 @@ Update_Status ModulePlayer::Update()
 	//MOVIMIENTO DERECHA
 	if ((App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT) || MovingRight == true)
 	{
-		//IT CAN MOVE INTO TP AN PAST IT
-		if ((App->sceneLevel_1->TileSet[0][tileRight.x][tileRight.y] >= App->sceneLevel_1->EMPTY &&App->sceneLevel_1->TileSet[0][tileRight.x + 1][tileRight.y] >= App->sceneLevel_1->EMPTY) ||
-			(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_1->TP) ||
-			(App->sceneLevel_1->TileSet[0][tile.x][tile.y] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_1->TP) ||
-			(App->sceneLevel_1->TileSet[0][tile.x][tile.y - 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y - 1] == App->sceneLevel_1->TP))
+		if (App->sceneLevel_1->IsEnabled())
 		{
-			MovingUp = false;
-			MovingDown = false;
-			MovingLeft = false;
-			MovingRight = true;
-			position.x += speed;
-
-			if (currentAnimation != &rightAnim)
+			if ((App->sceneLevel_1->TileSet[0][tileRight.x][tileRight.y] >= App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[0][tileRight.x + 1][tileRight.y] >= App->sceneLevel_1->EMPTY) ||
+				(App->sceneLevel_1->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_1->TP) ||
+				(App->sceneLevel_1->TileSet[0][tile.x][tile.y] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_1->TP) ||
+				(App->sceneLevel_1->TileSet[0][tile.x][tile.y - 1] == App->sceneLevel_1->TP && App->sceneLevel_1->TileSet[0][tile.x + 1][tile.y - 1] == App->sceneLevel_1->TP))
 			{
-				rightAnim.Reset();
-				currentAnimation = &rightAnim;
-			}
+				MovingUp = false;
+				MovingDown = false;
+				MovingLeft = false;
+				MovingRight = true;
+				position.x += speed;
 
+				if (currentAnimation != &rightAnim)
+				{
+					rightAnim.Reset();
+					currentAnimation = &rightAnim;
+				}
+
+			}
+		}
+		//IT CAN MOVE INTO TP AN PAST IT
+
+		else if (App->sceneLevel_4->IsEnabled())
+		{
+			if ((App->sceneLevel_4->TileSet[0][tileRight.x][tileRight.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[0][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->EMPTY) ||
+				(App->sceneLevel_4->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[0][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[0][tile.x][tile.y - 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y - 1] == App->sceneLevel_4->TP))
+			{
+				MovingUp = false;
+				MovingDown = false;
+				MovingLeft = false;
+				MovingRight = true;
+				position.x += speed;
+
+				if (currentAnimation != &rightAnim)
+				{
+					rightAnim.Reset();
+					currentAnimation = &rightAnim;
+				}
+
+			}
 		}
 
 	}
@@ -178,43 +229,90 @@ Update_Status ModulePlayer::Update()
 	//MOVIMIENTO ABAJO
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || MovingDown == true)
 	{
-		if (App->sceneLevel_1->TileSet[0][tileDown.x][tileDown.y] == App->sceneLevel_1->EMPTY &&
-			App->sceneLevel_1->TileSet[0][tileDown.x][tileDown.y + 1] >= App->sceneLevel_1->EMPTY)
+		if (App->sceneLevel_1->IsEnabled())
 		{
-			MovingUp = false;
-			MovingDown = true;
-			MovingLeft = false;
-			MovingRight = false;
-			position.y += speed;
-
-			if (currentAnimation != &downAnim)
+			if (App->sceneLevel_1->TileSet[0][tileDown.x][tileDown.y] == App->sceneLevel_1->EMPTY &&
+				App->sceneLevel_1->TileSet[0][tileDown.x][tileDown.y + 1] >= App->sceneLevel_1->EMPTY)
 			{
-				downAnim.Reset();
-				currentAnimation = &downAnim;
-			}
+				MovingUp = false;
+				MovingDown = true;
+				MovingLeft = false;
+				MovingRight = false;
+				position.y += speed;
 
+				if (currentAnimation != &downAnim)
+				{
+					downAnim.Reset();
+					currentAnimation = &downAnim;
+				}
+
+			}
 		}
+
+		else if (App->sceneLevel_4->IsEnabled())
+		{
+			if (App->sceneLevel_4->TileSet[0][tileDown.x][tileDown.y] == App->sceneLevel_4->EMPTY &&
+				App->sceneLevel_4->TileSet[0][tileDown.x][tileDown.y + 1] >= App->sceneLevel_4->EMPTY)
+			{
+				MovingUp = false;
+				MovingDown = true;
+				MovingLeft = false;
+				MovingRight = false;
+				position.y += speed;
+
+				if (currentAnimation != &downAnim)
+				{
+					downAnim.Reset();
+					currentAnimation = &downAnim;
+				}
+
+			}
+		}
+
 
 	}
 
 	//MOVIMIENTO ARRIBA
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || MovingUp == true)
 	{
-		if (App->sceneLevel_1->TileSet[0][tileUp.x][tileUp.y] == App->sceneLevel_1->EMPTY &&
-			App->sceneLevel_1->TileSet[0][tileUp.x][tileUp.y + 1] >= App->sceneLevel_1->EMPTY)
-		{
-			MovingUp = true;
-			MovingDown = false;
-			MovingLeft = false;
-			MovingRight = false;
-			position.y -= speed;
 
-			if (currentAnimation != &upAnim)
+		if (App->sceneLevel_1->IsEnabled())
+		{
+			if (App->sceneLevel_1->TileSet[0][tileUp.x][tileUp.y] == App->sceneLevel_1->EMPTY &&
+				App->sceneLevel_1->TileSet[0][tileUp.x][tileUp.y + 1] >= App->sceneLevel_1->EMPTY)
 			{
-				upAnim.Reset();
-				currentAnimation = &upAnim;
+				MovingUp = true;
+				MovingDown = false;
+				MovingLeft = false;
+				MovingRight = false;
+				position.y -= speed;
+
+				if (currentAnimation != &upAnim)
+				{
+					upAnim.Reset();
+					currentAnimation = &upAnim;
+				}
 			}
 		}
+		else if (App->sceneLevel_4->IsEnabled())
+		{
+			if (App->sceneLevel_4->TileSet[0][tileUp.x][tileUp.y] == App->sceneLevel_4->EMPTY &&
+				App->sceneLevel_4->TileSet[0][tileUp.x][tileUp.y + 1] >= App->sceneLevel_4->EMPTY)
+			{
+				MovingUp = true;
+				MovingDown = false;
+				MovingLeft = false;
+				MovingRight = false;
+				position.y -= speed;
+
+				if (currentAnimation != &upAnim)
+				{
+					upAnim.Reset();
+					currentAnimation = &upAnim;
+				}
+			}
+		}
+
 
 	}
 

@@ -362,6 +362,7 @@ bool SceneLevel1::CleanUp()
 	App->audio->PlayMusic(NULL, 1.0f);
 
 
+
 	/*ERIC: ELIMINAR COSAS AL REEMPEZAR*/
 	//App->player->CleanUp();
 	//App->enemies->CleanUp();
