@@ -243,6 +243,7 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->particles->Enable();
 	App->fonts->Enable();
+	App->collisions->Enable();
 
 	return ret;
 }
