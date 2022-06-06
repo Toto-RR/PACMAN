@@ -1,37 +1,35 @@
-## Welcome to GitHub Pages
+# **Welcome to Denma Studios website.**
 
-You can use the [editor on GitHub](https://github.com/Toto-RR/PACMAN/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![DenmaStudios Logo](https://user-images.githubusercontent.com/99719601/172234461-cf2685a7-99eb-4711-90ed-b2bb5ecb0020.jpg)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Our project
 
-### Markdown
+We’re going to replicate the game Pac-Man arrangement which was released in 1996 by Namco as part of the Namco Classic Collection Vol. 2 as a tribute. This project has been done by four catalan students of CITM - UPC (Terrasa, Spain).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## About the game
 
-```markdown
-Syntax highlighted code block
+PAC-MAN Arrangement is a 1996 videogame which was initially released as part of the Namco Classic Collection Volume 2. Nevertheless, it was later included in Pac-Man Collection, alongside several versions of Namco Museum.
 
-# Header 1
-## Header 2
-### Header 3
+Like the original Pac-Man, Pac-Man Arrangement is a maze game in which the objective is to clear all Pac-Dots on the board by eating them and avoiding hazardous contact with the ghosts that also inhabit the maze.
 
-- Bulleted
-- List
+Pac-Man was created by videogame designer Toru Iwatani. Iwatani was inspired by a pizza that was missing a piece to create the famous protagonist of the saga. Its name comes from the onomatopoeia paku (パ ク) which represents the sound produced when the mouth is opened and closed. It was originally marketed in Japan under the name Puck-Man, but the American distributor Midway changed it to Pac-Man for the USA market, as puck looks like fuck.
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+## GAMEPLAY
 
-[Link](url) and ![Image](src)
-```
+-----------
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
+### CONTROLS
+- UP: W key
+- LEFT: A key
+- RIGHT: D key
+- DOWN: S key
+- CONTINUE: Spacebar key
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Toto-RR/PACMAN/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Debug functionalities: 
+- F1: GodMode
+- F2: Colliders
+- F3: Win
+- F4: Lose
+- F5:
