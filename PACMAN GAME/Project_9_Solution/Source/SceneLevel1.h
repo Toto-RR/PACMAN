@@ -36,6 +36,8 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* extraTexture = nullptr;
 
+	bool victory = false;
+
 	int positionx = 255;
 	int positiony = -50;
 	int speedx = 5;
@@ -45,7 +47,7 @@ public:
 	int position_num_y = 275;
 	int speed_num_x = 3;
 	int speed_num_y = 3;
-	int position_clear_x = -50;
+	int position_clear_x = -75;
 	int position_clear_x2 = 100;
 	int position_clear_y = 350;	
 
@@ -72,6 +74,7 @@ public:
 	};
 
 	uint round = 0;
+	uint clear = 0;
 	int timer = 20;
 
 	//TileSet del nivel

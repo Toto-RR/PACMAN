@@ -44,6 +44,7 @@ bool SceneLevel1::Start()
 
 	//Music
 	round = App->audio->LoadFx("Assets/Music/FX/opening-fanfare.wav");
+	clear = App->audio->LoadFx("Assets/Music/FX/round-clear.wav");
 	App->audio->PlayFx(round);
 	App->audio->PlayMusic("Assets/Music/Music/Toy Box World (World 0).ogg", 25.0f);
 
@@ -258,29 +259,38 @@ Update_Status SceneLevel1::Update()
 
 	if (App->particles->COUNTDOWN <= 0)
 	{
+		
 		LOG("VICTORY");
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
-		App->audio->PlayMusic("Assets/Music/Result.ogg");
-		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
-		App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
-		App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
-		App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
+		victory = true;
+		//App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
+		//App->audio->PlayMusic("Assets/Music/Result.ogg");
+		//App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
+		//App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
+		//App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
+		//App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
+		//App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
 
-		App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
-		App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
-		App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
-		App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
-		App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
+		//App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
+		//App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
+		//App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
+		//App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
+		//App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
+		//App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
+
 
 		App->player->Disable();
 		App->enemies->Disable();
 		App->fonts->Disable();
 		App->particles->Disable();
-		App->sceneLevel_1->Disable();
 		App->audio->PlayMusic(NULL, 1.0f);
 		App->collisions->CleanUp();
+		//App->player->Disable();
+		//App->enemies->Disable();
+		//App->fonts->Disable();
+		//App->particles->Disable();
+		//App->sceneLevel_1->Disable();
+		//App->audio->PlayMusic(NULL, 1.0f);
+		//App->collisions->CleanUp();
 		
 	}
 	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) 
@@ -310,20 +320,11 @@ Update_Status SceneLevel1::Update()
 	if (App->input->keys[SDL_SCANCODE_F6] == Key_State::KEY_DOWN)
 	{
 		LOG("VICTORY");
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
-		App->audio->PlayMusic("Assets/Music/Result.ogg");
-		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
-		App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
-		App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
-		App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
-
-		App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
-		App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
-		App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
-		App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
-		App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
+		
+		victory = true;
+	
+		//App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
+		//App->audio->PlayMusic("Assets/Music/Result.ogg");
 
 		App->player->Disable();
 		App->enemies->Disable();
@@ -334,6 +335,23 @@ Update_Status SceneLevel1::Update()
 
 	}
 
+	if (victory)
+	{
+		if (position_clear_y == 272)
+		{
+			App->audio->PlayFx(clear);
+		}
+		if (position_clear_y>100)
+		{
+			position_clear_x+=2;
+			position_clear_y -= 6;
+		}
+		if (position_clear_y < 105)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 60);
+		}
+		
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -353,6 +371,23 @@ Update_Status SceneLevel1::PostUpdate()
 	App->fonts->BlitText(positionx + 54, positiony, scoreFont, "N");
 	App->fonts->BlitText(positionx + 72, positiony, scoreFont, "D");
 	App->fonts->BlitText(position_num_x, position_num_y, scoreFont2, "1");
+
+	App->fonts->BlitText(position_clear_x, position_clear_y, scoreFont, "R");
+	App->fonts->BlitText(position_clear_x + 18, position_clear_y, scoreFont, "O");
+	App->fonts->BlitText(position_clear_x + 36, position_clear_y, scoreFont, "U");
+	App->fonts->BlitText(position_clear_x + 54, position_clear_y, scoreFont, "N");
+	App->fonts->BlitText(position_clear_x + 72, position_clear_y, scoreFont, "D");
+
+	//App->fonts->BlitText(position_clear_x + 90, position_clear_y, scoreFont, "");
+	App->fonts->BlitText(position_clear_x + 108, position_clear_y, scoreFont, "C");
+	App->fonts->BlitText(position_clear_x + 126, position_clear_y, scoreFont, "L");
+	App->fonts->BlitText(position_clear_x + 144, position_clear_y, scoreFont, "E");
+
+	App->fonts->BlitText(position_clear_x + 162, position_clear_y, scoreFont, "A");
+	App->fonts->BlitText(position_clear_x + 180, position_clear_y, scoreFont, "R");
+	App->fonts->BlitText(position_clear_x + 198, position_clear_y, scoreFont, "!");
+	//App->fonts->BlitText(position_clear_x + 216, position_clear_y, scoreFont, "D");
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
