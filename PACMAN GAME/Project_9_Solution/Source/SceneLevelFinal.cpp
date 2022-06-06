@@ -75,21 +75,21 @@ bool SceneLevelFinal::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 200, 236);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 200, 245);
 
-	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 93);
+	/*App->particles->AddPacdot(App->particles->PacdotAnim, 80, 93);*/
 	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 108);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 120);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 131);
+	//App->particles->AddPacdot(App->particles->PacdotAnim, 80, 131);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 144);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 206);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 218);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 230);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 80, 242);
+	/*App->particles->AddPacdot(App->particles->PacdotAnim, 80, 242);*/
 
 	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 93);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 108);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 120);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 131);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 144);
+	/*App->particles->AddPacdot(App->particles->PacdotAnim, 112, 131);*/
+	//App->particles->AddPacdot(App->particles->PacdotAnim, 112, 144);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 206);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 218);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 112, 230);
@@ -99,8 +99,8 @@ bool SceneLevelFinal::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 93);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 108);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 120);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 131);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 141);
+	//App->particles->AddPacdot(App->particles->PacdotAnim, 136, 131);
+	//App->particles->AddPacdot(App->particles->PacdotAnim, 136, 141);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 203);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 215);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 136, 227);
@@ -110,7 +110,7 @@ bool SceneLevelFinal::Start()
 	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 105);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 117);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 128);
-	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 138);
+	/*App->particles->AddPacdot(App->particles->PacdotAnim, 168, 138);*/
 	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 200);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 212);
 	App->particles->AddPacdot(App->particles->PacdotAnim, 168, 224);
