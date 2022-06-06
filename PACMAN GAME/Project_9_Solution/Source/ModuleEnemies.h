@@ -8,9 +8,6 @@
 enum class Enemy_Type
 {
 	NO_TYPE,
-	REDBIRD,
-	BROWNSHIP,
-	MECH,
 	BLINKY,
 	CLYDE,
 	INKY,

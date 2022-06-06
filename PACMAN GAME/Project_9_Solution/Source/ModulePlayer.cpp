@@ -273,12 +273,13 @@ Update_Status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(173, 14, player2Font, "CREDIT");
 	App->fonts->BlitText(197, 22, player2Font, "0");
 
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && godMode != true && devourer == false)
 	{
 		/*App->particles->AddSuperpacdot(App->particles->death, position.x, position.y, Collider::Type::NONE, 2);*/
 		MovingDown = false;
@@ -321,11 +322,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 	}
 
-	//if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 
-	//{
-	//	score += 200;
-	//	App->enemies->CleanUp()
-	//}
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 
+	{
+		score += 200;
+
+	}
 
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PINEAPPLE) {

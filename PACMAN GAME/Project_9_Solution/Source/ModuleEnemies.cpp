@@ -86,6 +86,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 	{
 		if(spawnQueue[i].type == Enemy_Type::NO_TYPE)
 		{
+			
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
 			spawnQueue[i].y = y;
@@ -173,6 +174,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 			delete enemies[i];
 			enemies[i] = nullptr;
+			
+			App->collisions->RemoveCollider(c1);
 			break;
 		}
 	}

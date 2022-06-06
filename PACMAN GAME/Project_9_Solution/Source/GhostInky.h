@@ -49,7 +49,7 @@ public:
 	};
 
 	int currentMode;
-	bool devoreur = false;
+	bool devourer = false;
 	//Movement speed
 	float Movementspeed = 0.8f;
 
@@ -63,6 +63,10 @@ private:
 	Animation rigth;
 	Animation left;
 
+	Animation up1; 
+	Animation down1;
+	Animation rigth1;
+	Animation left1;
 
 	//Tile Movement
 	iPoint tile;

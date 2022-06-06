@@ -10,39 +10,39 @@
 
 GhostInky::GhostInky(int x, int y) : Enemy(x, y)
 {
-	up.PushBack({ 144, 18, 15, 15 });
-	up.PushBack({ 160, 18, 15, 15 });
-	up.PushBack({ 176, 18, 15, 15 });
-	currentAnim = &up;
-	up.loop = true;
-	up.speed = 0.05f;
+	if (App->player->devourer != true) {
+		up.PushBack({ 144, 18, 15, 15 });
+		up.PushBack({ 160, 18, 15, 15 });
+		up.PushBack({ 176, 18, 15, 15 });
+		up.loop = true;
+		up.speed = 0.05f;
 
-	down.PushBack({ 48, 18, 15, 15 });
-	down.PushBack({ 64, 18, 15, 15 });
-	down.PushBack({ 80, 18, 15, 15 });
-	currentAnim = &down;
-	down.loop = true;
-	down.speed = 0.05f;
+		down.PushBack({ 48, 18, 15, 15 });
+		down.PushBack({ 64, 18, 15, 15 });
+		down.PushBack({ 80, 18, 15, 15 });
+		down.loop = true;
+		down.speed = 0.05f;
 
-	rigth.PushBack({ 95, 18, 15, 15 });
-	rigth.PushBack({ 111, 18, 15, 15 });
-	rigth.PushBack({ 127, 18, 15, 15 });
-	currentAnim = &rigth;
-	rigth.loop = true;
-	rigth.speed = 0.05f;
-	
-	left.PushBack({ 0, 18, 15, 15 });
-	left.PushBack({ 15, 18, 15, 15 });
-	left.PushBack({ 31, 18, 15, 15 });
-	currentAnim = &left;
-	left.loop = true;
-	left.speed = 0.05f;
+		rigth.PushBack({ 95, 18, 15, 15 });
+		rigth.PushBack({ 111, 18, 15, 15 });
+		rigth.PushBack({ 127, 18, 15, 15 });
+		rigth.loop = true;
+		rigth.speed = 0.05f;
+
+		left.PushBack({ 0, 18, 15, 15 });
+		left.PushBack({ 15, 18, 15, 15 });
+		left.PushBack({ 31, 18, 15, 15 });
+		left.loop = true;
+		left.speed = 0.05f;
+	}
 
 	currentAnim = &down;
 	currentDirection = DOWN;
 	currentMode = FEAR;
 
+
 	
+
 
 	collider = App->collisions->AddCollider({ 0, 0, 15, 15 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
@@ -91,40 +91,45 @@ void GhostInky::Update()
 		changeTimer = 0;
 	}
 
-
+	if (App->player->devourer == true) {
+		currentMode = FEAR;
+	}
 
 	switch (currentMode)
 	{
 	case GhostInky::CHASE:
 		
-			up.PushBack({ 144, 69, 15, 15 });
-			up.PushBack({ 160, 69, 15, 15 });
-			up.PushBack({ 176, 69, 15, 15 });
-			currentAnim = &up;
-			up.loop = true;
-			up.speed = 0.05f;
+		up.Reset();
+		rigth.Reset();
+		left.Reset();
+		down.Reset();
 
-			down.PushBack({ 48, 69, 15, 15 });
-			down.PushBack({ 64, 69, 15, 15 });
-			down.PushBack({ 80, 69, 15, 15 });
-			currentAnim = &down;
-			down.loop = true;
-			down.speed = 0.05f;
+		up.PushBack({ 144, 69, 15, 15 });
+		up.PushBack({ 160, 69, 15, 15 });
+		up.PushBack({ 176, 69, 15, 15 });
+		up.loop = true;
+		up.speed = 0.05f;
 
-			rigth.PushBack({ 95, 69, 15, 15 });
-			rigth.PushBack({ 111, 69, 15, 15 });
-			rigth.PushBack({ 127, 69, 15, 15 });
-			currentAnim = &rigth;
-			rigth.loop = true;
-			rigth.speed = 0.05f;
+		down.PushBack({ 48, 69, 15, 15 });
+		down.PushBack({ 64, 69, 15, 15 });
+		down.PushBack({ 80, 69, 15, 15 });
+		down.loop = true;
+		down.speed = 0.05f;
 
-			left.PushBack({ 0, 69, 15, 15 });
-			left.PushBack({ 15, 69, 15, 15 });
-			left.PushBack({ 31, 69, 15, 15 });
-			currentAnim = &left;
-			left.loop = true;
-			left.speed = 0.05f;
+		rigth.PushBack({ 95, 69, 15, 15 });
+		rigth.PushBack({ 111, 69, 15, 15 });
+		rigth.PushBack({ 127, 69, 15, 15 });
+		rigth.loop = true;
+		rigth.speed = 0.05f;
+
+		left.PushBack({ 0, 69, 15, 15 });
+		left.PushBack({ 15, 69, 15, 15 });
+		left.PushBack({ 31, 69, 15, 15 });
+		left.loop = true;
+		left.speed = 0.05f;
 		
+		currentAnim->Update();
+
 		break;
 	case GhostInky::SCATTER:
 		break;

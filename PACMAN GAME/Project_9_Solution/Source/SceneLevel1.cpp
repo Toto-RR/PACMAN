@@ -228,15 +228,14 @@ bool SceneLevel1::Start()
 
 
 	// Enemies ---
-	//App->enemies->AddEnemy(Enemy_Type::BLINKY, 115 , 133); 
-	//App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 115 , 133); 
+	App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
 	//App->enemies->AddEnemy(Enemy_Type::CLYDE, 145, 133);
 	//App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	// TODO 2: Enable (and properly disable) the player module
 	App->player->Enable();
 	App->enemies->Enable();
 	App->particles->Enable();
