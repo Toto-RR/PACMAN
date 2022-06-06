@@ -30,6 +30,7 @@ public:
 	// Collision response
 	virtual void OnCollision(Collider* collider);
 
+	virtual void SetToDelete();
 
 public:
 	// The current position in the world
@@ -41,13 +42,14 @@ public:
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 
-	Collider* collider = nullptr;
+	bool pendingToDelete = false;
+
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
 	// The enemy's collider
-	
+	Collider* collider = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;

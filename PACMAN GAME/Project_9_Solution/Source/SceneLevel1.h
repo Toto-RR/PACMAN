@@ -72,7 +72,7 @@ public:
 	};
 
 	uint round = 0;
-
+	int timer = 20;
 
 	//TileSet del nivel
 	const int TileX = 29;

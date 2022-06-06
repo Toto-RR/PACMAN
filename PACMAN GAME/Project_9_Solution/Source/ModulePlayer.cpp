@@ -14,6 +14,7 @@
 #include "GhostInky.h"
 
 #include <stdio.h>
+#include <chrono>
 #include "SDL/include/SDL.h"
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
@@ -246,6 +247,10 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayMusic("Assets/Music/Ending.ogg");
 	};
 
+	if (stop - start <= 500) {
+		devourer = false;
+	}
+
 	collider->SetPos((int)position.x, (int)position.y);
 	currentAnimation->Update();
 
@@ -340,6 +345,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
 		devourer = true;
+		start = SDL_GetTicks();
+
+		
+		
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;

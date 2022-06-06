@@ -94,6 +94,8 @@ public:
 	uint Superpacdot = 0;
 	uint Pacdot = 0;
 
+	Uint32 start;
+	Uint32 stop;
 
 	// God mode
 	bool godMode = false;
