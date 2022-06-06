@@ -246,6 +246,28 @@ Update_Status ModulePlayer::Update()
 			}
 		}
 
+		else if (App->sceneLevel_F->IsEnabled())
+		{
+			if ((App->sceneLevel_F->TileSet[0][tileRight.x][tileRight.y] >= App->sceneLevel_F->EMPTY && App->sceneLevel_F->TileSet[0][tileRight.x + 1][tileRight.y] >= App->sceneLevel_F->EMPTY) ||
+				(App->sceneLevel_F->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_F->TP && App->sceneLevel_F->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_F->TP) ||
+				(App->sceneLevel_F->TileSet[0][tile.x][tile.y] == App->sceneLevel_F->TP && App->sceneLevel_F->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_F->TP) ||
+				(App->sceneLevel_F->TileSet[0][tile.x][tile.y - 1] == App->sceneLevel_F->TP && App->sceneLevel_F->TileSet[0][tile.x + 1][tile.y - 1] == App->sceneLevel_F->TP))
+			{
+				MovingUp = false;
+				MovingDown = false;
+				MovingLeft = false;
+				MovingRight = true;
+				position.x += speed;
+
+				if (currentAnimation != &rightAnim)
+				{
+					rightAnim.Reset();
+					currentAnimation = &rightAnim;
+				}
+
+			}
+		}
+
 	}
 
 	//MOVIMIENTO ABAJO
@@ -291,6 +313,26 @@ Update_Status ModulePlayer::Update()
 			}
 		}
 
+		else if (App->sceneLevel_F->IsEnabled())
+		{
+			if (App->sceneLevel_F->TileSet[0][tileDown.x][tileDown.y] == App->sceneLevel_F->EMPTY &&
+				App->sceneLevel_F->TileSet[0][tileDown.x][tileDown.y + 1] >= App->sceneLevel_F->EMPTY)
+			{
+				MovingUp = false;
+				MovingDown = true;
+				MovingLeft = false;
+				MovingRight = false;
+				position.y += speed;
+
+				if (currentAnimation != &downAnim)
+				{
+					downAnim.Reset();
+					currentAnimation = &downAnim;
+				}
+
+			}
+		}
+
 
 	}
 
@@ -320,6 +362,25 @@ Update_Status ModulePlayer::Update()
 		{
 			if (App->sceneLevel_4->TileSet[0][tileUp.x][tileUp.y] == App->sceneLevel_4->EMPTY &&
 				App->sceneLevel_4->TileSet[0][tileUp.x][tileUp.y + 1] >= App->sceneLevel_4->EMPTY)
+			{
+				MovingUp = true;
+				MovingDown = false;
+				MovingLeft = false;
+				MovingRight = false;
+				position.y -= speed;
+
+				if (currentAnimation != &upAnim)
+				{
+					upAnim.Reset();
+					currentAnimation = &upAnim;
+				}
+			}
+		}
+		
+		else if (App->sceneLevel_F->IsEnabled())
+		{
+			if (App->sceneLevel_F->TileSet[0][tileUp.x][tileUp.y] == App->sceneLevel_F->EMPTY &&
+				App->sceneLevel_F->TileSet[0][tileUp.x][tileUp.y + 1] >= App->sceneLevel_F->EMPTY)
 			{
 				MovingUp = true;
 				MovingDown = false;
