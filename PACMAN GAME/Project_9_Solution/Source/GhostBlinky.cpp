@@ -4,12 +4,15 @@
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
 #include "SceneLevel1.h"
+#include "SceneLevel4.h"
+#include "SceneLevelFinal.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 
 GhostBlinky::GhostBlinky(int x, int y) : Enemy(x, y)
 {
 	if (App->sceneLevel_1->IsEnabled()) { LOG("PRESENTE") };
+
 
 	up.PushBack({ 144, 36, 15, 15 });
 	up.PushBack({ 160, 36, 15, 15 });
@@ -58,11 +61,11 @@ void GhostBlinky::Update()
 	//currentAnim = path.GetCurrentAnimation(); //hacer paths de 0 speed para cambiar la anim
 
 
-	timer++;
-	if (timer > 40)
-	{
-		changeTimer++;
-	}
+	//timer++;
+	//if (timer > 40)
+	//{
+	//	changeTimer++;
+	//}
 
 
 	//TILE UPDATER (tile.x coresponds to height and tile .y corresponds to lenght)
@@ -94,16 +97,16 @@ void GhostBlinky::Update()
 		changeTimer = 0;
 	}
 
-	App->player->Update();
+	//App->player->Update();
 	if (App->player->devourer == true) currentMode = CHASE;
 	if (App->player->devourer == false) currentMode = FEAR;
 
 
-	if (changeTimer >= 80)
-	{
-		changeLimit = false;
-		changeTimer = 0;
-	}
+	//if (changeTimer >= 80)
+	//{
+	//	changeLimit = false;
+	//	changeTimer = 0;
+	//}
 
 	switch (currentMode)
 	{
@@ -136,7 +139,8 @@ void GhostBlinky::Update()
 
 		Movementspeed = 0.6f;
 
-		switch (currentDirection)
+		//NIVEL 1
+		switch (currentDirection) //NIVEL 1
 		{
 
 		case GhostBlinky::UP:
@@ -153,7 +157,6 @@ void GhostBlinky::Update()
 			{
 				changeLimit = true;
 				changeTimer = 0;
-
 				newDir = rand() % 2;
 				switch (newDir)
 				{
@@ -173,7 +176,6 @@ void GhostBlinky::Update()
 			{
 				changeLimit = true;
 				changeTimer = 0;
-
 				newDir = rand() % 2;
 				switch (newDir)
 				{
@@ -182,7 +184,6 @@ void GhostBlinky::Update()
 					break;
 				case(1):
 					currentDirection = RIGTH;
-
 					changeLimit = true;
 					break;
 				}
@@ -191,35 +192,26 @@ void GhostBlinky::Update()
 			//CHOQUE CON PARED
 			if ((App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_1->WALL) && (int)position.y % 8 == 0)
 			{
-
 				newDir = rand() % 2;
 				switch (newDir)
 				{
 				case(0):
 					currentDirection = LEFT;
-
 					break;
 				case(1):
 					currentDirection = RIGTH;
-
 					break;
-
 				}
-
 				//Pared Izquierda--> Derecha
 				if ((App->sceneLevel_1->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_1->WALL) && (int)position.y % 8 == 0)
 				{
 					currentDirection = RIGTH;
-
 				}
 				//Pared Derecha--> Izquierda
 				if ((App->sceneLevel_1->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_1->WALL) && (int)position.y % 8 == 0)
 				{
 					currentDirection = LEFT;
-
 				}
-
-
 			}
 
 			break;
@@ -245,7 +237,6 @@ void GhostBlinky::Update()
 			{
 				changeLimit = true;
 				changeTimer = 0;
-
 				newDir = rand() % 2;
 				switch (newDir)
 				{
@@ -262,12 +253,8 @@ void GhostBlinky::Update()
 			if ((App->sceneLevel_1->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_1->EMPTY && App->sceneLevel_1->TileSet[level][tileDown.x + 1][tileDown.y] >= App->sceneLevel_1->EMPTY)
 				&& ((int)position.x % 8 == 0 && (App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileUp.x + 1][tileUp.y] == App->sceneLevel_1->WALL)) && changeLimit == false)
 			{
-
 				changeLimit = true;
 				changeTimer = 0;
-
-
-
 				newDir = rand() % 2;
 				switch (newDir)
 				{
@@ -276,7 +263,6 @@ void GhostBlinky::Update()
 					break;
 				case(1):
 					currentDirection = DOWN;
-
 					break;
 				}
 			}
@@ -290,11 +276,9 @@ void GhostBlinky::Update()
 				{
 				case(0):
 					currentDirection = UP;
-
 					break;
 				case(1):
 					currentDirection = DOWN;
-
 					break;
 				}
 
@@ -302,15 +286,12 @@ void GhostBlinky::Update()
 				if ((App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_1->WALL) && (int)position.y % 8 == 0)
 				{
 					currentDirection = DOWN;
-
 				}
 				//Pared bajo--> Alta
 				if ((App->sceneLevel_1->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_1->WALL) && (int)position.y % 8 == 0)
 				{
 					currentDirection = UP;
-
 				}
-
 			}
 			break;
 		}
@@ -505,13 +486,362 @@ void GhostBlinky::Update()
 
 		default:
 			break;
+		} //NIVEL 4 //NIVEL
+		//NIVEL 4
+		switch (currentDirection) 
+		{
+
+		case GhostBlinky::UP:
+		{
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] >= App->sceneLevel_4->GHOST)
+			{
+				position.y -= Movementspeed;
+				currentAnim = &up1;
+			}
+			//CAMBIAR DIRECCION EN UN CRUCE
+			if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->EMPTY)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					LOG("No cambio");
+					//Continue going
+					break;
+				case(1):
+					LOG("Cambio");
+					currentDirection = LEFT;
+					break;
+				}
+			}
+
+			if (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->EMPTY && (int)position.x % 8 == 0
+				&& (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = RIGTH;
+					changeLimit = true;
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+			{
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = LEFT;
+					break;
+				case(1):
+					currentDirection = RIGTH;
+					break;
+				}
+				//Pared Izquierda--> Derecha
+				if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = RIGTH;
+				}
+				//Pared Derecha--> Izquierda
+				if ((App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = LEFT;
+				}
+			}
+
+			break;
 		}
+
+
+		case GhostBlinky::LEFT:
+		{
+
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->GHOST ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y + 2] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y + 2] == App->sceneLevel_4->TP))
+			{
+				position.x -= Movementspeed;
+				currentAnim = &left1;
+			}
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+			if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] >= App->sceneLevel_4->EMPTY)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = UP;
+
+					break;
+				}
+			}
+
+			if ((App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] >= App->sceneLevel_4->EMPTY)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = DOWN;
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL) && (int)position.x % 8 == 0)
+			{
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = UP;
+					break;
+				case(1):
+					currentDirection = DOWN;
+					break;
+				}
+
+				//Pared alta--> Baja
+				if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = DOWN;
+				}
+				//Pared bajo--> Alta
+				if ((App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = UP;
+				}
+			}
+			break;
+		}
+
+
+		case GhostBlinky::DOWN:
+		{
+
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] >= App->sceneLevel_4->GHOST)
+			{
+				position.y += Movementspeed;
+				currentAnim = &down1;
+
+			}
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+
+
+			if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = LEFT;
+
+					break;
+				}
+			}
+
+			if ((App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileRight.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = RIGTH;
+
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+			{
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = LEFT;
+
+					break;
+				case(1):
+					currentDirection = RIGTH;
+
+					break;
+				}
+
+				//Pared Izquierda--> Derecha
+				if (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = RIGTH;
+
+				}
+				//Pared Derecha--> Izquierda
+				if (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = LEFT;
+
+				}
+
+
+			}
+			break;
+		}
+
+		case GhostBlinky::RIGTH:
+		{
+
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->GHOST ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y - 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y - 1] == App->sceneLevel_4->TP))
+			{
+				position.x += Movementspeed;
+				currentAnim = &rigth1;
+			}
+
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+
+
+
+			if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = UP;
+
+					break;
+				}
+			}
+
+			if ((App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+
+				changeLimit = true;
+				changeTimer = 0;
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = DOWN;
+
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if ((App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL) && (int)position.x % 8 == 0)
+			{
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = UP;
+
+					break;
+				case(1):
+					currentDirection = DOWN;
+
+					break;
+				}
+
+				//Pared ARRIBA--> Baja
+				if (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = DOWN;
+
+				}
+				//Pared abajo--> Sube
+				if (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = UP;
+
+				}
+			}
+			break;
+		}
+
+
+
+		default:
+			break;
+		} 
 
 		break;
 	case GhostBlinky::SCATTER:
 		break;
 	case GhostBlinky::FEAR:
-		//ERIC: Cada iteracion pasa por aqui, hay que limitar que si hay un cambio complato de direccion sea una sola vez
+		
+		//NIVEL 1
 		switch (currentDirection)
 		{
 
@@ -870,6 +1200,378 @@ void GhostBlinky::Update()
 				}
 				//Pared abajo--> Sube
 				if (App->sceneLevel_1->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_1->WALL || App->sceneLevel_1->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_1->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = UP;
+
+				}
+			}
+			break;
+		}
+
+
+
+		default:
+			break;
+		}
+		//NIVEL 2
+		switch (currentDirection)
+		{
+
+		case GhostBlinky::UP:
+		{
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] >= App->sceneLevel_4->GHOST)
+			{
+				position.y -= Movementspeed;
+				currentAnim = &up;
+			}
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+			if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->EMPTY)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					LOG("No cambio");
+					//Continue going
+					break;
+				case(1):
+					LOG("Cambio");
+					currentDirection = LEFT;
+					break;
+				}
+			}
+
+			if (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->EMPTY && (int)position.x % 8 == 0
+				&& (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = RIGTH;
+
+					changeLimit = true;
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+			{
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = LEFT;
+
+					break;
+				case(1):
+					currentDirection = RIGTH;
+
+					break;
+
+				}
+
+				//Pared Izquierda--> Derecha
+				if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = RIGTH;
+
+				}
+				//Pared Derecha--> Izquierda
+				if ((App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = LEFT;
+
+				}
+
+
+			}
+
+			break;
+		}
+
+
+		case GhostBlinky::LEFT:
+		{
+
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->GHOST ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y + 2] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y + 2] == App->sceneLevel_4->TP))
+			{
+				position.x -= Movementspeed;
+				currentAnim = &left;
+			}
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+			if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] >= App->sceneLevel_4->EMPTY)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = UP;
+
+					break;
+				}
+			}
+
+			if ((App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_4->EMPTY && App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] >= App->sceneLevel_4->EMPTY)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+
+				changeLimit = true;
+				changeTimer = 0;
+
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = DOWN;
+
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL) && (int)position.x % 8 == 0)
+			{
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = UP;
+
+					break;
+				case(1):
+					currentDirection = DOWN;
+
+					break;
+				}
+
+				//Pared alta--> Baja
+				if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = DOWN;
+
+				}
+				//Pared bajo--> Alta
+				if ((App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_4->WALL) && (int)position.y % 8 == 0)
+				{
+					currentDirection = UP;
+
+				}
+
+			}
+			break;
+		}
+
+
+		case GhostBlinky::DOWN:
+		{
+
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] >= App->sceneLevel_4->GHOST)
+			{
+				position.y += Movementspeed;
+				currentAnim = &down;
+
+			}
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+
+
+			if ((App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = LEFT;
+
+					break;
+				}
+			}
+
+			if ((App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileRight.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = RIGTH;
+
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+			{
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = LEFT;
+
+					break;
+				case(1):
+					currentDirection = RIGTH;
+
+					break;
+				}
+
+				//Pared Izquierda--> Derecha
+				if (App->sceneLevel_4->TileSet[level][tileLeft.x][tileLeft.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileLeft.x + 1][tileLeft.y] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = RIGTH;
+
+				}
+				//Pared Derecha--> Izquierda
+				if (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = LEFT;
+
+				}
+
+
+			}
+			break;
+		}
+
+		case GhostBlinky::RIGTH:
+		{
+
+			//SEGUIR ADELANTE SI NO HAY PARED
+			if (App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] >= App->sceneLevel_4->GHOST ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
+				(App->sceneLevel_4->TileSet[level][tile.x][tile.y - 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[level][tile.x + 1][tile.y - 1] == App->sceneLevel_4->TP))
+			{
+				position.x += Movementspeed;
+				currentAnim = &rigth;
+			}
+
+
+			//CAMBIAR DIRECCION EN UN CRUCE
+
+
+
+			if ((App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+				changeLimit = true;
+				changeTimer = 0;
+
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = UP;
+
+					break;
+				}
+			}
+
+			if ((App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] >= App->sceneLevel_4->GHOST && App->sceneLevel_4->TileSet[level][tileDown.x + 1][tileDown.y] >= App->sceneLevel_4->GHOST)
+				&& ((int)position.x % 8 == 0 && (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x + 1][tileUp.y] == App->sceneLevel_4->WALL)) && changeLimit == false)
+			{
+
+				changeLimit = true;
+				changeTimer = 0;
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+
+				case(0):
+					//Continue going
+					break;
+				case(1):
+					currentDirection = DOWN;
+
+					break;
+				}
+			}
+
+			//CHOQUE CON PARED
+			if ((App->sceneLevel_4->TileSet[level][tileRight.x][tileRight.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileRight.x + 1][tileRight.y] == App->sceneLevel_4->WALL) && (int)position.x % 8 == 0)
+			{
+
+
+				newDir = rand() % 2;
+				switch (newDir)
+				{
+				case(0):
+					currentDirection = UP;
+
+					break;
+				case(1):
+					currentDirection = DOWN;
+
+					break;
+				}
+
+				//Pared ARRIBA--> Baja
+				if (App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileUp.x][tileUp.y + 1] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
+				{
+					currentDirection = DOWN;
+
+				}
+				//Pared abajo--> Sube
+				if (App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y] == App->sceneLevel_4->WALL || App->sceneLevel_4->TileSet[level][tileDown.x][tileDown.y + 1] == App->sceneLevel_4->WALL && (int)position.y % 8 == 0)
 				{
 					currentDirection = UP;
 

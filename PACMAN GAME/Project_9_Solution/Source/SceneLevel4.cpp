@@ -25,6 +25,7 @@ SceneLevel4::~SceneLevel4()
 // Load assets
 bool SceneLevel4::Start()
 {
+	App->sceneLevel_4->Enable();
 
 	LOG("Loading background assets");
 
@@ -102,6 +103,9 @@ bool SceneLevel4::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
+	App->enemies->AddEnemy(Enemy_Type::INKY, 105, 107);
+	App->enemies->AddEnemy(Enemy_Type::PINKY, 105, 107);
+
 
 	//for (int j = 0; j <= 28; ++j)
 	//{
@@ -208,6 +212,7 @@ bool SceneLevel4::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
+	App->sceneLevel_4->Disable();
 	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
 

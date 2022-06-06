@@ -427,6 +427,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		score += 200;
 		devourer = false;
+		speed = 0.8;
 	}
 
 
@@ -441,6 +442,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
 		devourer = true;
+		speed = 0.8;
 		
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {

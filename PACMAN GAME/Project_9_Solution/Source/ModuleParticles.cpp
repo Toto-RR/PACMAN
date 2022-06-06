@@ -36,7 +36,7 @@ bool ModuleParticles::Start()
 	SuperPacdotAnim.anim.PushBack({ 33, 0, 8, 8 });
 	SuperPacdotAnim.anim.PushBack({ 16, 0, 8, 8 });
 	SuperPacdotAnim.anim.loop = true;
-	SuperPacdotAnim.anim.speed = 0.06f;
+	SuperPacdotAnim.anim.speed = 0.2f;
 
 	PacdotAnim.anim.PushBack({ 0, 11, 5, 15});
 	PacdotAnim.anim.PushBack({ 7, 11, 5, 15 });
@@ -47,7 +47,7 @@ bool ModuleParticles::Start()
 	PacdotAnim.anim.PushBack({ 44, 11, 5, 15 });
 	PacdotAnim.anim.PushBack({ 51, 11, 5, 15 });
 	PacdotAnim.anim.loop = true;
-	PacdotAnim.anim.speed = 0.06f;
+	PacdotAnim.anim.speed = 0.2f;
 
 	PineappleAnim.anim.PushBack({ 0, 28, 17, 17 });
 	PineappleAnim.anim.PushBack({ 0, 29, 17, 17 });

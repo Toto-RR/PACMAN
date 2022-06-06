@@ -29,7 +29,7 @@ SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 	bgGhosts.PushBack({ 699, 612, 232, 305 });
 	bgGhosts.PushBack({ 932, 612, 232, 305 });
 
-	bgGhosts.speed = 0.05f;
+	bgGhosts.speed = 0.2f;
 }
 
 SceneIntro::~SceneIntro()

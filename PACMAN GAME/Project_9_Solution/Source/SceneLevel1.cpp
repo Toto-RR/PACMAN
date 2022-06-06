@@ -27,7 +27,8 @@ SceneLevel1::~SceneLevel1()
 // Load assets
 bool SceneLevel1::Start()
 {
-	int scene = 1;
+
+	App->sceneLevel_1->Enable();
 
 	LOG("Loading background assets");
 
@@ -232,10 +233,10 @@ bool SceneLevel1::Start()
 	App->particles->AddPineapple(App->particles->PineappleAnim, 110, 160);
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::BLINKY, 115, 133);
-	App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 145, 133);
-	App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
+	//App->enemies->AddEnemy(Enemy_Type::BLINKY, 115, 133);
+	//App->enemies->AddEnemy(Enemy_Type::INKY, 104, 136);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 115, 133);
+	//App->enemies->AddEnemy(Enemy_Type::PINKY, 104, 120);
 	
 	
 
@@ -329,6 +330,7 @@ Update_Status SceneLevel1::Update()
 		App->player->Disable();
 		App->enemies->Disable();
 		App->fonts->Disable();
+		App->sceneLevel_1->Disable();
 		App->particles->Disable();
 		App->audio->PlayMusic(NULL, 1.0f);
 		App->collisions->CleanUp();
@@ -398,7 +400,9 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
+	App->sceneLevel_1->Disable();
 	App->particles->Disable();
+	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
 
 
