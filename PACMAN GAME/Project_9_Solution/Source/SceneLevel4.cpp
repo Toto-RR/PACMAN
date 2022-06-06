@@ -55,49 +55,178 @@ bool SceneLevel4::Start()
 	speed_num_x = 3;
 	speed_num_y = 3;
 
-	//SuperPacdots ---
+	App->particles->Enable();
 
-	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 11, 60);
-	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 210, 60);
-	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 11, 236);
-	//App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 210, 236);
+	//Superpacdots---
+	App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 25, 58);
+	App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 25, 248);
+	App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 196, 58);
+	App->particles->AddSuperpacdot(App->particles->SuperPacdotAnim, 196, 248);
 
-	////Pacdots ---
 
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 32, 40);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 50, 40);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 68, 40);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 86, 40);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 102, 40);
+	//Pacdots ---
 
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 32, 56);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 13, 70);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 13, 82);
+	//LEFT side
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 57);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 71);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 85);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 99);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 113);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 127);
 
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 70);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 82);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 94);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 106);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 118);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 130);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 142);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 154);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 78, 166);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 79);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 79);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 127);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 127);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 148);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 148);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 148);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 65, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 77, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 88, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 40);
 
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 28, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 41, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 53, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 65, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 77, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 89, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 101, 260);
-	////App->particles->AddPacdot(App->particles->PacdotAnim, 113, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 125, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 137, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 149, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 161, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 173, 260);
-	//App->particles->AddPacdot(App->particles->PacdotAnim, 185, 260);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 53);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 66);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 79);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 92);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 105);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 131);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 144);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 157);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 170);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 183);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 196);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 209);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 235);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 248);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 52, 261);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 246);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 232);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 218);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 204);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 190);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 12, 176);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 26, 176);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 39, 176);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 65, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 77, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 88, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 65, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 78, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 247);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 52);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 65);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 91);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 104);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 65, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 77, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 88, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 87, 104);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 104);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 131);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 144);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 157);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 170);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 183);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 74, 196);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 87, 196);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 100, 196);
+
+	// RIGHT side
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 57);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 71);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 85);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 99);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 113);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 127);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 79);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 79);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 127);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 127);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 148);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 148);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 148);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 157, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 134, 40);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 40);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 53);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 66);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 79);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 92);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 105);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 131);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 144);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 157);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 170);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 183);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 196);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 209);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 235);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 248);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 170, 261);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 246);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 232);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 218);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 204);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 190);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 210, 176);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 196, 176);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 183, 176);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 157, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 134, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 261);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 157, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 146, 222);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 247);
+
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 52);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 65);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 91);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 104);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 157, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 134, 78);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 133, 104);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 104);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 118);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 131);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 144);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 157);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 170);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 183);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 145, 196);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 133, 196);
+	App->particles->AddPacdot(App->particles->PacdotAnim, 123, 196);
 
 
 	// Enemies ---
