@@ -243,6 +243,8 @@ bool SceneLevelFinal::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 104, 107);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 16, 107);
+	//App->enemies->AddEnemy(Enemy_Type::PINKY, 35, 107);
+	App->enemies->AddEnemy(Enemy_Type::INKY, 98, 107);
 
 	//for (int j = 0; j <= 28; ++j)
 	//{
@@ -349,6 +351,8 @@ bool SceneLevelFinal::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
+	App->sceneLevel_1->Disable();
+	App->particles->Disable();
 	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
 

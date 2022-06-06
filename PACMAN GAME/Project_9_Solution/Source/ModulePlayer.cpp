@@ -497,14 +497,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (App->sceneLevel_1->IsEnabled())
 		{
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
-			//App->sceneLevel_1->Disable();
 		}
-		else
+		else if (App->sceneLevel_4->IsEnabled())
 		{
 			App->fade->FadeToBlack((Module*)App->sceneLevel_4, (Module*)App->sceneGameOver, 90);
-			//App->sceneLevel_1->Disable();
 		}
-		
+		else if (App->sceneLevel_F->IsEnabled()) 
+		{
+			App->fade->FadeToBlack((Module*)App->sceneLevel_F, (Module*)App->sceneGameOver, 90);
+		}
 	}
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 

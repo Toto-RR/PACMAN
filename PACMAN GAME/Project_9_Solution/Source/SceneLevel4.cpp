@@ -240,7 +240,7 @@ bool SceneLevel4::Start()
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 105, 122);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
 	App->enemies->AddEnemy(Enemy_Type::INKY, 105, 122);
-	App->enemies->AddEnemy(Enemy_Type::PINKY, 105, 107);
+	//App->enemies->AddEnemy(Enemy_Type::PINKY, 105, 107);
 
 
 	//for (int j = 0; j <= 28; ++j)
