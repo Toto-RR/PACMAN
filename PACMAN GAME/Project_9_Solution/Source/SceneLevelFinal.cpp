@@ -30,7 +30,7 @@ bool SceneLevelFinal::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/Final_Level.png");
+	bgTexture = App->textures->Load("Assets/Sprites/Final_Level_.png");
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 
