@@ -17,7 +17,7 @@ Pac-Man was created by videogame designer Toru Iwatani. Iwatani was inspired by 
 
 ## GAMEPLAY
 
------------
+https://youtu.be/BhEyQJgb49g
 
 
 ### CONTROLS
@@ -32,4 +32,30 @@ Debug functionalities:
 - F2: Colliders
 - F3: Win
 - F4: Lose
-- F5:
+- F6: Next level
+- F7: Final level
+
+### Members
+
+Antonio Romanos's Github account and responsabilities:
+-Toto-RR
+-Management
+
+Dani Mariages's Github account and responsabilities:
+-DaniMariages
+-Art
+
+Eduardo Bergillos's Github account and responsabilities:
+-eduardobr33
+-Design
+
+Nixon Correa's Github account and responsabilities:
+-Nixonbit3
+-Code
+
+
+For more information, see our wiki [HERE](https://github.com/Toto-RR/PACMAN/wiki)
+Download the last version of the game [HERE](https://github.com/Toto-RR/PACMAN/releases/tag/v1.0)
+Check our Github repository [HERE](https://github.com/Toto-RR/PACMAN)
+
+_Tribute by Denma Studios_
