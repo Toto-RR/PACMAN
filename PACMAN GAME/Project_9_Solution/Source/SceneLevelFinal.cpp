@@ -30,7 +30,7 @@ bool SceneLevelFinal::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/Final_Level_.png");
+	bgTexture = App->textures->Load("Assets/Sprites/Final_Level_   .png");
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 
@@ -243,8 +243,6 @@ bool SceneLevelFinal::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 104, 107);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 16, 107);
-	//App->enemies->AddEnemy(Enemy_Type::PINKY, 35, 107);
-	App->enemies->AddEnemy(Enemy_Type::INKY, 98, 107);
 
 	//for (int j = 0; j <= 28; ++j)
 	//{
@@ -319,7 +317,7 @@ Update_Status SceneLevelFinal::PostUpdate()
 	SDL_SetRenderDrawColor(App->render->renderer, 128, 192, 0, 128);
 	SDL_RenderFillRect(App->render->renderer, &rc);*/
 
-	App->render->Blit(extraTexture, 90, 288, &world1);
+	App->render->Blit(extraTexture, 63, 290, &world1);
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 
@@ -351,8 +349,6 @@ bool SceneLevelFinal::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
-	App->sceneLevel_1->Disable();
-	App->particles->Disable();
 	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
 
