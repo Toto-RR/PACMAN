@@ -93,6 +93,7 @@ public:
 	uint explosionFx = 0;
 	uint Superpacdot = 0;
 	uint Pacdot = 0;
+	uint Pineapple = 0;
 
 	// God mode
 	bool godMode = false;

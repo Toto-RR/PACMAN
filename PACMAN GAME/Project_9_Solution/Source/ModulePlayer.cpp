@@ -76,6 +76,7 @@ bool ModulePlayer::Start()
 	Superpacdot = App->audio->LoadFx("Assets/Music/Fx/wakka.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/Fx/life-lost.wav");
 	Pacdot = App->audio->LoadFx("Assets/Music/FX/Pacdot.wav");
+	Pineapple = App->audio->LoadFx("Assets/Music/Fx/fruit-eaten.wav");
 
 	position.x = 110;
 	position.y = 214;
@@ -457,6 +458,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		score += 100;
 		if (highScore <= score)
 			highScore = score;
+		App->audio->PlayFx(Pineapple);
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SUPERPACDOT) {
 		score += 50;
