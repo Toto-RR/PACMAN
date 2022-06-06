@@ -74,7 +74,7 @@ Update_Status ModuleRender::Update()
 
 	//Fullscreen logical sizes
 
-	//SDL_RenderSetLogicalSize(this->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	SDL_RenderSetLogicalSize(this->renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
