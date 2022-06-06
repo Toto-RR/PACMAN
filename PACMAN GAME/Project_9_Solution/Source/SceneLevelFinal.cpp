@@ -1,12 +1,14 @@
 #include "SceneLevelFinal.h"
 
 #include "Application.h"
+#include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleParticles.h"
 
@@ -30,13 +32,14 @@ bool SceneLevelFinal::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/Final_Level1.png");
+	bgTexture = App->textures->Load("Assets/Sprites/Final_Level.png");
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 
 	
 	//Music
 	round1 = App->audio->LoadFx("Assets/Music/FX/round-start.wav");
+	clear = App->audio->LoadFx("Assets/Music/FX/round-clear.wav");
 	App->audio->PlayFx(round1);
 	App->audio->PlayMusic("Assets/Music/Music/Original Pac-Man Maze (World 1).ogg", 25.0f);
 
@@ -241,8 +244,9 @@ bool SceneLevelFinal::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 104, 107);
-	App->enemies->AddEnemy(Enemy_Type::BLINKY, 16, 107);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 18, 67);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 18, 67);
+	App->enemies->AddEnemy(Enemy_Type::INKY, 18, 67);
 
 	//for (int j = 0; j <= 28; ++j)
 	//{
@@ -300,9 +304,62 @@ Update_Status SceneLevelFinal::Update()
 		speed_num_y = 0;
 	}
 
+	if (App->particles->COUNTDOWN <= 0)
+	{
+
+		LOG("VICTORY");
+		victory = true;
+
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+
+	}
+	if (victory)
+	{
+		if (position_clear_y == 272)
+		{
+			App->audio->PlayFx(clear);
+		}
+		if (position_clear_y > 100)
+		{
+			position_clear_x += 2;
+			position_clear_y -= 6;
+		}
+		if (position_clear_y < 105)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 60);
+		}
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 30);
+		App->audio->PlayMusic("Assets/Music/Ending.ogg");
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+	}
 
 
-
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 30);
+		App->audio->PlayMusic("Assets/Music/Result.ogg");
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -349,8 +406,11 @@ bool SceneLevelFinal::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->fonts->Disable();
+	App->sceneLevel_F->Disable();
+	App->particles->Disable();
 	App->collisions->Disable();
 	App->audio->PlayMusic(NULL, 1.0f);
+
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 

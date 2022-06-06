@@ -28,6 +28,8 @@ SceneLevel4::~SceneLevel4()
 // Load assets
 bool SceneLevel4::Start()
 {
+	victory = false;
+
 	App->sceneLevel_4->Enable();
 
 	LOG("Loading background assets");
@@ -316,6 +318,30 @@ Update_Status SceneLevel4::Update()
 		App->audio->PlayMusic(NULL, 1.0f);
 		App->collisions->CleanUp();
 
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 30);
+		App->audio->PlayMusic("Assets/Music/Result.ogg");
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 30);
+		App->audio->PlayMusic("Assets/Music/Ending.ogg");
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
 	}
 
 

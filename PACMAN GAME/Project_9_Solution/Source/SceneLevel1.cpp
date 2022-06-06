@@ -27,6 +27,8 @@ SceneLevel1::~SceneLevel1()
 // Load assets
 bool SceneLevel1::Start()
 {
+	victory = false;
+	victory1 = false;
 
 	App->sceneLevel_1->Enable();
 
