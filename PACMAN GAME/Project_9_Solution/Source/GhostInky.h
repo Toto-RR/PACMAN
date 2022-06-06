@@ -49,7 +49,6 @@ public:
 	};
 
 	int currentMode;
-	bool devourer = false;
 	//Movement speed
 	float Movementspeed = 0.8f;
 
@@ -58,7 +57,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation up; //TODO
+	Animation up; 
 	Animation down;
 	Animation rigth;
 	Animation left;
@@ -84,4 +83,3 @@ private:
 
 
 #endif
-

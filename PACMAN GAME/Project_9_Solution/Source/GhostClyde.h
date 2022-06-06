@@ -56,11 +56,15 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation up; //TODO
+	Animation up;
 	Animation down;
 	Animation rigth;
 	Animation left;
 
+	Animation up1;
+	Animation down1;
+	Animation rigth1;
+	Animation left1;
 
 	//Tile Movement
 	iPoint tile;

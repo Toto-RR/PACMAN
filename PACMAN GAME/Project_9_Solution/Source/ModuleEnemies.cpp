@@ -169,8 +169,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-			enemies[i]->SetToDelete();
-			enemies[i]->Update();
+
 			delete enemies[i];
 			enemies[i] = nullptr;
 			App->collisions->RemoveCollider(c1);
