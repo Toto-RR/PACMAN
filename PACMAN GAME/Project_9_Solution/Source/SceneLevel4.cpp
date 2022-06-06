@@ -315,6 +315,22 @@ Update_Status SceneLevel4::Update()
 
 	}
 
+
+	if (App->particles->COUNTDOWN <= 0)
+	{
+
+		LOG("VICTORY");
+		victory = true;
+
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+
+	}
+
 	if (victory)
 	{
 		if (position_clear_y == 272)

@@ -12,6 +12,7 @@
 #include "ModuleEnemies.h"
 #include "SceneLevel1.h"
 #include "SceneLevel4.h"
+#include "SceneLevelFinal.h"
 #include "GhostInky.h"
 
 #include <stdio.h>
@@ -158,6 +159,27 @@ Update_Status ModulePlayer::Update()
 				(App->sceneLevel_4->TileSet[0][tile.x][tile.y] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_4->TP) ||
 				(App->sceneLevel_4->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_4->TP) ||
 				(App->sceneLevel_4->TileSet[0][tile.x][tile.y + 2] == App->sceneLevel_4->TP && App->sceneLevel_4->TileSet[0][tile.x + 1][tile.y + 2] == App->sceneLevel_4->TP))
+			{
+				MovingUp = false;
+				MovingDown = false;
+				MovingLeft = true;
+				MovingRight = false;
+				position.x -= speed;
+
+				if (currentAnimation != &leftAnim)
+				{
+					leftAnim.Reset();
+					currentAnimation = &leftAnim;
+				}
+
+			}
+		}
+		else if (App->sceneLevel_F->IsEnabled())
+		{
+			if ((App->sceneLevel_F->TileSet[0][tileLeft.x][tileLeft.y] >= App->sceneLevel_F->EMPTY && App->sceneLevel_F->TileSet[0][tileLeft.x + 1][tileLeft.y] >= App->sceneLevel_F->EMPTY) ||
+				(App->sceneLevel_F->TileSet[0][tile.x][tile.y] == App->sceneLevel_F->TP && App->sceneLevel_F->TileSet[0][tile.x + 1][tile.y] == App->sceneLevel_F->TP) ||
+				(App->sceneLevel_F->TileSet[0][tile.x][tile.y + 1] == App->sceneLevel_F->TP && App->sceneLevel_F->TileSet[0][tile.x + 1][tile.y + 1] == App->sceneLevel_F->TP) ||
+				(App->sceneLevel_F->TileSet[0][tile.x][tile.y + 2] == App->sceneLevel_F->TP && App->sceneLevel_F->TileSet[0][tile.x + 1][tile.y + 2] == App->sceneLevel_F->TP))
 			{
 				MovingUp = false;
 				MovingDown = false;
