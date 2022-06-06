@@ -243,6 +243,8 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->particles->Enable();
 	App->fonts->Enable();
+	App->sceneLevel_1->Enable();
+	App->collisions->Enable();
 
 	return ret;
 }
@@ -274,6 +276,7 @@ Update_Status SceneLevel1::Update()
 		App->enemies->Disable();
 		App->fonts->Disable();
 		App->particles->Disable();
+		App->sceneLevel_1->Disable();
 		App->audio->PlayMusic(NULL, 1.0f);
 		App->collisions->CleanUp();
 		

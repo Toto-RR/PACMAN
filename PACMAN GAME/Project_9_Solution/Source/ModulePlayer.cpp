@@ -79,7 +79,6 @@ bool ModulePlayer::Start()
 	position.x = 110;
 	position.y = 214;
 
-	destroyed = false;
 	devourer = false;
 
 	score = 0;
@@ -346,7 +345,6 @@ Update_Status ModulePlayer::Update()
 		App->audio->PlayMusic("Assets/Music/Ending.ogg");
 	};
 	
-	if (timer == true) start = SDL_GetTicks();
 	
 	collider->SetPos((int)position.x, (int)position.y);
 	currentAnimation->Update();
@@ -415,6 +413,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (App->sceneLevel_1->IsEnabled())
 		{
 			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneGameOver, 90);
+			App->sceneLevel_1->Disable();
 		}
 		else
 		{
@@ -424,10 +423,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 	}
 
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true && start <= 5000) 
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 
 	{
 		score += 200;
-
+		devourer = false;
 	}
 
 
@@ -442,7 +441,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
 		devourer = true;
-		timer = true;
+		
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;
@@ -457,7 +456,6 @@ void ModulePlayer::RemovePacman(Collider* collider)
 	if (this->collider->PLAYER && collider->ENEMY)
 	{
 		destroyed = true;
-		App->enemies->CleanUp();
-		App->particles->CleanUp();
+	
 	}
 }
