@@ -43,6 +43,12 @@ bool SceneLevel1::Start()
 	speed_num_x = 3;
 	speed_num_y = 3;
 
+	victory = false;
+
+	position_clear_x = -75;
+	position_clear_x2 = 100;
+	position_clear_y = 350;
+
 	//Music
 	round = App->audio->LoadFx("Assets/Music/FX/opening-fanfare.wav");
 	clear = App->audio->LoadFx("Assets/Music/FX/round-clear.wav");
