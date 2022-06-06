@@ -79,6 +79,7 @@ bool ModulePlayer::Start()
 	position.y = 214;
 
 	destroyed = false;
+	devourer = false;
 
 	score = 0;
 
@@ -246,11 +247,9 @@ Update_Status ModulePlayer::Update()
 		collider = App->collisions->AddCollider({ (int)position.x, (int)position.y, 14, 14 }, Collider::Type::ENEMY, this);
 		App->audio->PlayMusic("Assets/Music/Ending.ogg");
 	};
-
-	if (stop - start <= 500) {
-		devourer = false;
-	}
-
+	
+	if (timer == true) start = SDL_GetTicks();
+	
 	collider->SetPos((int)position.x, (int)position.y);
 	currentAnimation->Update();
 
@@ -327,7 +326,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 	}
 
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true) 
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY && destroyed == false && devourer == true && start <= 5000) 
 	{
 		score += 200;
 
@@ -345,10 +344,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			highScore = score;
 		App->audio->PlayFx(Superpacdot);
 		devourer = true;
-		start = SDL_GetTicks();
-
-		
-		
+		timer = true;
 	}
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::PACDOT) {
 		score += 10;

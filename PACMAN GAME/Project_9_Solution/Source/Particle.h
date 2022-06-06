@@ -23,7 +23,7 @@ public:
 	// Returns false when the particle reaches its lifetime
 	bool Update();
 
-	void SetToDelete();
+	/*void SetToDelete();*/
 
 public:
 	// Defines the position in the screen
@@ -49,7 +49,7 @@ public:
 	// The particle's collider
 	Collider* collider = nullptr;
 
-	bool pendingToDelete = false;
+	/*bool pendingToDelete = false;*/
 };
 
 #endif //__PARTICLE_H__

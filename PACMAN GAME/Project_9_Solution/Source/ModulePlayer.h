@@ -97,6 +97,8 @@ public:
 	Uint32 start;
 	Uint32 stop;
 
+	bool timer = false;
+
 	// God mode
 	bool godMode = false;
 	bool dead = false;
