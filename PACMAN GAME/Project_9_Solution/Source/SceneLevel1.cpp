@@ -252,7 +252,7 @@ Update_Status SceneLevel1::Update()
 	if (App->particles->COUNTDOWN <= 0)
 	{
 		LOG("VICTORY");
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
 		App->audio->PlayMusic("Assets/Music/Result.ogg");
 		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
 		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
