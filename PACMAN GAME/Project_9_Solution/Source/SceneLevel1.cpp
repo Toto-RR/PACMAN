@@ -302,6 +302,33 @@ Update_Status SceneLevel1::Update()
 		App->collisions->CleanUp();
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F6] == Key_State::KEY_DOWN)
+	{
+		LOG("VICTORY");
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
+		App->audio->PlayMusic("Assets/Music/Result.ogg");
+		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
+		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
+		App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
+		App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
+		App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
+
+		App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
+		App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
+		App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
+		App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
+		App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
+		App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
+
+		App->player->Disable();
+		App->enemies->Disable();
+		App->fonts->Disable();
+		App->particles->Disable();
+		App->audio->PlayMusic(NULL, 1.0f);
+		App->collisions->CleanUp();
+
+	}
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
