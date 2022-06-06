@@ -103,6 +103,15 @@ bool SceneLevel4::Start()
 	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
 	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
 
+	//for (int j = 0; j <= 28; ++j)
+	//{
+	//	for (int i = 0; i <= 37; ++i)
+	//	{
+	//		LOG("En %d,%d hay un %d", i, j, TileSet[i][j])
+	//	}
+	//}
+
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
