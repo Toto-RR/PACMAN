@@ -113,7 +113,7 @@ Update_Status ModuleCollisions::PreUpdate()
 
 Update_Status ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_DOWN || App->input->keys[SDL_SCANCODE_F1])
 		debug = !debug;
 
 	return Update_Status::UPDATE_CONTINUE;

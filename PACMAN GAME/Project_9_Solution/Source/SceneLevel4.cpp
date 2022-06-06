@@ -61,6 +61,12 @@ bool SceneLevel4::Start()
 	speed_num_x = 3;
 	speed_num_y = 3;
 
+	victory = false;
+
+	position_clear_x = -75;
+	position_clear_x2 = 100;
+	position_clear_y = 350;
+
 	App->particles->Enable();
 
 	//Superpacdots---
@@ -405,6 +411,24 @@ Update_Status SceneLevel4::PostUpdate()
 	App->fonts->BlitText(positionx + 54, positiony, scoreFont, "N");
 	App->fonts->BlitText(positionx + 72, positiony, scoreFont, "D");
 	App->fonts->BlitText(position_num_x, position_num_y, scoreFont2, "2");
+
+
+	App->fonts->BlitText(position_clear_x, position_clear_y, scoreFont, "R");
+	App->fonts->BlitText(position_clear_x + 18, position_clear_y, scoreFont, "O");
+	App->fonts->BlitText(position_clear_x + 36, position_clear_y, scoreFont, "U");
+	App->fonts->BlitText(position_clear_x + 54, position_clear_y, scoreFont, "N");
+	App->fonts->BlitText(position_clear_x + 72, position_clear_y, scoreFont, "D");
+
+	//App->fonts->BlitText(position_clear_x + 90, position_clear_y, scoreFont, "");
+	App->fonts->BlitText(position_clear_x + 108, position_clear_y, scoreFont, "C");
+	App->fonts->BlitText(position_clear_x + 126, position_clear_y, scoreFont, "L");
+	App->fonts->BlitText(position_clear_x + 144, position_clear_y, scoreFont, "E");
+
+	App->fonts->BlitText(position_clear_x + 162, position_clear_y, scoreFont, "A");
+	App->fonts->BlitText(position_clear_x + 180, position_clear_y, scoreFont, "R");
+	App->fonts->BlitText(position_clear_x + 198, position_clear_y, scoreFont, "!");
+
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
