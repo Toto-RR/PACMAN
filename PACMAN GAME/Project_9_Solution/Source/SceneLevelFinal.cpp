@@ -30,7 +30,7 @@ bool SceneLevelFinal::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/Final_Level.png");
+	bgTexture = App->textures->Load("Assets/Sprites/background_level_4.png");
 
 	extraTexture = App->textures->Load("Assets/Sprites/Extras_background.png");
 
@@ -159,82 +159,9 @@ Update_Status SceneLevelFinal::Update()
 		speed_num_y = 0;
 	}
 
-	if (App->particles->COUNTDOWN <= 0)
-	{
-		LOG("VICTORY");
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevelFinal 90);
-		App->audio->PlayMusic("Assets/Music/Result.ogg");
-		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
-		App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
-		App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
-		App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
 
-		App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
-		App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
-		App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
-		App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
-		App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
 
-		App->player->Disable();
-		App->enemies->Disable();
-		App->fonts->Disable();
-		App->particles->Disable();
-		App->audio->PlayMusic(NULL, 1.0f);
-		App->collisions->CleanUp();
 
-	}
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 30);
-		App->audio->PlayMusic("Assets/Music/Result.ogg");
-		App->player->Disable();
-		App->enemies->Disable();
-		App->fonts->Disable();
-		App->particles->Disable();
-		App->audio->PlayMusic(NULL, 1.0f);
-		App->collisions->CleanUp();
-	}
-
-	if (App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneGameOver, 30);
-		App->audio->PlayMusic("Assets/Music/Ending.ogg");
-		App->player->Disable();
-		App->enemies->Disable();
-		App->fonts->Disable();
-		App->particles->Disable();
-		App->audio->PlayMusic(NULL, 1.0f);
-		App->collisions->CleanUp();
-	}
-
-	if (App->input->keys[SDL_SCANCODE_F6] == Key_State::KEY_DOWN)
-	{
-		LOG("VICTORY");
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_4, 90);
-		App->audio->PlayMusic("Assets/Music/Result.ogg");
-		App->fonts->BlitText(position_clear_x2 + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x2 + 75, position_clear_y, scoreFont, "O");
-		App->fonts->BlitText(position_clear_x2 + 90, position_clear_y, scoreFont, "U");
-		App->fonts->BlitText(position_clear_x2 + 105, position_clear_y, scoreFont, "N");
-		App->fonts->BlitText(position_clear_x2 + 120, position_clear_y, scoreFont, "D");
-
-		App->fonts->BlitText(position_clear_x + 0, position_clear_y, scoreFont, "C");
-		App->fonts->BlitText(position_clear_x + 15, position_clear_y, scoreFont, "L");
-		App->fonts->BlitText(position_clear_x + 30, position_clear_y, scoreFont, "E");
-		App->fonts->BlitText(position_clear_x + 45, position_clear_y, scoreFont, "A");
-		App->fonts->BlitText(position_clear_x + 60, position_clear_y, scoreFont, "R");
-		App->fonts->BlitText(position_clear_x + 75, position_clear_y, scoreFont, "!");
-
-		App->player->Disable();
-		App->enemies->Disable();
-		App->fonts->Disable();
-		App->particles->Disable();
-		App->audio->PlayMusic(NULL, 1.0f);
-		App->collisions->CleanUp();
-
-	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -249,7 +176,7 @@ Update_Status SceneLevelFinal::PostUpdate()
 	SDL_SetRenderDrawColor(App->render->renderer, 128, 192, 0, 128);
 	SDL_RenderFillRect(App->render->renderer, &rc);*/
 
-	App->render->Blit(extraTexture, 63, 290, &world2);
+	App->render->Blit(extraTexture, 63, 290, &world1);
 	App->render->Blit(extraTexture, 56, 288, &p1);
 	App->render->Blit(extraTexture, 168, 288, &p2);
 

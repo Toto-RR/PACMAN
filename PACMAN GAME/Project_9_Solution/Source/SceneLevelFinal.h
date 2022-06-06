@@ -45,10 +45,7 @@ public:
 	int position_num_y = 275;
 	int speed_num_x = 3;
 	int speed_num_y = 3;
-	int position_clear_x = -50;
-	int position_clear_x2 = 100;
-	int position_clear_y = 350;
-	
+
 	uint round = 0;
 
 	int scoreFont = -1;
@@ -57,7 +54,7 @@ public:
 	int scoreFont2 = -1;
 	char scoreText2[10] = { "\0" };
 
-	SDL_Rect world2 = { 63, 114, 46, 14 };
+	SDL_Rect world1 = { 63, 114, 46, 14 };
 	SDL_Rect p1 = { 0, 96, 8, 16 };
 	SDL_Rect p2 = { 0, 112, 8, 16 };
 
@@ -76,11 +73,11 @@ public:
 	uint round1 = 0;
 
 	//TileSet del nivel
-	const int TileX = 28;
-	const int TileY = 32;
+	const int TileX = 29;
+	const int TileY = 38;
 
 	//[3d la profundidad][la altura] [la longuitud] 
-	int TileSet[2][32][28] = {
+	int TileSet[2][38][29] = {
 	 EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY  ,  //0 *
 	 EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY  ,	//1 *
 	 EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY  , 	//2 *

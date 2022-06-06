@@ -244,6 +244,7 @@ bool SceneLevel1::Start()
 	App->particles->Enable();
 	App->fonts->Enable();
 	App->sceneLevel_1->Enable();
+	App->collisions->Enable();
 
 	return ret;
 }
