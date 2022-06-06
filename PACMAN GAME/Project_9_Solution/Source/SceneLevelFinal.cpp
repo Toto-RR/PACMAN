@@ -394,8 +394,8 @@ bool SceneLevelFinal::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::CLYDE, 121, 107);
-	App->enemies->AddEnemy(Enemy_Type::BLINKY, 105, 107);
+	App->enemies->AddEnemy(Enemy_Type::CLYDE, 104, 107);
+	App->enemies->AddEnemy(Enemy_Type::BLINKY, 16, 107);
 
 	//for (int j = 0; j <= 28; ++j)
 	//{
